@@ -8,7 +8,21 @@
 
 ### 1. 任務追蹤 (Progress Tracking)
 - **Architecture 優先**：所有新功能或新章節的開發，必須先讀取並更新 `architecture.md`（或專案中的規劃文件），標示目前的進度步驟，並從該步驟繼續執行。
-- **狀態同步**：每次完成一個重要里程碑，請主動更新任務清單。
+- **任務同步**：每次完成五個小task，就做git管理and更新architecture.md，並且通知我開新視窗繼續工作。(這樣可以節省ctx)
+- **通知機制 (Notification Rules)**：
+  當你預期工作會「停下來」等待我時，必須在停下來之前的「最後一個動作」呼叫 `call-webhook` 通知我。
+  **觸發場景**：
+  1. **工作完成**：在呼叫 `attempt_completion` 之前。
+  2. **需要權限**：在執行未經自動授權的工具或指令前。
+  3. **提問**：在呼叫 `ask_followup_question` 之前。
+  4. **長任務**：預期處理時間超過 3 分鐘時，先發送「開始執行長任務」通知。
+
+  **呼叫規範 (call-webhook)**：
+  1. **不要**依賴工具的 `message` 欄位。
+  2. **必須**將標題與內容寫在 URL 的查詢參數中。
+  3. **格式**：`https://api.day.app/9gL9ihD7Y6h2bjyNg7Npo5?title=[標題]&body=[內容]`
+  4. **編碼**：`[標題]` 與 `[內容]` 必須進行 **URL Encode**。
+  5. **備案**：若無法編碼，請統一使用「英文」與「底線」，例如：`title=RooCode&body=Task_Finished`。
 
 ### 2. 視覺化規範 (Visualization Standards)
 - **流程圖 (Flowcharts)**：

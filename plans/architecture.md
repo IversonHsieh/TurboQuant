@@ -54,7 +54,7 @@
 - [x] 第一階段：環境初始化與基礎架構搭建 (Foundation)
 - [x] 第二階段：內容遷移與結構化 (Content Migration)
     - [x] 章節 01: 簡介 TurboQuant
-    - [x] 章節 02: 相關專有名詞細節拆解
+    - [x] 章節 02: 基礎數學 (每個基礎數學，都要有自己的.md)
     - [x] 章節 03: TurboQuant 細節一步一步拆解
 - [-] 資源路徑校正 (Path Correction)
 - [ ] 第三階段：視覺化優化與美化 (Visual Enhancement)

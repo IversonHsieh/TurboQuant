@@ -12,7 +12,7 @@ TurboQuant 是一種針對 **KV Cache**（鍵值快取）與**向量搜尋**（V
 
 以下展示了 TurboQuant 從原始高維向量到極致壓縮 KV Cache 的處理流程：
 
-![TurboQuant 流程圖](../svg/flowchart.svg)
+![TurboQuant 流程圖](/svg/flowchart.svg)
 
 ---
 
