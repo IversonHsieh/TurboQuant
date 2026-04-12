@@ -53,12 +53,24 @@
 ## 📊 Progress Tracking
 - [x] 第一階段：環境初始化與基礎架構搭建 (Foundation)
 - [x] 第二階段：內容遷移與結構化 (Content Migration)
-    - [x] 章節 01: 簡介 TurboQuant
-    - [x] 章節 02: 基礎數學 (每個基礎數學，都要有自己的.md)
-    - [x] 章節 03: TurboQuant 細節一步一步拆解
-- [-] 資源路徑校正 (Path Correction)
+    - [x] 章節 1: 簡介 TurboQuant
+    - [-] 章節 2: 基礎數學
+        - [ ] 章節 2.1: 迪卡兒座標系解析
+        - [ ] 章節 2.2: 極座標系
+        - [ ] 章節 2.3: Transformer 結構解析 (https://jalammar.github.io/illustrated-transformer/)
+        - [ ] 章節 2.4: KV Cache 解析
+        - [ ] 章節 2.5: PolarQuant 解析
+        - [ ] 章節 2.6: QJL (Quantized Johnson-Lindenstrauss) 解析
+    - [x] 章節 3: TurboQuant 細節一步一步拆解
+- [x] 資源路徑校正 (Path Correction)
 - [ ] 第三階段：視覺化優化與美化 (Visual Enhancement)
+    - [ ] SVG 流程圖優化 (檢查 docs/svg/flowchart.svg 配色與設計)
+    - [ ] LaTeX 公式美化 (檢查各章節公式排版與渲染)
+    - [ ] 自定義 CSS 強化 (優化 docs/.vitepress/theme/custom.css)
 - [ ] 第四階段：驗證與部署 (Verification & Deployment)
+    - [ ] 建立 GitHub Actions 部署腳本 (.github/workflows/deploy.yml)
+    - [ ] 端到端測試 (執行 npm run build 並檢查編譯結果)
+    - [ ] 最終檢查 (檢查所有資源路徑與連結)
 
 ## 🎨 UI/UX Design Principles
 - **Typography**: 使用清晰的無襯線字體 (Sans-serif)，確保長文閱讀不疲勞。
