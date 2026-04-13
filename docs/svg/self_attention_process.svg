@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#1a1a1a" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="sans-serif" font-size="24" fill="#00ffff" text-anchor="middle" font-weight="bold">Self-Attention 運算流程 (Self-Attention Process)</text>
+
+  <!-- Step 1: Input Embedding -->
+  <rect x="50" y="80" width="120" height="60" rx="5" fill="#3d3d3d" stroke="#ffffff" stroke-width="1" />
+  <text x="110" y="115" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Input Embedding</text>
+  <text x="110" y="135" font-family="sans-serif" font-size="10" fill="#aaa" text-anchor="middle">(Vector $X$)</text>
+
+  <!-- Arrows to Q, K, V -->
+  <path d="M 170 110 L 230 70" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M 170 110 L 230 110" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M 170 110 L 230 150" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+
+  <!-- Q, K, V Nodes -->
+  <rect x="230" y="50" width="80" height="40" rx="5" fill="#00ffff" fill-opacity="0.2" stroke="#00ffff" stroke-width="1" />
+  <text x="270" y="75" font-family="sans-serif" font-size="14" fill="#00ffff" text-anchor="middle">Query ($Q$)</text>
+  
+  <rect x="230" y="90" width="80" height="40" rx="5" fill="#00ffff" fill-opacity="0.2" stroke="#00ffff" stroke-width="1" />
+  <text x="270" y="115" font-family="sans-serif" font-size="14" fill="#00ffff" text-anchor="middle">Key ($K$)</text>
+  
+  <rect x="230" y="130" width="80" height_40" rx="5" fill="#00ffff" fill-opacity="0.2" stroke="#00ffff" stroke_width="1" />
+  <text x="270" y="155" font-family="sans-serif" font-size="14" fill="#00ffff" text-anchor="middle">Value ($V$)</text>
+
+  <!-- Step 2: Dot Product (Score) -->
+  <path d="M 310 70 L 380 70" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M 310 110 L 380 110" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <rect x="380" y="50" width="120" height_80" rx="5" fill="#ff00ff" fill-opacity="0.2" stroke="#ff00ff" stroke-width="1" />
+  <text x="440" y="85" font-family="sans-serif" font-size="14" fill="#ff00ff" text-anchor="middle">Score ($Q \cdot K^T$)</text>
+
+  <!-- Step 3: Softmax -->
+  <path d="M 500 110 L 580 110" stroke="#ffffff" stroke_width="2" fill="none" marker-end="url(#arrowhead)" />
+  <rect x="580" y="80" width="100" height_60" rx="5" fill="#00ff00" fill-opacity="0.2" stroke="#00ff00" stroke-width="1" />
+  <text x="630" y="115" font-family="sans-serif" font-size="14" fill="#00ff00" text-anchor="middle">Softmax</text>
+
+  <!-- Step 4: Weighted Sum -->
+  <path d="M 680 110 L 720 110" stroke="#ffffff" stroke_width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M 580 140 L 580 220 L 720 220" stroke="#ffffff" stroke_width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M 310 150 L 720 150" stroke="#ffffff" stroke_width="1" fill="none" stroke-dasharray="4" />
+  
+  <rect x="720" y="180" width="60" height_60" rx="5" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-width="1" />
+  <text x="750" y_215" font-family="sans_serif" font-size="14" fill="#ffffff" text-anchor="middle">Output</text>
+
+  <!-- Legend/Notes -->
+  <text x="50" y="450" font-family="sans-serif" font-size="14" fill="#aaa" text-anchor="start">Formula: $\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$</text>
+
+  <!-- Arrowhead Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
+    </marker>
+  </defs>
+</svg>

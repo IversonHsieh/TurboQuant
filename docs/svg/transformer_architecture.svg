@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1a1a1a" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="sans-serif" font-size="24" fill="#00ffff" text-anchor="middle" font-weight="bold">Transformer 核心架構 (Encoder-Decoder)</text>
+
+  <!-- Encoder Stack -->
+  <rect x="50" y="80" width="300" height="450" rx="10" fill="#2d2d2d" stroke="#00ffff" stroke-width="2" />
+  <text x="200" y="110" font-family="sans-serif" font-size="18" fill="#00ffff" text-anchor="middle">Encoder Stack</text>
+  
+  <!-- Encoder Sub-layers -->
+  <rect x="70" y="130" width="260" height="80" rx="5" fill="#3d3d3d" stroke="#ffffff" stroke-width="1" />
+  <text x="200" y="160" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Self-Attention Layer</text>
+  <rect x="70" y="220" width="260" height="80" rx="5" fill="#3d3d3d" stroke="#ffffff" stroke-width="1" />
+  <text x="200" y="250" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Feed-Forward Layer</text>
+  <path d="M 200 300 L 200 330" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="200" y="350" font-family="sans-serif" font-size="12" fill="#aaaaaa" text-anchor="middle">Residual & LayerNorm</text>
+
+  <!-- Decoder Stack -->
+  <rect x="450" y="80" width="300" height="450" rx="10" fill="#2d2d2d" stroke="#ff00ff" stroke-width="2" />
+  <text x="600" y="110" font-family="sans-serif" font-size="18" fill="#ff00ff" text-anchor="middle">Decoder Stack</text>
+  
+  <!-- Decoder Sub-layers -->
+  <rect x="470" y="130" width="260" height="80" rx="5" fill="#3d3cap" stroke="#ffffff" stroke-width="1" />
+  <text x="600" y="160" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Masked Self-Attention</text>
+  <rect x="470" y="220" width="260" height="80" rx="5" fill="#3d3d3d" stroke="#ffffff" stroke-width="1" />
+  <text x="600" y="250" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Encoder-Decoder Attention</text>
+  <rect x="470" y="310" width: 260" height="80" rx="5" fill="#3cap" stroke="#ffffff" stroke-width="1" />
+  <text x="600" y="340" font-family="sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Feed-Forward Layer</text>
+  <path d="M 600 390 L 600 420" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="600" y="440" font-family="sans-serif" font-size="12" fill="#aaaaaa" text-anchor="middle">Residual & LayerNorm</text>
+
+  <!-- Connection: Encoder to Decoder -->
+  <path d="M 350 250 L 450 250" stroke="#00ffff" stroke-width="3" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,5" />
+  <text x="400" y="240" font-family="sans-serif" font-size="12" fill="#00ffff" text-anchor="middle">K, V Vectors</text>
+
+  <!-- Arrowhead Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
+    </marker>
+  </defs>
+</svg>

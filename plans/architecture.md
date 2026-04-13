@@ -57,10 +57,15 @@
     - [x] 章節 2: 基礎數學
         - [x] 章節 2.1: 笛卡兒座標系解析
         - [x] 章節 2.2: 極座標系
-        - [x] 章節 2.3: Transformer 結構解析 (參考 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/))
-        - [x] 章節 2.4: KV Cache 解析
-        - [x] 章節 2.5: PolarQuant 解析
-        - [x] 章節 2.6: QJL (Quantized Johnson-Lindenstrauss) 解析
+        - [ ] 章節 2.3: 前饋神經網路 (Feed-Forward Neural Network)
+        - [-] 章節 2.4: Transformer 結構解析 (翻譯自 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/))
+            - [-] 內容抓取與翻譯 (使用 Puppeteer)
+            - [-] 視覺化資源製作 (SVG)
+            - [ ] 內容整合與文件生成
+            - [ ] 最終驗證
+        - [x] 章節 2.5: KV Cache 解析
+        - [x] 章節 2.6: PolarQuant 解析
+        - [x] 章節 2.7: QJL (Quantized Johnson-Lindenstrauss) 解析
     - [-] 章節 3: TurboQuant 細節一步一步拆解
 - [x] 資源路徑校正 (Path Correction)
 - [ ] 第三階段：視覺化優化與美化 (Visual Enhancement)
