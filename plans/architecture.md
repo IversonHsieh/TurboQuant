@@ -53,15 +53,15 @@
 ## 📊 Progress Tracking
 - [x] 第一階段：環境初始化與基礎架構搭建 (Foundation)
 - [x] 第二階段：內容遷移與結構化 (Content Migration)
-    - [x] 章節 1: 簡介 TurboQuant
-    - [-] 章節 2: 基礎數學
-        - [ ] 章節 2.1: 迪卡兒座標系解析
-        - [ ] 章節 2.2: 極座標系
-        - [ ] 章節 2.3: Transformer 結構解析 (https://jalammar.github.io/illustrated-transformer/)
-        - [ ] 章節 2.4: KV Cache 解析
-        - [ ] 章節 2.5: PolarQuant 解析
-        - [ ] 章節 2.6: QJL (Quantized Johnson-Lindenstrauss) 解析
-    - [x] 章節 3: TurboQuant 細節一步一步拆解
+    - [x] 章節 1: 簡介 Turbo
+    - [x] 章節 2: 基礎數學
+        - [x] 章節 2.1: 笛卡兒座標系解析
+        - [x] 章節 2.2: 極座標系
+        - [x] 章節 2.3: Transformer 結構解析
+        - [x] 章節 2.4: KV Cache 解析
+        - [x] 章節 2.5: PolarQuant 解析
+        - [x] 章節 2.6: QJL (Quantized Johnson-Lindenstrauss) 解析
+    - [-] 章節 3: TurboQuant 細節一步一步拆解
 - [x] 資源路徑校正 (Path Correction)
 - [ ] 第三階段：視覺化優化與美化 (Visual Enhancement)
     - [ ] SVG 流程圖優化 (檢查 docs/svg/flowchart.svg 配色與設計)
