@@ -57,7 +57,7 @@
     - [x] 章節 2: 基礎數學
         - [x] 章節 2.1: 笛卡兒座標系解析
         - [x] 章節 2.2: 極座標系
-        - [x] 章節 2.3: Transformer 結構解析
+        - [x] 章節 2.3: Transformer 結構解析 (參考 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/))
         - [x] 章節 2.4: KV Cache 解析
         - [x] 章節 2.5: PolarQuant 解析
         - [x] 章節 2.6: QJL (Quantized Johnson-Lindenstrauss) 解析

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a1a1a" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="sans-serif" font-size="24" fill="#00ffff" text-anchor="middle" font-weight="bold">Rotation Comparison: Cartesian vs. Polar</text>
+
+  <!-- Cartesian Section -->
+  <g transform="translate(200, 200)">
+    <!-- Grid -->
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#444" stroke-width="1" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#444" stroke-width="1" />
+    
+    <!-- Axes -->
+    <line x1="-120" y1="0" x2="120" y2="0" stroke="#888" stroke-width="2" />
+    <line x1="0" y1="-120" x2="0" y2="120" stroke="#888" stroke-width="2" />
+    <text x="130" y="5" font-family="sans-serif" font-size="14" fill="#888">x</text>
+    <text x="5" y="-130" font-family="sans-serif" font-size="14" fill="#888">y</text>
+
+    <!-- Point A -->
+    <circle cx="80" cy="-60" r="5" fill="#ff4444" />
+    <text x="85" y="-65" font-family="sans-serif" font-size="14" fill="#ff4444">P(x, y)</text>
+
+    <!-- Rotation Matrix Arrow -->
+    <path d="M 80 -60 Q 0 -150 0 0" stroke="#ff4444" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+    <path d="M -10 -10 L -20 -20 L -10 -30" stroke="#ff4444" stroke-width="2" fill="none" />
+    
+    <!-- Matrix Text -->
+    <text x="0" y="150" font-family="serif" font-size="18" fill="#ff4444" text-anchor="middle">
+      $\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$
+    </text>
+    <text x="0" y="175" font-family="sans-serif" font-size="14" fill="#ff4444" text-anchor="middle">Complex Matrix Multiplication</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="400" y1="50" x2="400" y2="350" stroke="#444" stroke-width="2" stroke-dasharray="10,5" />
+
+  <!-- Polar Section -->
+  <g transform="translate(600, 200)">
+    <!-- Grid -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#333" stroke-width="1" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#333" stroke-width="1" />
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#333" stroke-width="1" />
+    
+    <!-- Axes -->
+    <line x1="-120" y1="0" x2="120" y2="0" stroke="#888" stroke-width="2" />
+    <line x1="0" y1="-120" x2="0" y2="120" stroke="#888" stroke-width="2" />
+
+    <!-- Point A -->
+    <circle cx="80" cy="-60" r="5" fill="#00ffff" />
+    <text x="85" y="-65" font-family="sans-serif" font-size="14" fill="#00ffff">P(r, θ)</text>
+
+    <!-- Rotation Arc -->
+    <path d="M 60 0 A 60 60 0 0 1 42 -42" stroke="#00ffff" stroke-width="3" fill="none" />
+    <path d="M 42 -42 L 50 -35" stroke="#00ffff" stroke="2" fill="none" />
+    
+    <!-- Rotation Text -->
+    <text x="0" y="150" font-family="serif" font-size="22" fill="#00ffff" text-anchor="middle">
+      $\theta_{new} = \theta + \Delta\theta$
+    </text>
+    <text x="0" y="175" font-family="sans-serif" font-size="14" fill="#00ffff" text-anchor="middle">Simple Scalar Addition</text>
+  </g>
+</svg>
