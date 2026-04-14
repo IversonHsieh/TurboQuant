@@ -1,43 +1,32 @@
 # 🧠 Transformer 結構解析 (The Illustrated Transformer)
 
 
-# Jay Alammar
-
-一次一個概念，視覺化機器學習。
-閱讀我們的書籍《Hands-On Large Language Models》，並在 LinkedIn, Bluesky, Substack, X, YouTube 上關注我。
-
-# The Illustrated Transformer
-
-討論：Hacker News (65 points, 4 comments), Reddit r/MachineLearning (29 points, 3 comments)
-翻譯版本：阿拉伯文, 中文 (簡體) 1, 中文 (簡體) 2, 法文 1, 法文 2, 義大利文, 日文, 韓文, 波斯文, 俄文, 西班牙文 1, 西 班牙文 2, 越南文
-觀看：MIT 的 Deep Learning State of the Art 講座（引用了本文）
-精選課程：Stanford, Harvard, MIT, Princeton, CMU 等。
-
-![Transformer Overview](https://github.com/user-attachments/assets/a471dfff-00cc-4cb4-8df0-123e195bcc71)
+![Transformer Architecture](docs/svg/transformer_architecture.svg)
 
 在之前的文章中，我們探討了注意力機制 (Attention) —— 這是現代深度學習模型中無處不在的方法。注意力機制是一個幫助提升神經機器翻譯應用性能的概念。在本文中，我們將研究 Transformer —— 一種利用注意力機制來提升模型訓練速度的模型。Transformer 在特定任務上的表現優於 Google 的神經機器翻譯模型。然而，它最大的優勢在於其具備高度的可並行化能力。事實上，Google Cloud 也建議使用 Transformer 作為參考模型，以利用其 Cloud TPU 的優勢。因此，讓我們試著拆解這個模型，並觀察它是如何運作的。
 
 Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow 的實現版本可以作為 Tensor2Tensor 套件的一部分找到。哈佛大學的 NLP 小組也製作了一個指南，使用 PyTorch 實現來註解該論文。在本文中，我們將嘗試稍微簡化內容，並逐一介紹這些概念，希望能讓沒有深在專業知識的人也能更容易理解。
 
-2025 年更新：我們建立了一個免費的短期課程，透過動畫讓本文內容保持最新狀態：
-
 ## 高層次概覽 (A High-Level Look)
 
 讓我們首先將模型視為一個單一的黑盒子。在機器翻譯應用中，它會接收一種語言的句子，並輸出另一種語言的翻譯。
 
-![Transformer Black Box](https://jalammar.github.io/images/t/the_transformer_3.png)
+![Transformer Black Box](https://jalammar.github.io/images/t/the_transformer_3.png)![Transformer Black Box](../svg/the_transformer_3.svg)
 
 打開這個「擎天柱 (Optimus Prime)」般的精妙結構，我們可以看到一個編碼組件 (encoding component)、一個解碼組件 (decoding component) 以及它們之間的連接。
 
 ![Encoder Decoder Components](https://jalammar.github.io/images/t/The_transformer_encoders_decoders.png)
+![Transformer Architecture](docs/svg/transformer_architecture.svg)
 
 編碼組件是由一堆編碼器堆疊而成（論文中堆疊了六層 —— 六這個數字並沒有什麼魔力，完全可以嘗試其他的配置）。解碼組件同樣是由相同數量的解碼器堆疊而成。
 
 ![Encoder Decoder Stack](https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png)
+![Transformer Architecture](docs/svg/transformer_architecture.svg)
 
 所有的編碼器在結構上都是完全相同的（但它們並不共享權重）。每一個編碼器都分解為兩個子層：
 
 ![Encoder Sub-layers](https://jalammar.github.io/images/t/Transformer_encoder.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 編碼器的輸入首先流經一個自注意力層 (self-attention layer) —— 這個層級能幫助編碼器在編碼特定單詞時，去觀察輸入句子中的其他單詞。我們稍後會在文中詳細討論自注意力機制。
 
@@ -46,6 +35,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 解碼器同時擁有這兩種層，但在它們之間還有一個注意力層，能幫助解動器專注於輸入句子中的相關部分（類似於 seq2seq 模型中注意力機制的作用）。
 
 ![Decoder Sub-layers](https://jalammar.github.io/images/t/Transformer_decoder.png)
+![Decoder Sub-layers](docs/svg/decoder_sublayers.svg)
 
 ## 將張量引入視野 (Bringing The Tensors Into The Picture)
 
@@ -54,12 +44,14 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 與一般的 NLP 應用相同，我們首先使用嵌入演算法 (embedding algorithm) 將每個輸入單詞轉換為向量。
 
 ![Embeddings](https://jalammar.github.io/images/t/embeddings.png)
+![Embeddings & Vectors](docs/svg/embeddings_vectors.svg)
 
 嵌入過程僅發生在最底層的編碼器中。所有編碼器共同的抽象特性是：它們接收一組維度為 $512$ 的向量列表 —— 在最底層編碼器中，這就是單詞嵌入 (word embeddings)；但在其他編碼器中，這則是下方編碼器的輸出。這個列表的大小是一個可以設定的超參數 —— 基本上它就是我們訓練數據集中最長句子的長度。
 
 在對輸入序列中的單詞進行嵌入後，每個單詞都會流經編碼器的這兩個層級。
 
 ![Encoder with Tensors](https://jalammar.github.io/images/t/encoder_with_tensors.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 在這裡，我們開始看到 Transformer 的一個關鍵特性：每個位置的單詞在編碼器中都有其專屬的流動路徑。在自注意力層中，這些路徑之間存在依賴關係。然而，前饋層則沒有這些依賴關係，因此在流經前饋層時，各種路並行運算。
 
@@ -70,6 +62,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 正如我們之前提到的，編碼器接收一個向量列表作為輸入。它透過將這些向量送入「自注意力」層，接著送入前饋神經網路，然後將輸出向上傳遞到下一個編碼器來處理這個列表。
 
 ![Encoder with Tensors 2](https://jalammar.github.io/images/t/encoder_with_tensors_2.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 ## 自注意力機制的高層次解析 (Self-Attention at a High Level)
 
@@ -89,6 +82,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 如果你熟悉 RNN，可以想想維持隱藏狀態 (hidden state) 如何讓 RNN 在處理當前單詞時，能結合之前處理過的單詞/向量的表示。自注意力機制正是 Transformer 用來將其他相關單詞的「理解」融入到我們目前正在處理的單詞中的方法。
 
 ![Self-Attention Visualization](https://jalammar.github.io/images/t/transformer_self-attention_visualization.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 請務前查看 Tensor2Tensor 筆記本，你可以在其中載入 Transformer 模型，並使用這個互動式視覺化工具進行檢查。
 
@@ -101,6 +95,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 請注意，這些新向量的維度比嵌入向量小。它們的維度是 $64$，而嵌入向量以及編碼器的輸入/輸出向量維度則是 $512$。它們並不「必須」更小，這是一種為了讓多頭注意力 (multi-headed attention) 的計算量（主要）保持恆定的架構選擇。
 
 ![Self-Attention Vectors](https://jalammar.github.io/images/t/transformer_self_attention_vectors.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 什麼是「查詢 (query)」、「鍵 (key)」和「值 (value)」向量？
 
@@ -111,10 +106,12 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 分數的計算方法是取查詢向量與我們正在評分的對應單詞的鍵向量的點積 (dot product)。因此，如果我們正在處理位置 #1 單誠的自注意力，第一個分數將是 $q_1$ 與 $k_1$ 的點積。第二個分數將是 $q_1$ 與 $k_2$ 的點積。
 
 ![Self-Attention Score](https://jalammar.github.io/images/t/transformer_self_attention_score.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 第三步和第四步是將分數除以 $8$（這是論文中所使用的鍵向量維度的平方根 $\sqrt{64}$，這能帶來更穩定的梯度。這裡可能會有其他可能的值，但這是預設值），然後將結果通過一個 softmax 操作。Softmax 會將分數正規化，使其全部為正值且總和為 $1$。
 
 ![Self Attention Softmax](https://jalammar.github.io/images/t/self-attention_softmax.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 這個 softmax 分數決定了每個單詞在該位置會如何被表達。顯然，該位置的單詞將擁有最高的 softmax 分數，但有時關注與當前單詞相關的其他單詞也是很有用的。
 
@@ -123,6 +120,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 第六步是將加權後的值向量進行加總。這產生了該位置自注意力層的輸出（針對第一個單詞）。
 
 ![Self-Attention Output](https://jalammar.github.io/images/t/self-attention-output.png)
+![Self-Attention Process](docs/svg/self_attention_process.svg)
 
 自注意力計算到此結束。產生的向量是我們可以送往前饋神經網路的向量。然而，在實際實現中，這種計算是以矩陣形式進行的，以便進行更快速的處理。既然我們已經看到了單詞層級的計算直進，現在讓我們來看看矩陣形式的計算。
 
@@ -131,10 +129,12 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 第一步是計算查詢 ($Q$)、鍵 ($K$) 和值 ($V$) 矩陣。我們透過將嵌入向量打包成一個矩陣 $X$，並將其乘以我們訓練好的權重矩陣 ($W^Q, W^K, W^V$) 來完成。
 
 ![Self-Attention Matrix Calculation 1](https://jalammar.github.io/images/t/self-attention-matrix-calculation.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 最後，既然我們處理的是矩陣，我們可以用一個公式將第二步到第六步壓縮起來，以計算自注意力層的 輸出。
 
 ![Self-Attention Matrix Calculation 2](https://jalammar.github.io/images/t/self-attention-matrix-calculation-2.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 ## 多頭注意力：強大的機制 (The Beast With Many Heads)
 
@@ -145,23 +145,28 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 2. 它為注意力層提供了多個「表示子空間 (representation subspaces)」。正如我們接下來將看到的，透過多頭注意力，我們不僅有一個，而是有多組查詢/鍵/誠值權重矩陣（Transformer 使用了八個注意力頭，因此每個編碼器/解碼器都有八組）。每一組都是隨機初始化的。接著，在訓練之後，每一組都會被用來將輸入嵌入（或來自下方編碼器/解碼器的向量）投影到不同的表示子空間中。
 
 ![Multi-Head Attention QKV](https://jalammar.github.io/images/t/transformer_attention_heads_qkv.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 如果我們使用不同的權重矩陣，重複上述自注意力計算八次，我們最終會得到八個不同的 $Z$ 矩陣。
 
 ![Multi-Head Attention Z](https://jalammar.github.io/images/t/transformer_attention_heads_z.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 這給我們帶來了一個挑戰。前饋層並不預期接收八個矩陣 —— 它預期的是一個單一矩陣（每個單詞對應一個向量）。因此，我們需要一種方法將這八個矩陣壓縮成一個單一矩陣。
 
 我們該怎麼做呢？我們將這些矩陣進行拼接 (concat)，然後再乘以一個額外的權重矩陣 $W^O$。
 
 ![Multi-Head Attention WO](https://jalammar.github.io/images/t/transformer_attention_heads_weight_matrix_o.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 這基本上就是多頭自注意力機制的所有內容了。我意識到這涉及相當多量的矩陣。讓我嘗試將它們全部放在一個視覺化圖表中，以便我們能一目了然地觀察。
 
 ![Multi-Head Attention Recap](https://jalammar.github.io/images/t/transformer_multi-headed_self-attention-recap.png)
+![Multi-Head Attention](docs/svg/multi_head_attention.svg)
 
 既然我們已經觸及了注意力頭，讓我們重新檢視之前的範例，看看在編碼我們範例句子中的「it」時，不同的注意力頭分別關注在哪裡：
 
+![Self-Attention Visualization 2](https://jalamarr.github.io/images/t/transformer_self-attention_visualization_2.png)
 ![Self-Attention Visualization 2](https://jalamarr.github.io/images/t/transformer_self-attention_visualization_2.png)
 
 然而，如果我們把所有的注意力頭都加入到圖中，事情可能會變得難以解釋：
@@ -175,36 +180,43 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 為了應對這個問題，Transformer 為每個輸入嵌入添加了一個向量。這些向量遵循模型學習到的特定模式，這有助於它確定每個單詞的位置，或者序列中不同單 詞之間的距離。這裡的直覺是，將這些值添加到嵌入中，可以在將它們投影到 $Q/K/V$ 向量以及進行點積注意力期間，在嵌入向量之間提供有意義的距離。
 
 ![Positional Encoding Vectors](https://jalammar.github.io/images/t/transformer_positional_encoding_vectors.png)
+![Positional Encoding](docs/svg/positional_encoding.svg)
 
 如果我們假設嵌入的維度為 $4$，實際的位置編碼看起來會像這樣：
 
 ![Positional Encoding Example](https://jalammar.github.io/images/t/transformer_positional_encoding_example.png)
+![Positional Encoding](docs/svg/positional_encoding.svg)
 
 這種模式看起來會是什麼樣子呢？
 
 在下圖中，每一行對應於一個向量的位置編碼。因此，第一行將是我們要添加到輸入序列中第一個單詞嵌入的向量。每一行包含 $512$ 個值 —— 每個值都在 $1$ 到 $-1$ 之間。我們對它們進行了顏色編碼，以便模式清晰可見。
 
 ![Positional Encoding Large Example](https://jalammar.github.io/images/t/transformer_position_encoding_large_example.png)
+![Positional Encoding](docs/svg/positional_encoding.svg)
 
 位置編碼的公式在論文中有所描述（第 3.5 節）。你可以看到用於生成位置編碼的程式碼位於 `get_timing_signal_1d()` 中。這並不是位置編碼的唯一可能方法。然而，它具有能夠擴展到未見過的序列長度的優點（例如，如果我們的訓練模型被要求翻譯一個比我們訓練集中任何句子都長的句子）。
 
 2020 年 7 月更新：上方顯示的位置編碼來自 Transformer 的 Tensor2Tensor 實現。論文中顯示的方法略有不同，它不是直接拼接，而是交織這兩個信號。下圖展示了其樣貌。以下是生成它的程式碼：
 
 ![Positional Encoding Update](https://jalammar.github.io/images/t/attention-is-all-you-need-positional-encoding.png)
+![Positional Encoding](docs/svg/positional_encoding.svg)
 
 ## 殘差連接 (The Residuals)
 
 在繼續討論之前，我們需要提到編碼器架構中的一個細節：每個編碼器中的每個子層（自注意力、FFNN）都有一個環繞它的殘差連接 (residual connection)，並且隨後是一個層歸一化 (layer-normalization) 步驟。
 
 ![Residual Layer Norm 1](https://jalammar.github_io/images/t/transformer_resideual_layer_norm.png)
+![Residual & LayerNorm](docs/svg/residual_layer_norm.svg)
 
 如果我們要視覺化與自注意力相關的向量和層歸一化操作，看起來會是這樣：
 
 ![Residual Layer Norm 2](https://jalammar.github.io/images/t/transformer_resideual_layer_norm_2.png)
+![Residual & LayerNorm](docs/svg/residual_layer_norm.svg)
 
 這對於解碼器的子層也是一樣的。如果我們考慮一個由兩個堆疊的編碼器和解碼器組成的 Transformer，它看起來會像這樣：
 
 ![Residual Layer 3](https://jalammar.github.io/images/t/transformer_resideual_layer_norm_3.png)
+![Residual & LayerNorm](docs/svg/residual_layer_norm.svg)
 
 ## 解碼器端 (The Decoder Side)
 
@@ -213,10 +225,12 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 編碼器首先處理輸入序列。頂層編碼器的輸出隨後被轉換為一組注意力向量 $K$ 和 $V$。這些向量將被每個解碼器在其「編碼器-解碼器注意力」層中使用，這有助於解碼器專注於輸入序列中的適當位置：
 
 ![Decoder Decoding 1](https://jalammar.github.io/images/t/transformer_decoding_1.gif)
+![Decoder Decoding Process](docs/svg/decoder_decoding_process.svg)
 
 這個過程會不斷重複，直到遇到一個特殊符號，表示 Transformer 解碼器已完成其輸出。每一步的輸出都會被送入下一個時間步的底層解碼器，解碼器會像編碼器那樣向上傳遞它們的解碼結果。而且，就像我們對編碼器輸入所做的那樣，我們對這些解碼器輸入進行嵌入並添加位置編組，以指示每個單詞的位置。
 
 ![Decoder Decoding 2](httpshttps://jalammar.github.io/images/t/transformer_decoding_2.gif)
+![Decoder Decoding Process](docs/svg/decoder_decoding_process.svg)
 
 解碼器中的自注意力層運作方式與編碼器中的略有不同：
 
@@ -235,6 +249,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 接著，softmax 層將這些分數轉換為機率（全部為正值且總和為 $1.0$）。選擇機率最高的單元，並產生與該單詞相關的單詞作為該時間步的輸出。
 
 ![Decoder Output Softmax](https://jalammar.github.io/images/t/transformer_decoder_output_softmax.png)
+![Loss Comparison](docs/svg/loss_comparison.svg)
 
 ## 訓練回顧 (Recap Of Training)
 
@@ -245,10 +260,12 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 為了視覺化這一點，讓我們假設我們的輸出詞彙量僅包含六個單詞（「a」、「am」、「i」、「thanks」、「student」和「」）（「」代表「句子結束」）。
 
 ![Vocabulary](https://jalammar.github.io/images/t/vocabulary.png)
+![One-Hot Encoding](docs/svg/one_hot_encoding.svg)
 
 一旦我們定義了輸出詞彙量，我們就可以使用相同寬度的向量來表示我們詞彙表中的每個單詞。這也被稱為單熱編碼 (one-hot encoding)。例如，我們可以使用以下向量來表示單詞「am」：
 
 ![One-hot Vocabulary Example](https://jalammar.github.io/images/t/one-hot-vocabulary-example.png)
+![One-Hot Encoding](docs/svg/one_hot_encoding.svg)
 
 在回顧之後，讓我們討論模型的損失函數 (loss function) —— 這是我們在訓練階段進行優化，以期獲得一個訓練良好且可能非常準確的模型的核心指標。
 
@@ -259,16 +276,19 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 這意味著，我們希望輸出是一個指示「thanks」這個單詞的機率分佈。但由於這個模型尚未經過訓練，這在目前不太可能發生。
 
 ![Transformer Logits Output and Label](https://jalammar.github.io/images/t/transformer_logits_t_output_and_label.png)
+![Loss Comparison](docs/svg/loss_comparison.svg)
 
 你如何比較兩個機率分佈? 我們只需將一個減去另一個。欲了解更多細節，請參閱交叉熵 (cross-entropy) 和 Kullback–Leibler 散度 (Kullback–Leibler divergence)。
 
 但請注意，這是一個過於簡化的範例。更現實的情況下，我們會使用比單個單詞更長的句子。例如 —— 輸入：「je suis étudiant」，預期輸出：「i am a student」。這真正的意思是，我們希望模型能夠連續輸出如下的機率分佈：
 
 ![Output Target Probability Distributions](https://jalammar.github.io/images/t/output_target_probability_distributions.png)
+![Loss Comparison](docs/svg/loss_comparison.svg)
 
 在大型數據集上經過足夠長時間的訓練後，我們希望產生的機率分佈看起來像這樣：
 
 ![Output Trained Model Probability Distributions](https://jalammar.github.io/images/t/output_trained_model_probability_distributions.png)
+![Loss Comparison](docs/svg/loss_comparison.svg)
 
 現在，因為模型一次只產生一個輸出，我們可以假設模型正在從該機率分佈中選擇機率最高的單詞，並丟棄其餘部分。這是其中一種方法（稱為貪婪解碼 greedy decoding）。另一種方法是保留，例如，前兩個單詞（例如「I」和「a」），然後在下一步中運行模型兩次：一次假設第一個輸出位置是單詞「I」，另一次假設第一個輸出位置是單詞「a」，並選擇在考慮位置 #1 和 #2 之後誤差較小的版本。我們對位置 #2 和 #3 重複此操作……以此類推。這種方法稱為束搜索 (beam search)，在我們的範例中，`beam_t_size` 為 $2$（這意味著在任何時候，記憶體中都會保留兩個部分假設（未完成的翻譯）），且 `top_beams` 也是 $2$（這意味著我們將返回兩個翻譯）。這些都是你可以進行實驗的超參數。
 
