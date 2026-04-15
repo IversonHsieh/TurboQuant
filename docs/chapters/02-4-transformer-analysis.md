@@ -1,7 +1,7 @@
 # 🧠 Transformer 結構解析 (The Illustrated Transformer)
 
 
-![Transformer Architecture](docs/svg/transformer_architecture.svg)
+# The Illustrated Transformer
 
 在之前的文章中，我們探討了注意力機制 (Attention) —— 這是現代深度學習模型中無處不在的方法。注意力機制是一個幫助提升神經機器翻譯應用性能的概念。在本文中，我們將研究 Transformer —— 一種利用注意力機制來提升模型訓練速度的模型。Transformer 在特定任務上的表現優於 Google 的神經機器翻譯模型。然而，它最大的優勢在於其具備高度的可並行化能力。事實上，Google Cloud 也建議使用 Transformer 作為參考模型，以利用其 Cloud TPU 的優勢。因此，讓我們試著拆解這個模型，並觀察它是如何運作的。
 
@@ -16,7 +16,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 打開這個「擎天柱 (Optimus Prime)」般的精妙結構，我們可以看到一個編碼組件 (encoding component)、一個解碼組件 (decoding component) 以及它們之間的連接。
 
 ![Encoder Decoder Components](https://jalammar.github.io/images/t/The_transformer_encoders_decoders.png)
-![Transformer Architecture](docs/svg/transformer_architecture.svg)
+![Encoder Decoder Components](../svg/The_transformer_encoders_decoders.svg)
 
 編碼組件是由一堆編碼器堆疊而成（論文中堆疊了六層 —— 六這個數字並沒有什麼魔力，完全可以嘗試其他的配置）。解碼組件同樣是由相同數量的解碼器堆疊而成。
 
