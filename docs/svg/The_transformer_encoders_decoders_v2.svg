@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Definitions for Gradients, Shadows, and Markers -->
+  <defs>
+    <!-- Dark Background Shadow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Modern Tech Palette: Encoder (Teal/Cyan) - Dark Mode Friendly -->
+    <linearGradient id="grad-encoder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00bfa5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00796b;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Modern Tech Palette: Decoder (Purple/Indigo) - Dark Mode Friendly -->
+    <linearGradient id="grad-decoder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7e57c2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5e35b1;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Modern Tech Palette: Input/Output (Neutral/Grey) - Dark Mode Friendly -->
+    <linearGradient id="grad-block" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#455a64;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#263238;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Arrowhead -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cfd8dc" />
+    </marker>
+  </defs>
+
+  <!-- Background (Dark Mode) -->
+  <rect width="800" height="600" fill="#121212" />
+
+  <!-- Main Container (The Transformer Architecture) -->
+  <rect x="50" y="80" width="700" height="440" rx="20" ry="20" fill="none" stroke="#37474f" stroke-width="2" />
+
+  <!-- Decoder Stack -->
+  <g id="decoder-stack">
+    <!-- Layer 6 -->
+    <rect x="450" y="100" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y="125" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 6</text>
+    
+    <!-- Layer 5 -->
+    <rect x="450" y="150" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y="175" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 5</text>
+
+    <!-- Layer 4 -->
+    <rect x="450" y="200" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y= "225" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 4</text>
+
+    <!-- Layer 3 -->
+    <rect x="450" y="250" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y="275" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 3</text>
+
+    <!-- Layer 2 -->
+    <rect x="450" y="300" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y="325" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 2</text>
+
+    <!-- Layer 1 -->
+    <rect x="450" y="350" width="250" height="40" rx="8" ry="8" fill="url(#grad-decoder)" stroke="#9575cd" stroke-width="1.5" />
+    <text x="575" y="375" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">DECODER LAYER 1</text>
+  </g>
+
+  <!-- Encoder Stack -->
+  <g id="encoder-stack">
+    <!-- Layer 6 -->
+    <rect x="100" y="100" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="125" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 6</text>
+
+    <!-- Layer 5 -->
+    <rect x="100" y="150" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="175" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 5</text>
+
+    <!-- Layer 4 -->
+    <rect x="100" y="200" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="225" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 4</text>
+
+    <!-- Layer 3 -->
+    <rect x="100" y="250" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="275" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 3</text>
+
+    <!-- Layer 2 -->
+    <rect x="100" y="300" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="325" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 2</text>
+
+    <!-- Layer 1 -->
+    <rect x="100" y="350" width="250" height="40" rx="8" ry="8" fill="url(#grad-encoder)" stroke="#4db6ac" stroke-width="1.5" />
+    <text x="225" y="375" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">ENCODER LAYER 1</text>
+  </g>
+
+  <!-- Connections -->
+  <!-- Cross Attention: Encoder to Decoder -->
+  <g id="cross-attention-arrows" stroke="#cfd8dc" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)">
+    <path d="M 350 125 Q 400 125, 450 125" />
+    <path d="M 350 175 Q 400 175, 450 175" />
+    <path d="M 350 225 Q 400 225, 450 225" />
+    <path d="M 350 275 Q 400 275, 450 275" />
+    <path d="M 350 325 Q 400 325, 450 325" />
+    <path d="M 350 375 Q 400 375, 450 375" />
+  </g>
+
+  <!-- Input Block -->
+  <g id="input-block" filter="url(#glow)">
+    <rect x="100" y="500" width="250" height="60" rx="10" ry="10" fill="url(#grad-block)" stroke="#90a4ae" stroke-width="1.5" />
+    <text x="225" y="525" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="bold">INPUT SEQUENCE</text>
+    <text x="225" y="545" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#b0bec5">"Je suis étudiant"</text>
+  </g>
+
+  <!-- Input to Encoder Arrow -->
+  <path d="M 225 500 L 225 390" fill="none" stroke="#cfd8dc" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Output Block -->
+  <g id="output-block" filter="url(#glow)">
+    <rect x="450" y="20" width="250" height="60" rx="10" ry="10" fill="url(#grad-block)" stroke="#90a4ae" stroke-width="1.5" />
+    <text x="575" y="45" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="bold">OUTPUT SEQUENCE</text>
+    <text x="575" y="65" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#b0bec5">"I am a student"</text>
+  </g>
+
+  <!-- Decoder to Output Arrow -->
+  <path d="M 575 100 L 575 80" fill="none" stroke="#cfd8dc" stroke-width="2" marker-end="url(#arrowhead)" />
+
+</svg>

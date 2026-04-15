@@ -21,12 +21,12 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 編碼組件是由一堆編碼器堆疊而成（論文中堆疊了六層 —— 六這個數字並沒有什麼魔力，完全可以嘗試其他的配置）。解碼組件同樣是由相同數量的解碼器堆疊而成。
 
 ![Encoder Decoder Stack](https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png)
-![Transformer Architecture](docs/svg/transformer_architecture.svg)
+![Encoder Decoder Stack](../svg/The_transformer_encoders_decoders_v2.svg)
 
 所有的編碼器在結構上都是完全相同的（但它們並不共享權重）。每一個編碼器都分解為兩個子層：
 
 ![Encoder Sub-layers](https://jalammar.github.io/images/t/Transformer_encoder.png)
-![Self-Attention Process](docs/svg/self_attention_process.svg)
+![Encoder Sub-layers](../svg/Transformer_encoder.svg)
 
 編碼器的輸入首先流經一個自注意力層 (self-attention layer) —— 這個層級能幫助編碼器在編碼特定單詞時，去觀察輸入句子中的其他單詞。我們稍後會在文中詳細討論自注意力機制。
 
