@@ -67,6 +67,8 @@
         - [x] 章節 2.6: PolarQuant 解析
         - [x] 章節 2.7: QJL (Quantized Johnson-Lindenstrauss) 解析
     - [-] 章節 3: TurboQuant 細節一步一步拆解
+        - 3.1 翻譯 TurboQuant 論文原文 (https://arxiv.org/html/2504.19874v1)
+        - 3.2 說明內容細節
 - [x] 資源路徑校正 (Path Correction)
 - [ ] 第三階段：視覺化優化與美化 (Visual Enhancement)
     - [ ] SVG 流程圖優化 (檢查 docs/svg/flowchart.svg 配色與設計)
