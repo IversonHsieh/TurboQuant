@@ -1,0 +1,41 @@
+<svg width="340" height="220" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#181c20"/>
+  <!-- Axes -->
+  <line x1="40" y1="180" x2="300" y2="180" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="40" y1="180" x2="40" y2="40" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#bbb" />
+    </marker>
+  </defs>
+  <!-- Vectors -->
+  <!-- x: [1.2, -0.7] (scaled for display) -->
+  <line x1="40" y1="180" x2="120" y2="220" stroke="#4fc3f7" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="122" y="218" fill="#4fc3f7" font-size="14">x</text>
+  <!-- x_hat: [1, -1] (scaled) -->
+  <line x1="40" y1="180" x2="100" y2="240" stroke="#ffb74d" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="102" y="238" fill="#ffb74d" font-size="14">\u005Cx</text>
+  <!-- q: [2, 0] (scaled) -->
+  <line x1="40" y1="180" x2="180" y2="180" stroke="#81c784" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="182" y="178" fill="#81c784" font-size="14">q</text>
+  <!-- Angle arc -->
+  <path d="M60 180 A20 20 0 0 1 100 200" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="75" y="195" fill="#fff" font-size="12">θ</text>
+  <!-- Dots at vector tips -->
+  <circle cx="120" cy="220" r="3.5" fill="#4fc3f7"/>
+  <circle cx="100" cy="240" r="3.5" fill="#ffb74d"/>
+  <circle cx="180" cy="180" r="3.5" fill="#81c784"/>
+  <!-- Labels -->
+  <text x="45" y="35" fill="#bbb" font-size="13">y</text>
+  <text x="305" y="185" fill="#bbb" font-size="13">x</text>
+  <!-- Legend -->
+  <rect x="200" y="40" width="120" height="60" fill="#23272e" stroke="#444" rx="8"/>
+  <line x1="210" y1="60" x2="230" y2="60" stroke="#4fc3f7" stroke-width="3"/>
+  <text x="235" y="64" fill="#bbb" font-size="13">x (原始向量)</text>
+  <line x1="210" y1="80" x2="230" y2="80" stroke="#ffb74d" stroke-width="3"/>
+  <text x="235" y="84" fill="#bbb" font-size="13">\u005Cx (量化後)</text>
+  <line x1="210" y1="100" x2="230" y2="100" stroke="#81c784" stroke-width="3"/>
+  <text x="235" y="104" fill="#bbb" font-size="13">q (查詢向量)</text>
+  <!-- Distortion annotation -->
+  <text x="60" y="160" fill="#fff" font-size="13">內積失真 = |⟨q, x⟩ - ⟨q, \u005Cx⟩|</text>
+</svg>
