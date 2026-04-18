@@ -1,0 +1,94 @@
+<svg width="650" height="420" viewBox="0 0 650 420" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="100%" height="100%" fill="#181c20"/>
+  
+  <!-- 定義箭頭 -->
+  <defs>
+    <marker id="axis-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#888" />
+    </marker>
+    <marker id="mapping-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L7,3 z" fill="#90a4ae" />
+    </marker>
+    <!-- Voronoi 區域漸層 -->
+    <radialGradient id="voronoi1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#3d5afe;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#3d5afe;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="voronoi2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff4081;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#ff4081;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 標題 -->
+  <text x="325" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#e0e0e0" text-anchor="middle">向量量化 (Vector Quantization)</text>
+  
+  <!-- 座標軸 -->
+  <line x1="100" y1="340" x2="520" y2="340" stroke="#888" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="100" y1="340" x2="100" y2="100" stroke="#888" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <text x="530" y="345" font-family="sans-serif" font-size="13" fill="#888">維度 1</text>
+  <text x="80" y="95" font-family="sans-serif" font-size="13" fill="#888">維度 2</text>
+  
+  <!-- Voronoi 區域 (著色背景) -->
+  <ellipse cx="240" cy="240" rx="130" ry="95" fill="url(#voronoi1)"/>
+  <ellipse cx="400" cy="200" rx="125" ry="90" fill="url(#voronoi2)"/>
+  
+  <!-- Voronoi 區域邊界 (虛線) -->
+  <path d="M280 340 L260 270 L220 170 L200 120" fill="none" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M220 170 L300 160 L400 140 L440 120" fill="none" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M440 120 L500 160 L530 230 L510 340" fill="none" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M300 160 L340 200 L360 260 L340 340" fill="none" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- 碼向量 (Codevectors) - 發光效果的大圓圈 -->
+  <circle cx="240" cy="240" r="32" fill="none" stroke="#3d5afe" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <circle cx="400" cy="200" r="32" fill="none" stroke="#ff4081" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <circle cx="240" cy="240" r="9" fill="#3d5afe" stroke="#64b5f6" stroke-width="2.5"/>
+  <circle cx="400" cy="200" r="9" fill="#ff4081" stroke="#ff80ab" stroke-width="2.5"/>
+  <text x="255" y="235" font-family="sans-serif" font-size="14" font-weight="bold" fill="#64b5f6">c₁</text>
+  <text x="415" y="195" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ff80ab">c₂</text>
+  
+  <!-- 輸入向量 (Input Vectors) - 藍色小點 -->
+  <circle cx="200" cy="260" r="4.5" fill="#4fc3f7"/>
+  <circle cx="260" cy="220" r="4.5" fill="#4fc3f7"/>
+  <circle cx="210" cy="200" r="4.5" fill="#4fc3f7"/>
+  <circle cx="280" cy="270" r="4.5" fill="#4fc3f7"/>
+  <circle cx="380" cy="220" r="4.5" fill="#4fc3f7"/>
+  <circle cx="420" cy="170" r="4.5" fill="#4fc3f7"/>
+  <circle cx="440" cy="220" r="4.5" fill="#4fc3f7"/>
+  <circle cx="360" cy="180" r="4.5" fill="#4fc3f7"/>
+  <circle cx="180" cy="280" r="4.5" fill="#4fc3f7"/>
+  <circle cx="320" cy="250" r="4.5" fill="#4fc3f7"/>
+  
+  <!-- 量化映射線 (從輸入向量到最近的碼向量) -->
+  <!-- 映射到 c1 -->
+  <line x1="200" y1="260" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="260" y1="220" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="210" y1="200" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="280" y1="270" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="180" y1="280" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="320" y1="250" x2="240" y2="240" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  
+  <!-- 映射到 c2 -->
+  <line x1="380" y1="220" x2="400" y2="200" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="420" y1="170" x2="400" y2="200" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="440" y1="220" x2="400" y2="200" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  <line x1="360" y1="180" x2="400" y2="200" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#mapping-arrow)"/>
+  
+  <!-- 圖例 -->
+  <rect x="420" y="280" width="180" height="105" fill="#23272e" stroke="#444" stroke-width="1" rx="8"/>
+  <circle cx="435" cy="302" r="4.5" fill="#4fc3f7"/>
+  <text x="452" y="308" font-family="sans-serif" font-size="12" fill="#bdbdbd">輸入向量 x</text>
+  <circle cx="435" cy="328" r="7" fill="#3d5afe" stroke="#64b5f6" stroke-width="2"/>
+  <text x="452" y="333" font-family="sans-serif" font-size="12" fill="#bdbdbd">碼向量 c₁ (質心)</text>
+  <circle cx="435" cy="354" r="7" fill="#ff4081" stroke="#ff80ab" stroke-width="2"/>
+  <text x="452" y="359" font-family="sans-serif" font-size="12" fill="#bdbdbd">碼向量 c₂ (質心)</text>
+  <line x1="430" y1="375" x2="440" y2="375" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <text x="452" y="380" font-family="sans-serif" font-size="12" fill="#bdbdbd">量化映射</text>
+  
+  <!-- 公式說明 -->
+  <rect x="100" y="370" width="280" height="35" fill="#23272e" stroke="#444" stroke-width="1" rx="6"/>
+  <text x="240" y="393" font-family="sans-serif" font-size="12" fill="#bdbdbd" text-anchor="middle">
+    量化：ĉ = argmin_{c∈C} ‖x - c‖²
+  </text>
+</svg>
