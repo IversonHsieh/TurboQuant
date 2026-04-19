@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a90d9"/>
+    </marker>
+    <linearGradient id="boxGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#43a047;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="compressedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff7043;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e64a19;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="reconstructedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ab47bc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7b1fa2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">香農信源編碼理論流程圖</text>
+  <text x="400" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#888888">Shannon's Source Coding Theory</text>
+  
+  <!-- Source Box -->
+  <rect x="50" y="100" width="120" height="80" rx="10" fill="url(#boxGradient)" stroke="#ffffff" stroke-width="2"/>
+  <text x="110" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">信源 (Source)</text>
+  <text x="110" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">X ~ p(x)</text>
+  <text x="110" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">熵：H(X)</text>
+  
+  <!-- Original Data Visualization -->
+  <rect x="60" y="200" width="100" height="60" rx="5" fill="url(#dataGradient)" opacity="0.8"/>
+  <text x="110" y="220" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff">原始數據</text>
+  <text x="110" y="235" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">[x₁, x₂, x₃, ...]</text>
+  <text x="110" y="250" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">32-bit float</text>
+  
+  <!-- Arrow to Encoder -->
+  <line x1="170" y1="140" x2="220" y2="140" stroke="#4a90d9" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Encoder Box -->
+  <rect x="230" y="100" width="120" height="80" rx="10" fill="url(#boxGradient)" stroke="#ffffff" stroke-width="2"/>
+  <text x="290" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">編碼器</text>
+  <text x="290" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">(Encoder)</text>
+  <text x="290" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">壓縮：R bits</text>
+  
+  <!-- Compression Formula -->
+  <rect x="240" y="200" width="100" height="60" rx="5" fill="url(#compressedGradient)" opacity="0.8"/>
+  <text x="290" y="220" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff">壓縮後</text>
+  <text x="290" y="235" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">R ≥ H(X)</text>
+  <text x="290" y="250" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">(無損極限)</text>
+  
+  <!-- Arrow to Channel -->
+  <line x1="350" y1="140" x2="400" y2="140" stroke="#4a90d9" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Channel Box -->
+  <rect x="410" y="100" width="120" height="80" rx="10" fill="url(#boxGradient)" stroke="#ffffff" stroke-width="2"/>
+  <text x="470" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">通道 (Channel)</text>
+  <text x="470" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">傳輸 / 存儲</text>
+  <text x="470" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">Bitstream</text>
+  
+  <!-- Channel Visualization -->
+  <rect x="420" y="200" width="100" height="60" rx="5" fill="#4a90d9" opacity="0.8"/>
+  <text x="470" y="220" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff">二進位流</text>
+  <text x="470" y="235" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">01011001...</text>
+  <text x="470" y="250" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">R bits/symbol</text>
+  
+  <!-- Arrow to Decoder -->
+  <line x1="530" y1="140" x2="580" y2="140" stroke="#4a90d9" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Decoder Box -->
+  <rect x="590" y="100" width="120" height="80" rx="10" fill="url(#boxGradient)" stroke="#ffffff" stroke-width="2"/>
+  <text x="650" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">解碼器</text>
+  <text x="650" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">(Decoder)</text>
+  <text x="650" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#cccccc">重建：X̂</text>
+  
+  <!-- Reconstructed Data -->
+  <rect x="600" y="200" width="100" height="60" rx="5" fill="url(#reconstructedGradient)" opacity="0.8"/>
+  <text x="650" y="220" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff">重建數據</text>
+  <text x="650" y="235" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">[x̂₁, x̂₂, ...]</text>
+  <text x="650" y="250" text-anchor="middle" font-family="monospace" font-size="9" fill="#ffffff">低 bit 整數</text>
+  
+  <!-- Distortion Arrow (feedback loop at bottom) -->
+  <path d="M 650 280 L 650 320 L 110 320 L 110 280" stroke="#ff5252" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="380" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ff5252">失真 (Distortion): D = E[||X - X̂||²]</text>
+  
+  <!-- Rate-Distortion Function Box -->
+  <rect x="250" y="330" width="300" height="50" rx="5" fill="#2a2a4a" stroke="#4a90d9" stroke-width="2"/>
+  <text x="400" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4a90d9">失真率函數 (高斯信源)</text>
+  <text x="400" y="370" text-anchor="middle" font-family="monospace" font-size="13" fill="#ffffff">R(D) = ½ log₂(σ²/D)</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="340" width="15" height="15" fill="url(#dataGradient)"/>
+  <text x="70" y="352" font-family="Arial, sans-serif" font-size="10" fill="#cccccc">原始數據</text>
+  
+  <rect x="140" y="340" width="15" height="15" fill="url(#compressedGradient)"/>
+  <text x="160" y="352" font-family="Arial, sans-serif" font-size="10" fill="#cccccc">壓縮過程</text>
+  
+  <rect x="230" y="340" width="15" height="15" fill="url(#reconstructedGradient)"/>
+  <text x="250" y="352" font-family="Arial, sans-serif" font-size="10" fill="#cccccc">重建數據</text>
+  
+  <line x1="340" y1="347" x2="355" y2="347" stroke="#ff5252" stroke-width="2"/>
+  <text x="360" y="352" font-family="Arial, sans-serif" font-size="10" fill="#cccccc">失真比較</text>
+</svg>
