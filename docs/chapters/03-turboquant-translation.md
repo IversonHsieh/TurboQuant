@@ -36,7 +36,7 @@ Vector quantization (VQ) in Euclidean space is crucial for efficiently handling 
 
 **原文：**
 
-This problem's roots trace back to [Shannon's seminal work on Source Coding theory [48, 49]](docs\chapters\03-shannon-source-coding-detailed.md03-shannon-source-coding-detailed.md), which established that the least distortion achievable by block source codes, now known as vector quantizers, is defined by the Shannon distortion-rate function, determined by the statistical properties of the source and the chosen distortion measure, such as MSE. Today, VQ plays a critical role in fundamental computational domains, including AI, deep learning, and search systems.
+This problem's roots trace back to [Shannon's seminal work on Source Coding theory [48, 49]](03-shannon-source-coding-detailed.md), which established that the least distortion achievable by block source codes, now known as vector quantizers, is defined by the [Shannon distortion-rate function](03-shannon-distortion-rate-function.md), determined by the statistical properties of the source and the chosen distortion measure, such as MSE. Today, VQ plays a critical role in fundamental computational domains, including AI, deep learning, and search systems.
 
 **中文翻譯：**
 
@@ -66,11 +66,11 @@ Decoder based transformer models [54] present another compelling use case. These
 
 **原文：**
 
-Additionally, nearest neighbor (NN) search in high-dimensional spaces with inner product or cosine similarity [1, 27] is a cornerstone of vector databases [4, 2, 3]. These databases are fundamental for retrieval-augmented generation [23, 19] and information retrieval [35, 46]. VQ, a.k.a. product quantization (PQ), plays a critical role in these applications. It enables efficient compression of database vectors, optimizes memory usage, and facilitates low-latency, accurate estimations of inner products with query vectors, thereby enabling fast and precise nearest neighbor searches.
+Additionally, [nearest neighbor](03-nearest-neighbor-explanation.md) (NN) search in high-dimensional spaces with inner product or cosine similarity [1, 27] is a cornerstone of vector databases [4, 2, 3]. These databases are fundamental for retrieval-augmented generation [23, 19] and information retrieval [35, 46]. VQ, a.k.a. product quantization (PQ), plays a critical role in these applications. It enables efficient compression of database vectors, optimizes memory usage, and facilitates low-latency, accurate estimations of inner products with query vectors, thereby enabling fast and precise [nearest neighbor searches](03-nearest-neighbor-explanation.md).
 
 **中文翻譯：**
 
-此外，在高維空間中使用內積或餘弦相似度的最近鄰（NN）搜尋 [1, 27] 是向量資料庫的基石 [4, 2, 3]。這些資料庫對於檢索增強生成 [23, 19] 和資訊檢索 [35, 46] 至關重要。VQ，又稱乘積量化（PQ），在這些應用中發揮著關鍵作用。它能夠有效壓縮資料庫向量，優化記憶體使用，並促進與查詢向量的內積的低延遲、準確估計，從而實現快速和精確的最近鄰搜尋。
+此外，在高維空間中使用內積或餘弦相似度的 [最近鄰](03-nearest-neighbor-explanation.md)（NN）搜尋 [1, 27] 是向量資料庫的基石 [4, 2, 3]。這些資料庫對於檢索增強生成 [23, 19] 和資訊檢索 [35, 46] 至關重要。VQ，又稱乘積量化（PQ），在這些應用中發揮著關鍵作用。它能夠有效壓縮資料庫向量，優化記憶體使用，並促進與查詢向量的內積的低延遲、準確估計，從而實現快速和精確的 [最近鄰搜尋](03-nearest-neighbor-explanation.md)。
 
 ---
 
