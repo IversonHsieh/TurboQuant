@@ -76,11 +76,11 @@ Additionally, [nearest neighbor](03-nearest-neighbor-explanation.md) (NN) search
 
 **原文：**
 
-Existing VQ algorithms present a trade-off: either they lack accelerator (vectorization) compatibility and exhibit slow computation, making them unsuitable for real-time AI applications like KV cache quantization, or they suffer from suboptimal distortion bounds relative to bit-width. Our objective is to introduce an algorithm that addresses these limitations. Specifically, we design TurboQuant: a lightweight, capable of online application (crucial for scenarios like KV cache quantization), and highly accelerator-friendly—a critical attribute for modern AI workloads.
+Existing VQ algorithms present a trade-off: either they lack accelerator (vectorization) compatibility and exhibit slow computation, making them unsuitable for real-time AI applications like KV cache quantization, or they suffer from [suboptimal distortion bounds](03-suboptimal-distortion-bounds.md) relative to bit-width. Our objective is to introduce an algorithm that addresses these limitations. Specifically, we design TurboQuant: a lightweight, capable of online application (crucial for scenarios like KV cache quantization), and highly accelerator-friendly—a critical attribute for modern AI workloads.
 
 **中文翻譯：**
 
-現有的 VQ 演算法存在權衡：要麼它們缺乏加速器（向量化）相容性並表現出計算緩慢，使其不適合像 KV 快取量化這樣的即時 AI 應用，要麼它們相對於位元寬度遭受次佳的失真界限。我們的目標是引入一種演算法來解決這些限制。具體來說，我們設計了 TurboQuant：一種輕量級的、能夠線上應用（對於像 KV 快取量化這樣的場景至關重要）、並且高度加速器友好的演算法——這是現代 AI 工作負載的關鍵屬性。
+現有的 VQ 演算法存在權衡：要麼它們缺乏加速器（向量化）相容性並表現出計算緩慢，使其不適合像 KV 快取量化這樣的即時 AI 應用，要麼它們相對於位元寬度遭受 [次佳的失真界限（suboptimal distortion bounds）](03-suboptimal-distortion-bounds.md)。我們的目標是引入一種演算法來解決這些限制。具體來說，我們設計了 TurboQuant：一種輕量級的、能夠線上應用（對於像 KV 快取量化這樣的場景至關重要）、並且高度加速器友好的演算法——這是現代 AI 工作負載的關鍵屬性。
 
 ---
 
