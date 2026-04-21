@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#2E5C8A;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#fff" font-weight="bold">
+    Lloyd-Max 量化器示意圖
+  </text>
+  
+  <!-- Axes -->
+  <line x1="80" y1="400" x2="720" y2="400" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="150" y1="350" x2="150" y2="400" stroke="#666" stroke-width="2"/>
+  <text x="730" y="405" font-family="Arial" font-size="14" fill="#aaa">x</text>
+  <text x="135" y="340" font-family="Arial" font-size="14" fill="#aaa">f(x)</text>
+  
+  <!-- Gaussian/Beta distribution curve -->
+  <path d="M 150 395 
+           C 180 390, 220 350, 260 280
+           C 300 210, 340 150, 400 130
+           C 460 150, 500 210, 540 280
+           C 580 350, 620 390, 650 395" 
+        fill="none" stroke="#4A90D9" stroke-width="3"/>
+  
+  <!-- Fill area under curve -->
+  <path d="M 150 395 
+           C 180 390, 220 350, 260 280
+           C 300 210, 340 150, 400 130
+           C 460 150, 500 210, 540 280
+           C 580 350, 620 390, 650 395
+           L 650 395 L 150 395 Z" 
+        fill="url(#grad1)" opacity="0.5"/>
+  
+  <!-- Quantization levels (centroids) -->
+  <circle cx="240" cy="320" r="6" fill="#FF6B6B"/>
+  <circle cx="340" cy="220" r="6" fill="#FF6B6B"/>
+  <circle cx="460" cy="220" r="6" fill="#FF6B6B"/>
+  <circle cx="560" cy="320" r="6" fill="#FF6B6B"/>
+  
+  <!-- Decision boundaries -->
+  <line x1="290" y1="120" x2="290" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="400" y1="120" x2="400" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="510" y1="120" x2="510" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Labels for centroids -->
+  <text x="240" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₁</text>
+  <text x="340" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₂</text>
+  <text x="460" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₃</text>
+  <text x="560" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₄</text>
+  
+  <!-- Labels for boundaries -->
+  <text x="290" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₁</text>
+  <text x="400" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₂</text>
+  <text x="510" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₃</text>
+  
+  <!-- Quantization regions -->
+  <rect x="150" y="420" width="140" height="30" fill="#4A90D9" opacity="0.3"/>
+  <rect x="290" y="420" width="110" height="30" fill="#4A90D9" opacity="0.3"/>
+  <rect x="400" y="420" width="110" height="30" fill="#4A90D9" opacity="0.3"/>
+  <rect x="510" y="420" width="140" height="30" fill="#4A90D9" opacity="0.3"/>
+  
+  <text x="220" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₁</text>
+  <text x="345" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₂</text>
+  <text x="455" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₃</text>
+  <text x="580" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₄</text>
+  
+  <!-- Legend -->
+  <rect x="580" y="50" width="180" height="80" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+  <circle cx="600" cy="70" r="5" fill="#FF6B6B"/>
+  <text x="615" y="75" font-family="Arial" font-size="12" fill="#aaa">量化層級 (質心)</text>
+  <line x1="595" y1="90" x2="605" y2="90" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="615" y="95" font-family="Arial" font-size="12" fill="#aaa">決策邊界</text>
+  <rect x="595" y="105" width="20" height="15" fill="#4A90D9" opacity="0.5"/>
+  <text x="615" y="117" font-family="Arial" font-size="12" fill="#aaa">量化區域</text>
+  
+  <!-- Formula -->
+  <text x="400" y="480" text-anchor="middle" font-family="Arial" font-size="13" fill="#888">
+    決策邊界：bᵢ = (cᵢ + cᵢ₊₁) / 2
+  </text>
+</svg>

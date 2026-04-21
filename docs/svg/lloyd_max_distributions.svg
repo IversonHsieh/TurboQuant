@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#fff" font-weight="bold">
+    不同機率分佈的 Lloyd-Max 量化比較
+  </text>
+  
+  <!-- Uniform Distribution -->
+  <text x="150" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A90D9" font-weight="bold">均勻分佈 U[-1,1]</text>
+  
+  <!-- Uniform distribution rectangle -->
+  <rect x="50" y="90" width="200" height="80" fill="#4A90D9" opacity="0.3" stroke="#4A90D9" stroke-width="2"/>
+  <line x1="50" y1="90" x2="250" y2="90" stroke="#4A90D9" stroke-width="2"/>
+  
+  <!-- Uniform quantization levels -->
+  <circle cx="87.5" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="137.5" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="187.5" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="237.5" cy="170" r="6" fill="#FF6B6B"/>
+  
+  <!-- Uniform boundaries -->
+  <line x1="112.5" y1="80" x2="112.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="162.5" y1="80" x2="162.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="212.5" y1="80" x2="212.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <text x="87.5" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₁</text>
+  <text x="137.5" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₂</text>
+  <text x="187.5" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₃</text>
+  <text x="237.5" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₄</text>
+  
+  <!-- Gaussian Distribution -->
+  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#00FF88" font-weight="bold">高斯分佈 N(0,1)</text>
+  
+  <!-- Gaussian curve -->
+  <path d="M 350 170 
+           C 360 165, 375 145, 390 120
+           C 405 95, 425 75, 450 70
+           C 475 75, 495 95, 510 120
+           C 525 145, 540 165, 550 170" 
+        fill="none" stroke="#00FF88" stroke-width="2"/>
+  
+  <!-- Gaussian quantization levels (non-uniform) -->
+  <circle cx="385" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="425" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="475" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="515" cy="170" r="6" fill="#FF6B6B"/>
+  
+  <!-- Gaussian boundaries -->
+  <line x1="405" y1="80" x2="405" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="450" y1="80" x2="450" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="495" y1="80" x2="495" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <text x="385" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₁</text>
+  <text x="425" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₂</text>
+  <text x="475" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₃</text>
+  <text x="515" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₄</text>
+  
+  <!-- Beta Distribution -->
+  <text x="750" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B" font-weight="bold">Beta 分佈 (TurboQuant)</text>
+  
+  <!-- Beta curve (approximation for high d) -->
+  <path d="M 650 170 
+           C 665 160, 685 130, 705 100
+           C 725 75, 745 60, 750 58
+           C 755 60, 775 75, 795 100
+           C 815 130, 835 160, 850 170" 
+        fill="none" stroke="#FF6B6B" stroke-width="2"/>
+  
+  <!-- Beta quantization levels -->
+  <circle cx="695" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="730" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="770" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="805" cy="170" r="6" fill="#FF6B6B"/>
+  
+  <!-- Beta boundaries -->
+  <line x1="712.5" y1="80" x2="712.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="750" y1="80" x2="750" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="787.5" y1="80" x2="787.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <text x="695" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₁</text>
+  <text x="730" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₂</text>
+  <text x="770" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₃</text>
+  <text x="805" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₄</text>
+  
+  <!-- Comparison table -->
+  <rect x="100" y="230" width="700" height="180" fill="#2a2a3e" stroke="#444" stroke-width="1" rx="5"/>
+  <text x="450" y="255" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" font-weight="bold">量化特性比較表（4 層級量化）</text>
+  
+  <!-- Table headers -->
+  <line x1="120" y1="270" x2="780" y2="270" stroke="#444" stroke-width="1"/>
+  <text x="200" y="290" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">分佈類型</text>
+  <text x="350" y="290" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">量化層級間距</text>
+  <text x="500" y="290" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">MSE (近似值)</text>
+  <text x="650" y="290" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">應用場景</text>
+  
+  <!-- Table rows -->
+  <line x1="120" y1="315" x2="780" y2="315" stroke="#333" stroke-width="1"/>
+  <text x="200" y="335" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A90D9">均勻分佈</text>
+  <text x="350" y="335" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">等間距</text>
+  <text x="500" y="335" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">0.0208</text>
+  <text x="650" y="335" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">ADC 量化</text>
+  
+  <line x1="120" y1="355" x2="780" y2="355" stroke="#333" stroke-width="1"/>
+  <text x="200" y="375" text-anchor="middle" font-family="Arial" font-size="11" fill="#00FF88">高斯分佈</text>
+  <text x="350" y="375" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">外寬內窄</text>
+  <text x="500" y="375" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">0.0117</text>
+  <text x="650" y="375" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">音訊編碼</text>
+  
+  <line x1="120" y1="395" x2="780" y2="395" stroke="#333" stroke-width="1"/>
+  <text x="200" y="415" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF6B6B">Beta 分佈</text>
+  <text x="350" y="415" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">近似高斯</text>
+  <text x="500" y="415" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">~0.01/d</text>
+  <text x="650" y="415" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">TurboQuant</text>
+  
+  <!-- Key insight box -->
+  <rect x="100" y="440" width="700" height="140" fill="#1e1e2e" stroke="#4A90D9" stroke-width="1" rx="5"/>
+  <text x="450" y="465" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A90D9" font-weight="bold">關鍵洞察</text>
+  
+  <text x="130" y="490" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越高的區域，量化層級越密集</text>
+  <text x="130" y="515" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越低的區域，量化層級越稀疏</text>
+  <text x="130" y="540" font-family="Arial" font-size="12" fill="#aaa">• 這種自適應特性使 Lloyd-Max 能夠最小化整體 MSE</text>
+  <text x="130" y="565" font-family="Arial" font-size="12" fill="#aaa">• TurboQuant 利用 Beta 分佈特性，實現接近最佳的失真率</text>
+</svg>

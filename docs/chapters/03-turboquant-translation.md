@@ -14,11 +14,11 @@
 
 **原文：**
 
-[Vector quantization](03-vector-quantization-explanation.md), a problem rooted in [Shannon's source coding theory](03-shannon-source-coding-theory.md), aims to quantize high-dimensional Euclidean vectors while minimizing distortion in their geometric structure. We propose TurboQuant to address both [mean-squared error (MSE)](03-mse-explanation.md) and [inner product distortion](03-inner-product-distortion.md), overcoming limitations of existing methods that fail to achieve optimal distortion rates. Our data-oblivious algorithms, suitable for online applications, achieve near-optimal distortion rates (within a small constant factor) across all bit-widths and dimensions. TurboQuant achieves this by randomly rotating input vectors, inducing a concentrated Beta distribution on coordinates, and leveraging the near-independence property of distinct coordinates in high dimensions to simply apply optimal scalar quantizers per each coordinate. Recognizing that MSE-optimal quantizers introduce bias in inner product estimation, we propose a two-stage approach: applying an MSE quantizer followed by a 1-bit Quantized JL (QJL) transform on the residual, resulting in an unbiased inner product quantizer. We also provide a formal proof of the information-theoretic lower bounds on best achievable distortion rate by any vector quantizer, demonstrating that TurboQuant closely matches these bounds, differing only by a small constant ($\approx 2.7$) factor. Experimental results validate our theoretical findings, showing that for KV cache quantization, we achieve absolute quality neutrality with 3.5 bits per channel and marginal quality degradation with 2.5 bits per channel. Furthermore, in nearest neighbor search tasks, our method outperforms existing product quantization techniques in recall while reducing indexing time to virtually zero.
+[Vector quantization](03-vector-quantization-explanation.md), a problem rooted in [Shannon's source coding theory](03-shannon-source-coding-theory.md), aims to quantize high-dimensional Euclidean vectors while minimizing distortion in their geometric structure. We propose TurboQuant to address both [mean-squared error (MSE)](03-mse-explanation.md) and [inner product distortion](03-inner-product-distortion.md), overcoming limitations of existing methods that fail to achieve optimal distortion rates. Our data-oblivious algorithms, suitable for online applications, achieve near-optimal distortion rates (within a small constant factor) across all bit-widths and dimensions. TurboQuant achieves this by randomly rotating input vectors, inducing a concentrated [Beta distribution](03-beta-distribution.md) on coordinates, and leveraging the near-independence property of distinct coordinates in high dimensions to simply apply optimal scalar quantizers per each coordinate. Recognizing that MSE-optimal quantizers introduce bias in inner product estimation, we propose a two-stage approach: applying an MSE quantizer followed by a 1-bit Quantized JL (QJL) transform on the residual, resulting in an unbiased inner product quantizer. We also provide a formal proof of the information-theoretic lower bounds on best achievable distortion rate by any vector quantizer, demonstrating that TurboQuant closely matches these bounds, differing only by a small constant ($\approx 2.7$) factor. Experimental results validate our theoretical findings, showing that for KV cache quantization, we achieve absolute quality neutrality with 3.5 bits per channel and marginal quality degradation with 2.5 bits per channel. Furthermore, in nearest neighbor search tasks, our method outperforms existing product quantization techniques in recall while reducing indexing time to virtually zero.
 
 **中文翻譯：**
 
-[向量量化（Vector Quantization）](03-vector-quantization-explanation.md) 是一個源於 [香農（Shannon）信源編碼理論](03-shannon-source-coding-theory.md) 的問題，其目標是對高維歐幾里得向量進行量化，同時最小化其幾何結構中的失真。我們提出了 TurboQuant 來同時解決 [均方誤差（MSE）](03-mse-explanation.md) 和 [內積失真](03-inner-product-distortion.md) 問題，克服了現有方法無法達到最佳失真率的限制。我們的數據無知（data-oblivious）演算法適合線上應用，在所有位元寬度和維度上都能達到接近最佳的失真率（在一個小常數因子內）。TurboQuant 透過隨機旋轉輸入向量來實現這一目標，誘導座標上產生集中的 Beta 分佈，並利用高維度中不同座標的近似獨立性，對每個座標簡單地應用最佳純量量化器。認識到 MSE 最佳量化器會在內積估計中引入偏差，我們提出了一個兩階段方法：首先應用 MSE 量化器，然後對殘差應用 1 位元量化 JL（QJL）變換，從而產生一個無偏的內積量化器。我們還提供了任何向量量化器可達到的最佳失真率的資訊理論下界的正式證明，表明 TurboQuant 與這些下界非常接近，僅相差一個小常數（$\approx 2.7$）因子。實驗結果驗證了我們的理論發現，表明對於 KV 快取量化，我們在每通道 3.5 位元時達到絕對的品質中性，在每通道 2.5 位元時僅有邊際的品質下降。此外，在最近鄰搜尋任務中，我們的方法在召回率方面優於現有的乘積量化技術，同時將索引時間減少到幾乎為零。
+[向量量化（Vector Quantization）](03-vector-quantization-explanation.md) 是一個源於 [香農（Shannon）信源編碼理論](03-shannon-source-coding-theory.md) 的問題，其目標是對高維歐幾里得向量進行量化，同時最小化其幾何結構中的失真。我們提出了 TurboQuant 來同時解決 [均方誤差（MSE）](03-mse-explanation.md) 和 [內積失真](03-inner-product-distortion.md) 問題，克服了現有方法無法達到最佳失真率的限制。我們的數據無知（data-oblivious）演算法適合線上應用，在所有位元寬度和維度上都能達到接近最佳的失真率（在一個小常數因子內）。TurboQuant 透過隨機旋轉輸入向量來實現這一目標，誘導座標上產生集中的 [Beta 分佈](03-beta-distribution.md)，並利用高維度中不同座標的近似獨立性，對每個座標簡單地應用最佳純量量化器。認識到 MSE 最佳量化器會在內積估計中引入偏差，我們提出了一個兩階段方法：首先應用 MSE 量化器，然後對殘差應用 1 位元量化 JL（QJL）變換，從而產生一個無偏的內積量化器。我們還提供了任何向量量化器可達到的最佳失真率的資訊理論下界的正式證明，表明 TurboQuant 與這些下界非常接近，僅相差一個小常數（$\approx 2.7$）因子。實驗結果驗證了我們的理論發現，表明對於 KV 快取量化，我們在每通道 3.5 位元時達到絕對的品質中性，在每通道 2.5 位元時僅有邊際的品質下降。此外，在最近鄰搜尋任務中，我們的方法在召回率方面優於現有的乘積量化技術，同時將索引時間減少到幾乎為零。
 
 ---
 
@@ -86,11 +86,11 @@ Existing VQ algorithms present a trade-off: either they lack accelerator (vector
 
 **原文：**
 
-The core of TurboQuant is a two-stage process. First, we develop a vector quantizer with optimal distortion rate in terms of mean-squared error (MSE). Subsequently, we apply a 1-bit quantizer to the residual, resulting in an unbiased and low-distortion inner product quantizer. We demonstrate that quantizers optimized for MSE do not produce unbiased estimators for inner products, and our two-stage solution effectively bridges this gap. Our MSE-optimal quantizer starts by randomly rotating $d$-dimensional input vectors. Observing the key fact that each coordinate in the rotated vectors follows a Beta distribution, we design optimal Lloyd-Max quantizer [42, 43] for each coordinate by solving a continuous k-means problem. This method gives optimal MSE distortion bound and minimizes the L2 norm of the residual. To obtain an unbiased and low-distortion quantizer for inner products, we compose our quantizer with the recently developed Quantized Johnson-Lindenstrauss (QJL) transform [62], which quantizes each coordinate of the residual vector to a single bit. Our algorithm offers provably optimal distortion bounds for both MSE and inner products, achieving an exponential improvement over existing methods in terms of bit-width dependence.
+The core of TurboQuant is a two-stage process. First, we develop a vector quantizer with optimal distortion rate in terms of mean-squared error (MSE). Subsequently, we apply a 1-bit quantizer to the residual, resulting in an unbiased and low-distortion inner product quantizer. We demonstrate that quantizers optimized for MSE do not produce unbiased estimators for inner products, and our two-stage solution effectively bridges this gap. Our MSE-optimal quantizer starts by randomly rotating $d$-dimensional input vectors. Observing the key fact that each coordinate in the rotated vectors follows a [Beta distribution](03-beta-distribution.md), we design optimal [Lloyd-Max quantizer](03-lloyd-max-quantizer.md) [42, 43] for each coordinate by solving a continuous k-means problem. This method gives optimal MSE distortion bound and minimizes the L2 norm of the residual. To obtain an unbiased and low-distortion quantizer for inner products, we compose our quantizer with the recently developed Quantized Johnson-Lindenstrauss (QJL) transform [62], which quantizes each coordinate of the residual vector to a single bit. Our algorithm offers provably optimal distortion bounds for both MSE and inner products, achieving an exponential improvement over existing methods in terms of bit-width dependence.
 
 **中文翻譯：**
 
-TurboQuant 的核心是一個兩階段過程。首先，我們開發了一個在均方誤差（MSE）方面具有最佳失真率的向量量化器。隨後，我們對殘差應用 1 位元量化器，從而產生一個無偏且低失真的內積量化器。我們證明，針對 MSE 優化的量化器不會產生內積的無偏估計器，而我們的兩階段解決方案有效地彌合了這一差距。我們的 MSE 最佳量化器首先隨機旋轉 $d$ 維輸入向量。觀察到旋轉向量中每個座標遵循 Beta 分佈這一關鍵事實，我們透過解決連續 k-means 問題為每個座標設計最佳 Lloyd-Max 量化器 [42, 43]。這種方法給出最佳 MSE 失真界限並最小化殘差的 L2 範數。為了獲得內積的無偏且低失真量化器，我們將我們的量化器與最近開發的量化 Johnson-Lindenstrauss（QJL）變換 [62] 組合，該變換將殘差向量的每個座標量化為單個位元。我們的演算法為 MSE 和內積提供了可證明的最佳失真界限，在位元寬度依賴性方面實現了相對於現有方法的指數級改進。
+TurboQuant 的核心是一個兩階段過程。首先，我們開發了一個在均方誤差（MSE）方面具有最佳失真率的向量量化器。隨後，我們對殘差應用 1 位元量化器，從而產生一個無偏且低失真的內積量化器。我們證明，針對 MSE 優化的量化器不會產生內積的無偏估計器，而我們的兩階段解決方案有效地彌合了這一差距。我們的 MSE 最佳量化器首先隨機旋轉 $d$ 維輸入向量。觀察到旋轉向量中每個座標遵循 [Beta 分佈](03-beta-distribution.md) 這一關鍵事實，我們透過解決連續 k-means 問題為每個座標設計最佳 [Lloyd-Max 量化器](03-lloyd-max-quantizer.md) [42, 43]。這種方法給出最佳 MSE 失真界限並最小化殘差的 L2 範數。為了獲得內積的無偏且低失真量化器，我們將我們的量化器與最近開發的量化 Johnson-Lindenstrauss（QJL）變換 [62] 組合，該變換將殘差向量的每個座標量化為單個位元。我們的演算法為 MSE 和內積提供了可證明的最佳失真界限，在位元寬度依賴性方面實現了相對於現有方法的指數級改進。
 
 ---
 
@@ -222,15 +222,15 @@ Recently, a grid-based PQ method was introduced in [22], eliminating the need fo
 
 **原文：**
 
-**MSE Optimized TurboQuant.** Our first VQ algorithm is designed to minimize MSE distortion defined in ??. To achieve this, we apply a random rotation to the input vectors, thereby inducing a Beta distribution on each coordinate, irrespective of the input vectors themselves. In high dimensions $d$, the distribution of each coordinate converges to a Gaussian distribution $\mathcal{N}(1,1/d)$ due to concentration of measure and the central limit theorem. Furthermore, any two distinct coordinates become nearly uncorrelated and, more importantly, almost independent (a deeper result that goes beyond just correlation). This near-independence is a crucial aspect that simplifies our quantization design. It allows us to quantize each coordinate using optimal scalar quantization, disregarding interactions or correlations between different coordinates, while still achieving near-optimal distortion.
+**MSE Optimized TurboQuant.** Our first VQ algorithm is designed to minimize MSE distortion defined in ??. To achieve this, we apply a random rotation to the input vectors, thereby inducing a [Beta distribution](03-beta-distribution.md) on each coordinate, irrespective of the input vectors themselves. In high dimensions $d$, the distribution of each coordinate converges to a Gaussian distribution $\mathcal{N}(1,1/d)$ due to concentration of measure and the central limit theorem. Furthermore, any two distinct coordinates become nearly uncorrelated and, more importantly, almost independent (a deeper result that goes beyond just correlation). This near-independence is a crucial aspect that simplifies our quantization design. It allows us to quantize each coordinate using optimal scalar quantization, disregarding interactions or correlations between different coordinates, while still achieving near-optimal distortion.
 
-We find optimal scalar quantizers for random variables with Beta distributions by solving a continuous 1-dimensional k-means problem using the Max-Lloyd algorithm. We precompute and store these optimal codebooks for a range of practically useful bit-widths, to enable efficient subsequent invocations of our TurboQuant algorithm.
+We find optimal scalar quantizers for random variables with [Beta distributions](03-beta-distribution.md) by solving a continuous 1-dimensional k-means problem using the Max-Lloyd algorithm. We precompute and store these optimal codebooks for a range of practically useful bit-widths, to enable efficient subsequent invocations of our TurboQuant algorithm.
 
 **中文翻譯：**
 
-**MSE 優化的 TurboQuant。** 我們的第一個 VQ 演算法旨在最小化 ?? 中定義的 MSE 失真。為了實現這一目標，我們對輸入向量應用隨機旋轉，從而在每個座標上誘導 Beta 分佈，無論輸入向量本身如何。在高維度 $d$ 中，由於測度集中和中心極限定理，每個座標的分佈收斂於高斯分佈 $\mathcal{N}(1,1/d)$。此外，任何兩個不同的座標變得幾乎不相關，更重要的是，幾乎獨立（這是一個比僅僅相關性更深入的結果）。這種近似獨立性是簡化我們量化設計的關鍵方面。它允許我們使用最佳純量量化來量化每個座標，忽略不同座標之間的相互作用或相關性，同時仍能實現接近最佳的失真。
+**MSE 優化的 TurboQuant。** 我們的第一個 VQ 演算法旨在最小化 ?? 中定義的 MSE 失真。為了實現這一目標，我們對輸入向量應用隨機旋轉，從而在每個座標上誘導 [Beta 分佈](03-beta-distribution.md)，無論輸入向量本身如何。在高維度 $d$ 中，由於測度集中和中心極限定理，每個座標的分佈收斂於高斯分佈 $\mathcal{N}(1,1/d)$。此外，任何兩個不同的座標變得幾乎不相關，更重要的是，幾乎獨立（這是一個比僅僅相關性更深入的結果）。這種近似獨立性是簡化我們量化設計的關鍵方面。它允許我們使用最佳純量量化來量化每個座標，忽略不同座標之間的相互作用或相關性，同時仍能實現接近最佳的失真。
 
-我們透過使用 Max-Lloyd 演算法解決連續一維 k-means 問題，找到具有 Beta 分佈的隨機變量的最佳純量量化器。我們預先計算並存儲這些最佳碼本，適用於一系列實際上有用的位元寬度，以便後續高效地調用我們的 TurboQuant 演算法。
+我們透過使用 Max-Lloyd 演算法解決連續一維 k-means 問題，找到具有 [Beta 分佈](03-beta-distribution.md) 的隨機變量的最佳純量量化器。我們預先計算並存儲這些最佳碼本，適用於一系列實際上有用的位元寬度，以便後續高效地調用我們的 TurboQuant 演算法。
 
 ---
 
@@ -342,25 +342,25 @@ We use the notation $\mathbb{S}^{d-1}$ to denote the hypersphere in $\mathbb{R}^
 
 Given that TurboQuant employs random rotation to mitigate worst-case input scenarios, understanding the statistical properties of random points on a hypersphere is essential. The following lemma outlines one such property that we will need for analysis and design purposes:
 
-**Lemma 1** (coordinate distribution of random point on hypersphere). For any positive integer $d$ if $\mathbf{x}\in\mathbb{S}^{d-1}$ is a random variable uniformly distributed over the unit hypersphere, then for any $j\in[d]$ the coordinate $\mathbf{x}_j$ follows the following (scaled/shifted) Beta distribution:
+**Lemma 1** (coordinate distribution of random point on hypersphere). For any positive integer $d$ if $\mathbf{x}\in\mathbb{S}^{d-1}$ is a random variable uniformly distributed over the unit hypersphere, then for any $j\in[d]$ the coordinate $\mathbf{x}_j$ follows the following (scaled/shifted) [Beta distribution](03-beta-distribution.md):
 
 $$
 \mathbf{x}_j \sim f_X(x) := \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}.
 $$
 
-In high dimensions this beta distribution converges to the normal distribution $f_X(\cdot) \to \mathcal{N}(0,1/d)$.
+In high dimensions this [beta distribution](03-beta-distribution.md) converges to the normal distribution $f_X(\cdot) \to \mathcal{N}(0,1/d)$.
 
 **中文翻譯：**
 
 鑑於 TurboQuant 採用隨機旋轉來緩解最壞情況的輸入場景，了解超球面上隨機點的統計屬性至關重要。以下引理概述了一個我們將用於分析和設計目的的此類屬性：
 
-**引理 1**（超球面上隨機點的座標分佈）。對於任何正整數 $d$，如果 $\mathbf{x}\in\mathbb{S}^{d-1}$ 是在單位超球面上均勻分佈的隨機變量，那麼對於任何 $j\in[d]$，座標 $\mathbf{x}_j$ 遵循以下（縮放/平移的）Beta 分佈：
+**引理 1**（超球面上隨機點的座標分佈）。對於任何正整數 $d$，如果 $\mathbf{x}\in\mathbb{S}^{d-1}$ 是在單位超球面上均勻分佈的隨機變量，那麼對於任何 $j\in[d]$，座標 $\mathbf{x}_j$ 遵循以下（縮放/平移的）[Beta 分佈](03-beta-distribution.md)：
 
 $$
 \mathbf{x}_j \sim f_X(x) := \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}.
 $$
 
-在高維度中，這個 Beta 分佈收斂於常態分佈 $f_X(\cdot) \to \mathcal{N}(0,1/d)$。
+在高維度中，這個 [Beta 分佈](03-beta-distribution.md) 收斂於常態分佈 $f_X(\cdot) \to \mathcal{N}(0,1/d)$。
 
 ---
 
@@ -580,13 +580,13 @@ Furthermore, in ??, we establish information-theoretic lower bounds on the best 
 
 Let $\mathbf{x}\in\mathbb{S}^{d-1}$ be a (worst-case) vector on the unit sphere in dimension $d$. We aim to quantize $\mathbf{x}$ to $b$ bits per coordinate while minimizing the reconstruction MSE defined in ??. We start by randomizing this vector by multiplying it with a random rotation matrix $\mathbf{\Pi}\in\mathbb{R}^{d\times d}$. We can generate $\mathbf{\Pi}$ by applying QR decomposition on a random matrix with i.i.d Normal entries.
 
-The resulting rotated vector, $\mathbf{\Pi}\cdot\mathbf{x}$, is uniformly distributed on the unit sphere $\mathbb{S}^{d-1}$. As shown in ??, each coordinate of $\mathbf{\Pi}\cdot\mathbf{x}$ follows a Beta distribution, which converges to a normal distribution in high dimensions. Furthermore, in high dimensions, distinct coordinates of $\mathbf{\Pi}\cdot\mathbf{x}$ become nearly independent [55], allowing us to apply optimal scalar quantizers to each coordinate independently. Therefore, by ??, our task reduces to designing a scalar quantizer for random variables with the distribution $f_X(x) = \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}$ for $x\in[-1,1]$.
+The resulting rotated vector, $\mathbf{\Pi}\cdot\mathbf{x}$, is uniformly distributed on the unit sphere $\mathbb{S}^{d-1}$. As shown in ??, each coordinate of $\mathbf{\Pi}\cdot\mathbf{x}$ follows a [Beta distribution](03-beta-distribution.md), which converges to a normal distribution in high dimensions. Furthermore, in high dimensions, distinct coordinates of $\mathbf{\Pi}\cdot\mathbf{x}$ become nearly independent [55], allowing us to apply optimal scalar quantizers to each coordinate independently. Therefore, by ??, our task reduces to designing a scalar quantizer for random variables with the distribution $f_X(x) = \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}$ for $x\in[-1,1]$.
 
 **中文翻譯：**
 
 設 $\mathbf{x}\in\mathbb{S}^{d-1}$ 是 $d$ 維單位球面上的（最壞情況）向量。我們的目標是將 $\mathbf{x}$ 量化為每個座標 $b$ 位元，同時最小化 ?? 中定義的重建 MSE。我們首先透過將該向量與隨機旋轉矩陣 $\mathbf{\Pi}\in\mathbb{R}^{d\times d}$ 相乘來隨機化該向量。我們可以透過對具有獨立同分佈常態項的隨機矩陣應用 QR 分解來生成 $\mathbf{\Pi}$。
 
-產生的旋轉向量 $\mathbf{\Pi}\cdot\mathbf{x}$ 在單位球面 $\mathbb{S}^{d-1}$ 上均勻分佈。如 ?? 所示，$\mathbf{\Pi}\cdot\mathbf{x}$ 的每個座標遵循 Beta 分佈，該分佈在高維度中收斂於常態分佈。此外，在高維度中，$\mathbf{\Pi}\cdot\mathbf{x}$ 的不同座標變得幾乎獨立 [55]，使我們能夠獨立地對每個座標應用最佳純量量化器。因此，根據 ??，我們的任務簡化為為具有分佈 $f_X(x) = \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}$（其中 $x\in[-1,1]$）的隨機變量設計純量量化器。
+產生的旋轉向量 $\mathbf{\Pi}\cdot\mathbf{x}$ 在單位球面 $\mathbb{S}^{d-1}$ 上均勻分佈。如 ?? 所示，$\mathbf{\Pi}\cdot\mathbf{x}$ 的每個座標遵循 [Beta 分佈](03-beta-distribution.md)，該分佈在高維度中收斂於常態分佈。此外，在高維度中，$\mathbf{\Pi}\cdot\mathbf{x}$ 的不同座標變得幾乎獨立 [55]，使我們能夠獨立地對每個座標應用最佳純量量化器。因此，根據 ??，我們的任務簡化為為具有分佈 $f_X(x) = \frac{\Gamma(d/2)}{\sqrt{\pi}\cdot\Gamma((d-1)/2)}(1-x^2)^{(d-3)/2}$（其中 $x\in[-1,1]$）的隨機變量設計純量量化器。
 
 ---
 
