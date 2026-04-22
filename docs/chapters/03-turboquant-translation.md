@@ -186,11 +186,11 @@ We aim to design computationally efficient quantizers $Q_{\text{mse}}$ and $Q_{\
 
 **原文：**
 
-**Online vs Offline Quantization.** Online (data-oblivious) quantization methods apply instantly without needing data-specific tuning or calibrations [16, 8, 41, 47, 28]. In contrast, offline (data-dependent) methods require heavy preprocessing and learning to adapt the quantization map to the data, making them unsuitable for dynamic data scenarios [37]. For instance, methods such as those presented in [20, 39, 57, 13] use second-order (Hessian) information to tune the quantization map which requires heavy preprocessing and even in some cases post processing as well.
+**Online vs Offline Quantization.** Online (data-oblivious) quantization methods apply instantly without needing data-specific tuning or calibrations [16, 8, 41, 47, 28]. In contrast, offline (data-dependent) methods require heavy preprocessing and learning to adapt the quantization map to the data, making them unsuitable for dynamic data scenarios [37]. For instance, methods such as those presented in [20, 39, 57, 13] use [second-order (Hessian) information](03-hessian-information.md) to tune the quantization map which requires heavy preprocessing and even in some cases post processing as well.
 
 **中文翻譯：**
 
-**線上與離線量化。** 線上（數據無知）量化方法可以立即應用，無需針對特定數據進行調整或校準 [16, 8, 41, 47, 28]。相比之下，離線（數據依賴）方法需要大量的預處理和學習來使量化映射適應數據，使其不適合動態數據場景 [37]。例如，[20, 39, 57, 13] 中提出的方法使用二階（Hessian）資訊來調整量化映射，這需要大量的預處理，在某些情況下甚至需要後處理。
+**線上與離線量化。** 線上（數據無知）量化方法可以立即應用，無需針對特定數據進行調整或校準 [16, 8, 41, 47, 28]。相比之下，離線（數據依賴）方法需要大量的預處理和學習來使量化映射適應數據，使其不適合動態數據場景 [37]。例如，[20, 39, 57, 13] 中提出的方法使用[二階（Hessian）資訊](03-hessian-information.md)來調整量化映射，這需要大量的預處理，在某些情況下甚至需要後處理。
 
 ---
 

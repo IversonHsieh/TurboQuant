@@ -1,0 +1,18 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#1e1e1e" />
+  
+  <!-- Title -->
+  <text x="300" y="30" font-family="Segoe UI, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Hessian Matrix Concept</text>
+  
+  <!-- Curve -->
+  <path d="M100 250 Q 300 50, 500 250" fill="none" stroke="#4fc3f7" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Minimum Point -->
+  <circle cx="300" cy="115" r="6" fill="#ff5252" />
+  <text x="315" y="110" font-family="Segoe UI, sans-serif" font-size="14" fill="#ffffff">局部極小點</text>
+  
+  <!-- Labels -->
+  <text x="100" y="270" font-family="Segoe UI, sans-serif" font-size="12" fill="#aaaaaa">一階導數 (∇f) = 0</text>
+  <text x="380" y="270" font-family="Segoe UI, sans-serif" font-size="12" fill="#aaaaaa">二階導數 (H) > 0 (正定)</text>
+</svg>
