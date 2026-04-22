@@ -13,3 +13,7 @@
 
 ## 技術意義
 QJL 為 TurboQuant 提供了另一層維度縮減的理論支撐。如果說 PolarQuant 是在「維度內」進行精細的量化，那麼 QJL 則是在「維度間」進行結構性的壓縮。兩者的結合，使得 TurboQuant 能夠在極端壓縮的狀態下，依然維持 Transformer 模型對長文本處理的精準度與效能。
+
+---
+
+> [詳細 QJL 實例、流程圖與 TurboQuant 連結，請見 QJL 專章](03-qjl-explanation.md)
