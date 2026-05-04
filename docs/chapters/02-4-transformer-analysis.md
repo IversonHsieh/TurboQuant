@@ -11,22 +11,22 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 
 讓我們首先將模型視為一個單一的黑盒子。在機器翻譯應用中，它會接收一種語言的句子，並輸出另一種語言的翻譯。
 
-![Transformer Black Box](https://jalammar.github.io/images/t/the_transformer_3.png)![Transformer Black Box](../svg/the_transformer_3.svg)
+![Transformer Black Box](https://jalammar.github.io/images/t/the_transformer_3.png)![Transformer Black Box]()(../svg/the_transformer_3.svg)
 
 打開這個「擎天柱 (Optimus Prime)」般的精妙結構，我們可以看到一個編碼組件 (encoding component)、一個解碼組件 (decoding component) 以及它們之間的連接。
 
 ![Encoder Decoder Components](https://jalammar.github.io/images/t/The_transformer_encoders_decoders.png)
-![Encoder Decoder Components](../svg/The_transformer_encoders_decoders.svg)
+![Encoder Decoder Components]()(../svg/The_transformer_encoders_decoders.svg)
 
 編碼組件是由一堆編碼器堆疊而成（論文中堆疊了六層 —— 六這個數字並沒有什麼魔力，完全可以嘗試其他的配置）。解碼組件同樣是由相同數量的解碼器堆疊而成。
 
 ![Encoder Decoder Stack](https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png)
-![Encoder Decoder Stack](../svg/The_transformer_encoders_decoders_v2.svg)
+![Encoder Decoder Stack]()(../svg/The_transformer_encoders_decoders_v2.svg)
 
 所有的編碼器在結構上都是完全相同的（但它們並不共享權重）。每一個編碼器都分解為兩個子層：
 
 ![Encoder Sub-layers](https://jalammar.github.io/images/t/Transformer_encoder.png)
-![Encoder Sub-layers](../svg/Transformer_encoder.svg)
+![Encoder Sub-layers]()(../svg/Transformer_encoder.svg)
 
 編碼器的輸入首先流經一個自注意力層 (self-attention layer) —— 這個層級能幫助編碼器在編碼特定單詞時，去觀察輸入句子中的其他單詞。我們稍後會在文中詳細討論自注意力機制。
 
@@ -35,7 +35,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 解碼器同時擁有這兩種層，但在它們之間還有一個注意力層，能幫助解動器專注於輸入句子中的相關部分（類似於 seq2seq 模型中注意力機制的作用）。
 
 ![Decoder Sub-layers](https://jalammar.github.io/images/t/Transformer_decoder.png)
-![Decoder Sub-layers](docs/svg/decoder_sublayers.svg)
+![Decoder Sub-layers]()(docs/svg/decoder_sublayers.svg)
 
 ## 將張量引入視野 (Bringing The Tensors Into The Picture)
 
@@ -44,7 +44,7 @@ Transformer 是在《Attention is All You Need》論文中提出的。TensorFlow
 與一般的 NLP 應用相同，我們首先使用嵌入演算法 (embedding algorithm) 將每個輸入單詞轉換為向量。
 
 ![Embeddings](https://jalammar.github.io/images/t/embeddings.png)
-![Embeddings & Vectors](docs/svg/embeddings_vectors.svg)
+![Embeddings & Vectors]()(docs/svg/embeddings_vectors.svg)
 
 嵌入過程僅發生在最底層的編碼器中。所有編碼器共同的抽象特性是：它們接收一組維度為 $512$ 的向量列表 —— 在最底層編碼器中，這就是單詞嵌入 (word embeddings)；但在其他編碼器中，這則是下方編碼器的輸出。這個列表的大小是一個可以設定的超參數 —— 基本上它就是我們訓練數據集中最長句子的長度。
 
