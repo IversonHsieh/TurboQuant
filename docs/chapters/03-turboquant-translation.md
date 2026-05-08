@@ -176,11 +176,11 @@ We aim to design computationally efficient quantizers $Q_{\text{mse}}$ and $Q_{\
 
 **原文：**
 
-**Beginnings of VQ.** The vector quantization theory started by Shannon's seminal work [48, 49] on achievable distortion-rate functions. In 1963, Zador [61] made significant advances by employing high-resolution methods to derive the limiting operational distortion-rate function for fixed-rate quantization at high rates that closely matches Shannon's distortion-rate function. However, Zador did not specifically consider implementable algorithms. Gersho's influential paper [25], further advanced the vector quantization by popularizing high-resolution theory, simplifying Zador's results, introducing lattice vector quantization, and proposing a key conjecture that shaped the field. Despite these theoretical advancements, the practical applicability of vector quantization remained unclear in early years. The most straightforward encoding method, brute-force nearest neighbor search, was computationally expensive, hindering the adoption of VQ in practice.
+**Beginnings of VQ.** The vector quantization theory started by Shannon's seminal work [48, 49] on achievable distortion-rate functions. In 1963, Zador [61] made significant advances by employing high-resolution methods to derive the limiting operational distortion-rate function for fixed-rate quantization at high rates that closely matches Shannon's distortion-rate function. However, Zador did not specifically consider implementable algorithms. Gersho's influential paper [25], further advanced the vector quantization by popularizing high-resolution theory, simplifying Zador's results, introducing lattice vector quantization, and proposing a key conjecture that shaped the field. Despite these theoretical advancements, the practical applicability of vector quantization remained unclear in early years. The most straightforward encoding method, [brute-force nearest neighbor search](03-brute-force-nn-explanation.md), was computationally expensive, hindering the adoption of VQ in practice.
 
 **中文翻譯：**
 
-**VQ 的開端。** 向量量化理論始於香農關於可達失真 - 率函數的開創性工作 [48, 49]。1963 年，Zador [61] 透過使用高分辨率方法推導出高碼率下定量化的極限操作失真 - 率函數，該函數與香農的失真 - 率函數非常接近，取得了重大進展。然而，Zador 沒有特別考慮可實現的演算法。Gersho 的有影響力的論文 [25] 進一步推進了向量量化，透過普及高分辨率理論、簡化 Zador 的結果、引入晶格向量量化，並提出了一個塑造該領域的關鍵猜想。儘管有這些理論進步，向量量化的實際適用性在早期仍不清楚。最直接的編碼方法——暴力最近鄰搜尋——計算成本高昂，阻礙了 VQ 在實踐中的採用。
+**VQ 的開端。** 向量量化理論始於香農關於可達失真 - 率函數的開創性工作 [48, 49]。1963 年，Zador [61] 透過使用高分辨率方法推導出高碼率下定量化的極限操作失真 - 率函數，該函數與香農的失真 - 率函數非常接近，取得了重大進展。然而，Zador 沒有特別考慮可實現的演算法。Gersho 的有影響力的論文 [25]（[詳細解說請見此處](03-gersho-paper.md)），進一步推進了向量量化，透過普及高分辨率理論、簡化 Zador 的結果、引入晶格向量量化，並提出了一個塑造該領域的關鍵猜想。儘管有這些理論進步，向量量化的實際適用性在早期仍不清楚。最直接的編碼方法——[暴力最近鄰搜尋](03-brute-force-nn-explanation.md)——計算成本高昂，阻礙了 VQ 在實踐中的採用。
 
 ---
 

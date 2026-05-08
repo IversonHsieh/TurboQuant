@@ -57,7 +57,7 @@
     - [x] 章節 2: 基礎數學
         - [x] 章節 2.1: 笛卡兒座標系解析
         - [x] 章節 2.2: 極座標系
-        - [ ] 章節 2.3: 前饋神經網路 (Feed-Forward Neural Network)
+        - [x] 章節 2.3: 前饋神經網路 (Feed-Forward Neural Network)
         - [-] 章節 2.4: Transformer 結構解析 (翻譯自 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/))
             - [-] 內容抓取與翻譯 (使用 Puppeteer)
             - [-] 視覺化資源製作 (SVG)
