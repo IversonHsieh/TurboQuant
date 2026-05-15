@@ -1144,9 +1144,11 @@ The experimental results, illustrated in ??, confirm that $\text{TurboQuant}_{\t
 
 ?? 中說明的實驗結果證實，$\text{TurboQuant}_{\text{prod}}$ 在所有位元寬度下對於內積估計保持無偏，而 $\text{TurboQuant}_{\text{mse}}$ 隨著位元寬度的增加逐漸改善。
 
-![Figure 1: TurboQuant_prod 和 TurboQuant_mse 在內積估計中的誤差分佈](https://arxiv.org/html/2504.19874v1/x1.png)
+**Figure 1:** TurboQuant_prod 和 TurboQuant_mse 在內積估計中的誤差分佈
 
-![Figure 2: TurboQuant_prod 的內積誤差變異數保持恆定，而 TurboQuant_mse 隨平均內積增加而增加（位元寬度 b=2）](https://arxiv.org/html/2504.19874v1/x2.png)
+![Figure 1(a): TurboQuant_prod 在內積估計中的誤差分佈](../svg/paper-figures/x1.png)
+
+![Figure 1(b): TurboQuant_mse 在內積估計中的誤差分佈](../svg/paper-figures/x2.png)
 
 ---
 
@@ -1158,6 +1160,12 @@ As observed in ??, when quantizing to 2 bits, the variance remains constant rega
 
 如 ?? 中觀察到的那樣，當量化為 2 位元時，在 $\text{TurboQuant}_{\text{prod}}$ 方法中，變異數保持恆定，無論原始向量的內積如何。然而，相同的圖表明，$\text{TurboQuant}_{\text{mse}}$ 方法中的偏差依賴於平均內積。隨著平均內積的增加，偏差也增加。
 
+**Figure 2:** TurboQuant_prod 的內積誤差變異數保持恆定，而 TurboQuant_mse 隨平均內積增加而增加（位元寬度 $b=2$）
+
+![Figure 2(a): TurboQuant_prod 的內積誤差變異數保持恆定](../svg/paper-figures/x3.png)
+
+![Figure 2(b): TurboQuant_mse 的內積誤差變異數隨平均內積增加而增加](../svg/paper-figures/x4.png)
+
 ---
 
 **原文：**
@@ -1168,7 +1176,11 @@ Along with the histograms, we also plot ?? the average inner product error and M
 
 除了直方圖之外，我們還在 ?? 中繪製了不同位元比率下原始向量與量化向量之間的平均內積誤差和 MSE。這些圖表與我們理論分析中建立的上界和下界一起繪製。我們的觀察證實，結果與理論預測一致。具體來說，對於內積估計，$\text{TurboQuant}_{\text{prod}}$ 方法在較低位元比率下表現更好。然而，隨著位元數量的增加，$\text{TurboQuant}_{\text{mse}}$ 減少偏差並最終在內積估計中實現優越的性能。
 
-![Figure 3: 不同位元比率下內積誤差和 MSE 與理論界限的比較](https://arxiv.org/html/2504.19874v1/x3.png)
+**Figure 3:** 不同位元比率下內積誤差和 MSE 與理論界限的比較
+
+![Figure 3(a): 不同位元比率下內積誤差與理論界限的比較](../svg/paper-figures/x5.png)
+
+![Figure 3(b): 不同位元比率下 MSE 與理論界限的比較](../svg/paper-figures/x6.png)
 
 ---
 
@@ -1194,7 +1206,19 @@ The results, illustrated in ??, reveal that quantization methods with theoretica
 
 ?? 中說明的結果表明，具有理論保證的量化方法（如 PolarQuant 和 TurboQuant）優於 token 級壓縮技術（如 SnapKV 和 PyramidKV），以及缺乏正式理論保證的純量量化方法（如 KIVI）。值得注意的是，TurboQuant 即使在 $4\times$ 壓縮下也能實現與全精度模型相同的性能，使其成為長上下文處理的強健解決方案。
 
-![Figure 4: Llama-3.1-8B-Instruct 在「大海撈針」測試上的評估結果](https://arxiv.org/html/2504.19874v1/x4.png)
+**Figure 4:** Llama-3.1-8B-Instruct 在「大海撈針」測試上的評估結果。雖然一些方法在召回率上表現不佳，但 TurboQuant 儘管被超過 $4\times$ 量化，仍能達到與未壓縮基線完全相同的性能。
+
+![Figure 4: Full Cache（全快取）](../svg/paper-figures/x7.png)
+
+![Figure 4: KIVI](../svg/paper-figures/x8.png)
+
+![Figure 4: PyramidKV](../svg/paper-figures/x9.png)
+
+![Figure 4: SnapKV](../svg/paper-figures/x10.png)
+
+![Figure 4: PolarQuant](../svg/paper-figures/x11.png)
+
+![Figure 4: TurboQuant](../svg/paper-figures/x12.png)
 
 ---
 
@@ -1262,7 +1286,13 @@ Despite the advantages granted to the baseline methods, TurboQuant consistently 
 
 儘管基準方法獲得了優勢，TurboQuant 在所有實驗中始終在召回率方面優於乘積量化和 RabitQ。這證明了我們方法的強健性和效率，使其成為基於高維量化搜尋任務的引人注目的替代方案。
 
-![Figure 5: 不同數據集和嵌入維度上的召回率比較](https://arxiv.org/html/2504.19874v1/x5.png)
+**Figure 5:** 不同數據集和嵌入維度上的召回率比較
+
+![Figure 5(a): GloVe - d=200 上的召回率比較](../svg/paper-figures/x13.png)
+
+![Figure 5(b): OpenAI3 - d=1536 上的召回率比較](../svg/paper-figures/x14.png)
+
+![Figure 5(c): OpenAI3 - d=3072 上的召回率比較](../svg/paper-figures/x15.png)
 
 ---
 
@@ -1286,13 +1316,35 @@ Despite the advantages granted to the baseline methods, TurboQuant consistently 
 
 ---
 
-**表格說明：**
+**Table 1:** LongBench-V1 [10] 結果比較——各種 KV 快取壓縮方法在 Llama-3.1-8B-Instruct 和 Ministral-7B-Instruct 上的表現
 
-論文中包含以下表格：
+**Llama-3.1-8B-Instruct**
 
-**Table 1:** LongBench-V1 結果比較（各種 KV 快取壓縮方法在 Llama-3.1-8B-Instruct 上的表現）
+| Method | KV Size | SingleQA | MultiQA | Summarization | Few shot | Synthetic | Code | Average |
+|--------|---------|---------|---------|---------------|----------|-----------|-------|---------|
+| Full Cache | 16 | 45.29 | 45.16 | 26.55 | 68.38 | 59.54 | 46.28 | 50.06 |
+| KIVI | 3 | 43.38 | 37.99 | 27.16 | 68.38 | 59.50 | 44.68 | 48.50 |
+| KIVI | 5 | 45.04 | 45.70 | 26.47 | 68.57 | 59.55 | 46.41 | 50.16 |
+| PolarQuant | 3.9 | 45.18 | 44.48 | 26.23 | 68.25 | 60.07 | 45.24 | 49.78 |
+| TurboQuant (ours) | 2.5 | 44.16 | 44.96 | 24.80 | 68.01 | 59.65 | 45.76 | 49.44 |
+| TurboQuant (ours) | 3.5 | 45.01 | 45.31 | 26.00 | 68.63 | 59.95 | 46.17 | 50.06 |
 
-**Table 2:** 不同方法在不同維度下的量化時間比較（使用 4 位元量化）
+**Ministral-7B-Instruct**
+
+| Method | KV Size | SingleQA | MultiQA | Summarization | Few shot | Synthetic | Code | Average |
+|--------|---------|---------|---------|---------------|----------|-----------|-------|---------|
+| Full Cache | 16 | 47.53 | 49.06 | 26.09 | 66.83 | 53.50 | 47.90 | 49.89 |
+| TurboQuant (ours) | 2.5 | 48.38 | 49.22 | 24.91 | 66.69 | 53.17 | 46.83 | 49.62 |
+
+---
+
+**Table 2:** 不同方法在不同維度下的量化時間比較（使用 4 位元量化，單位：秒）
+
+| Approach | d=200 | d=1536 | d=3072 |
+|----------|-------|--------|--------|
+| Product Quantization | 37.04 | 239.75 | 494.42 |
+| RabitQ | 597.25 | 2267.59 | 3957.19 |
+| TurboQuant | 0.0007 | 0.0013 | 0.0021 |
 
 ---
 
