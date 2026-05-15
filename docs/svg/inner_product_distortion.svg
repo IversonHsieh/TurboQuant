@@ -1,41 +1,143 @@
-<svg width="340" height="220" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#181c20"/>
-  <!-- Axes -->
-  <line x1="40" y1="180" x2="300" y2="180" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)"/>
-  <line x1="40" y1="180" x2="40" y2="40" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)"/>
+<svg width="680" height="440" viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#bbb" />
+    <marker id="arr-x" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4fc3f7"/>
     </marker>
+    <marker id="arr-xhat" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffb74d"/>
+    </marker>
+    <marker id="arr-q" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#81c784"/>
+    </marker>
+    <marker id="arr-axis" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="arr-proj" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#e879f9"/>
+    </marker>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1117"/>
+      <stop offset="100%" stop-color="#1a1d2e"/>
+    </linearGradient>
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-orange" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-pink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <!-- Vectors -->
-  <!-- x: [1.2, -0.7] (scaled for display) -->
-  <line x1="40" y1="180" x2="120" y2="220" stroke="#4fc3f7" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="122" y="218" fill="#4fc3f7" font-size="14">x</text>
-  <!-- x_hat: [1, -1] (scaled) -->
-  <line x1="40" y1="180" x2="100" y2="240" stroke="#ffb74d" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="102" y="238" fill="#ffb74d" font-size="14">\u005Cx</text>
-  <!-- q: [2, 0] (scaled) -->
-  <line x1="40" y1="180" x2="180" y2="180" stroke="#81c784" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="182" y="178" fill="#81c784" font-size="14">q</text>
-  <!-- Angle arc -->
-  <path d="M60 180 A20 20 0 0 1 100 200" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="75" y="195" fill="#fff" font-size="12">θ</text>
-  <!-- Dots at vector tips -->
-  <circle cx="120" cy="220" r="3.5" fill="#4fc3f7"/>
-  <circle cx="100" cy="240" r="3.5" fill="#ffb74d"/>
-  <circle cx="180" cy="180" r="3.5" fill="#81c784"/>
-  <!-- Labels -->
-  <text x="45" y="35" fill="#bbb" font-size="13">y</text>
-  <text x="305" y="185" fill="#bbb" font-size="13">x</text>
-  <!-- Legend -->
-  <rect x="200" y="40" width="120" height="60" fill="#23272e" stroke="#444" rx="8"/>
-  <line x1="210" y1="60" x2="230" y2="60" stroke="#4fc3f7" stroke-width="3"/>
-  <text x="235" y="64" fill="#bbb" font-size="13">x (原始向量)</text>
-  <line x1="210" y1="80" x2="230" y2="80" stroke="#ffb74d" stroke-width="3"/>
-  <text x="235" y="84" fill="#bbb" font-size="13">\u005Cx (量化後)</text>
-  <line x1="210" y1="100" x2="230" y2="100" stroke="#81c784" stroke-width="3"/>
-  <text x="235" y="104" fill="#bbb" font-size="13">q (查詢向量)</text>
-  <!-- Distortion annotation -->
-  <text x="60" y="160" fill="#fff" font-size="13">內積失真 = |⟨q, x⟩ - ⟨q, \u005Cx⟩|</text>
+
+  <!-- Background -->
+  <rect width="680" height="440" fill="url(#bg-grad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="340" y="32" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="18" font-weight="bold" fill="#e0e0e0">內積失真（Inner Product Distortion）的幾何意義</text>
+
+  <!-- Main diagram area -->
+  <g transform="translate(60, 60)">
+    <!-- Grid (subtle) -->
+    <g stroke="#2a2d3a" stroke-width="0.5">
+      <line x1="0" y1="0" x2="0" y2="300"/><line x1="50" y1="0" x2="50" y2="300"/>
+      <line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/>
+      <line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/>
+      <line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/>
+      <line x1="400" y1="0" x2="400" y2="300"/><line x1="450" y1="0" x2="450" y2="300"/>
+      <line x1="500" y1="0" x2="500" y2="300"/>
+      <line x1="0" y1="0" x2="500" y2="0"/><line x1="0" y1="50" x2="500" y2="50"/>
+      <line x1="0" y1="100" x2="500" y2="100"/><line x1="0" y1="150" x2="500" y2="150"/>
+      <line x1="0" y1="200" x2="500" y2="200"/><line x1="0" y1="250" x2="500" y2="250"/>
+      <line x1="0" y1="300" x2="500" y2="300"/>
+    </g>
+
+    <!-- Axes -->
+    <line x1="0" y1="280" x2="490" y2="280" stroke="#555" stroke-width="1.5" marker-end="url(#arr-axis)"/>
+    <line x1="0" y1="280" x2="0" y2="10" stroke="#555" stroke-width="1.5" marker-end="url(#arr-axis)"/>
+    <text x="495" y="295" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#777">e₁</text>
+    <text x="8" y="8" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#777">e₂</text>
+
+    <!-- Origin label -->
+    <text x="-15" y="295" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#777">O</text>
+
+    <!-- Query vector q (green) - along a direction -->
+    <line x1="0" y1="280" x2="420" y2="100" stroke="#81c784" stroke-width="2.5" marker-end="url(#arr-q)" filter="url(#glow-green)" opacity="0.9"/>
+    <text x="425" y="95" font-family="'Segoe UI',Arial,sans-serif" font-size="16" font-weight="bold" fill="#81c784">q</text>
+
+    <!-- Original vector x (cyan) -->
+    <line x1="0" y1="280" x2="280" y2="60" stroke="#4fc3f7" stroke-width="2.8" marker-end="url(#arr-x)" filter="url(#glow-cyan)"/>
+    <text x="285" y="52" font-family="'Segoe UI',Arial,sans-serif" font-size="16" font-weight="bold" fill="#4fc3f7">x</text>
+    <circle cx="280" cy="60" r="4" fill="#4fc3f7" filter="url(#glow-cyan)"/>
+
+    <!-- Quantized vector x̂ (orange) -->
+    <line x1="0" y1="280" x2="240" y2="110" stroke="#ffb74d" stroke-width="2.8" marker-end="url(#arr-xhat)" filter="url(#glow-orange)"/>
+    <text x="245" y="105" font-family="'Segoe UI',Arial,sans-serif" font-size="16" font-weight="bold" fill="#ffb74d">x̂</text>
+    <circle cx="240" cy="110" r="4" fill="#ffb74d" filter="url(#glow-orange)"/>
+
+    <!-- Projection of x onto q direction -->
+    <!-- Project point (280,60) onto line from (0,280) to (420,100) -->
+    <!-- Direction of q: (420, -180), normalized -->
+    <!-- Projection point calculation: dot product approach -->
+    <!-- proj_x ≈ (310, 147) on q line -->
+    <line x1="280" y1="60" x2="310" y2="147" stroke="#4fc3f7" stroke-width="1" stroke-dasharray="5,4" opacity="0.6"/>
+    <circle cx="310" cy="147" r="4" fill="#4fc3f7" opacity="0.8"/>
+    <text x="316" y="142" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#4fc3f7" opacity="0.9">proj_q(x)</text>
+
+    <!-- Projection of x̂ onto q direction -->
+    <!-- proj_xhat ≈ (265, 155) on q line -->
+    <line x1="240" y1="110" x2="265" y2="155" stroke="#ffb74d" stroke-width="1" stroke-dasharray="5,4" opacity="0.6"/>
+    <circle cx="265" cy="155" r="4" fill="#ffb74d" opacity="0.8"/>
+    <text x="220" y="170" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ffb74d" opacity="0.9">proj_q(x̂)</text>
+
+    <!-- Inner product distortion bracket (pink/magenta highlight) -->
+    <line x1="265" y1="155" x2="310" y2="147" stroke="#e879f9" stroke-width="5" stroke-linecap="round" filter="url(#glow-pink)" opacity="0.9"/>
+
+    <!-- Distortion label with arrow -->
+    <path d="M 288 165 C 288 180, 300 195, 310 200" stroke="#e879f9" stroke-width="1.5" fill="none" marker-end="url(#arr-proj)"/>
+    <rect x="220" y="200" width="180" height="44" rx="6" fill="#1e1030" stroke="#e879f9" stroke-width="1" opacity="0.9"/>
+    <text x="310" y="218" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="bold" fill="#e879f9">內積失真</text>
+    <text x="310" y="236" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#d4a4e8">|⟨q, x⟩ − ⟨q, x̂⟩|</text>
+
+    <!-- Angle arc between x and q -->
+    <path d="M 40 262 A 35 35 0 0 1 55 248" fill="none" stroke="#aaa" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="52" y="258" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#aaa">θ</text>
+
+    <!-- Angle arc between x̂ and q -->
+    <path d="M 40 262 A 28 28 0 0 1 50 252" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+  </g>
+
+  <!-- Legend box -->
+  <rect x="490" y="60" width="175" height="130" rx="8" fill="#1a1d2e" stroke="#3a3f55" stroke-width="1"/>
+  <text x="577" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="bold" fill="#e0e0e0">圖例</text>
+  <line x1="505" y1="92" x2="655" y2="92" stroke="#3a3f55" stroke-width="0.5"/>
+
+  <line x1="505" y1="110" x2="530" y2="110" stroke="#4fc3f7" stroke-width="2.5"/>
+  <circle cx="530" cy="110" r="3" fill="#4fc3f7"/>
+  <text x="538" y="114" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#4fc3f7">x（原始向量）</text>
+
+  <line x1="505" y1="132" x2="530" y2="132" stroke="#ffb74d" stroke-width="2.5"/>
+  <circle cx="530" cy="132" r="3" fill="#ffb74d"/>
+  <text x="538" y="136" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#ffb74d">x̂（量化後）</text>
+
+  <line x1="505" y1="154" x2="530" y2="154" stroke="#81c784" stroke-width="2.5"/>
+  <circle cx="530" cy="154" r="3" fill="#81c784"/>
+  <text x="538" y="158" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#81c784">q（查詢向量）</text>
+
+  <line x1="505" y1="176" x2="530" y2="176" stroke="#e879f9" stroke-width="4" stroke-linecap="round"/>
+  <text x="538" y="180" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#e879f9">內積失真量</text>
+
+  <!-- Key insight box -->
+  <rect x="30" y="395" width="620" height="36" rx="6" fill="#1e1030" stroke="#e879f9" stroke-width="1" opacity="0.8"/>
+  <text x="340" y="418" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#e0e0e0">
+    <tspan font-weight="bold" fill="#e879f9">關鍵洞察：</tspan>
+    <tspan fill="#ccc">內積失真 = 向量 x 和 x̂ 在查詢方向 q 上的投影長度差異</tspan>
+  </text>
 </svg>
