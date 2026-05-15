@@ -1,18 +1,192 @@
-<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="posDefGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a6b3c;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="negDefGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b2020;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="saddleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6a3fbf;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4fc3f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#81d4fa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="turboGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa07a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
   <!-- Background -->
-  <rect width="600" height="300" fill="#1e1e1e" />
-  
+  <rect width="900" height="620" fill="url(#bgGrad)" rx="12"/>
+
   <!-- Title -->
-  <text x="300" y="30" font-family="Segoe UI, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Hessian Matrix Concept</text>
-  
-  <!-- Curve -->
-  <path d="M100 250 Q 300 50, 500 250" fill="none" stroke="#4fc3f7" stroke-width="4" stroke-linecap="round" />
-  
-  <!-- Minimum Point -->
-  <circle cx="300" cy="115" r="6" fill="#ff5252" />
-  <text x="315" y="110" font-family="Segoe UI, sans-serif" font-size="14" fill="#ffffff">局部極小點</text>
-  
-  <!-- Labels -->
-  <text x="100" y="270" font-family="Segoe UI, sans-serif" font-size="12" fill="#aaaaaa">一階導數 (∇f) = 0</text>
-  <text x="380" y="270" font-family="Segoe UI, sans-serif" font-size="12" fill="#aaaaaa">二階導數 (H) > 0 (正定)</text>
+  <text x="450" y="38" font-size="22" fill="#e6edf3" text-anchor="middle" font-weight="bold" filter="url(#glow)">Hessian 矩陣與二階資訊</text>
+  <text x="450" y="58" font-size="13" fill="#8b949e" text-anchor="middle">曲率分析 × 量化策略 × TurboQuant 的設計選擇</text>
+
+  <!-- ===== Section 1: Positive Definite (Local Minimum) ===== -->
+  <g transform="translate(30, 80)">
+    <rect width="260" height="200" rx="10" fill="#0d1117" stroke="#238636" stroke-width="1.5" filter="url(#softShadow)"/>
+    <rect width="260" height="200" rx="10" fill="url(#posDefGrad)" opacity="0.3"/>
+    <!-- Title -->
+    <text x="130" y="25" font-size="14" fill="#3fb950" text-anchor="middle" font-weight="bold">正定 Hessian — 局部極小值</text>
+    <text x="130" y="42" font-size="11" fill="#8b949e" text-anchor="middle">所有特徵值 λᵢ > 0</text>
+    <!-- Bowl curve -->
+    <path d="M40 160 Q80 60, 130 100 Q180 140, 220 160" fill="none" stroke="#3fb950" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Minimum point -->
+    <circle cx="130" cy="100" r="5" fill="#3fb950" filter="url(#glow)"/>
+    <text x="140" y="95" font-size="10" fill="#3fb950">x*</text>
+    <!-- Gradient arrow -->
+    <line x1="80" y1="85" x2="110" y2="95" stroke="#4fc3f7" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="60" y="82" font-size="9" fill="#4fc3f7">∇f</text>
+    <!-- Curvature arrows -->
+    <path d="M90 130 Q100 115, 110 125" fill="none" stroke="#ffa657" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="75" y="140" font-size="9" fill="#ffa657">曲率 > 0</text>
+    <!-- Hessian matrix -->
+    <text x="130" y="180" font-size="10" fill="#8b949e" text-anchor="middle">H = [λ₁  0 ; 0  λ₂], λ₁,λ₂ > 0</text>
+  </g>
+
+  <!-- ===== Section 2: Negative Definite (Local Maximum) ===== -->
+  <g transform="translate(320, 80)">
+    <rect width="260" height="200" rx="10" fill="#0d1117" stroke="#da3633" stroke-width="1.5" filter="url(#softShadow)"/>
+    <rect width="260" height="200" rx="10" fill="url(#negDefGrad)" opacity="0.3"/>
+    <!-- Title -->
+    <text x="130" y="25" font-size="14" fill="#f85149" text-anchor="middle" font-weight="bold">負定 Hessian — 局部極大值</text>
+    <text x="130" y="42" font-size="11" fill="#8b949e" text-anchor="middle">所有特徵值 λᵢ < 0</text>
+    <!-- Inverted bowl curve -->
+    <path d="M40 100 Q80 160, 130 120 Q180 80, 220 100" fill="none" stroke="#f85149" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Maximum point -->
+    <circle cx="130" cy="120" r="5" fill="#f85149" filter="url(#glow)"/>
+    <text x="140" y="115" font-size="10" fill="#f85149">x*</text>
+    <!-- Curvature arrows -->
+    <path d="M90 90 Q100 105, 110 95" fill="none" stroke="#ffa657" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="75" y="85" font-size="9" fill="#ffa657">曲率 < 0</text>
+    <!-- Hessian matrix -->
+    <text x="130" y="180" font-size="10" fill="#8b949e" text-anchor="middle">H = [λ₁  0 ; 0  λ₂], λ₁,λ₂ < 0</text>
+  </g>
+
+  <!-- ===== Section 3: Indefinite (Saddle Point) ===== -->
+  <g transform="translate(610, 80)">
+    <rect width="260" height="200" rx="10" fill="#0d1117" stroke="#8957e5" stroke-width="1.5" filter="url(#softShadow)"/>
+    <rect width="260" height="200" rx="10" fill="url(#saddleGrad)" opacity="0.3"/>
+    <!-- Title -->
+    <text x="130" y="25" font-size="14" fill="#d2a8ff" text-anchor="middle" font-weight="bold">不定 Hessian — 鞍點</text>
+    <text x="130" y="42" font-size="11" fill="#8b949e" text-anchor="middle">特徵值有正有負</text>
+    <!-- Saddle curve (3D-like) -->
+    <path d="M40 130 Q90 60, 130 110 Q170 160, 220 90" fill="none" stroke="#d2a8ff" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M60 80 Q110 150, 130 110 Q150 70, 200 140" fill="none" stroke="#d2a8ff" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+    <!-- Saddle point -->
+    <circle cx="130" cy="110" r="5" fill="#d2a8ff" filter="url(#glow)"/>
+    <text x="140" y="105" font-size="10" fill="#d2a8ff">x*</text>
+    <!-- Direction labels -->
+    <text x="45" y="70" font-size="9" fill="#3fb950">λ₁ > 0 (上凹)</text>
+    <text x="160" y="155" font-size="9" fill="#f85149">λ₂ < 0 (下凹)</text>
+    <!-- Hessian matrix -->
+    <text x="130" y="180" font-size="10" fill="#8b949e" text-anchor="middle">H = [λ₁  0 ; 0  λ₂], λ₁ > 0, λ₂ < 0</text>
+  </g>
+
+  <!-- ===== Section 4: Hessian vs. TurboQuant Comparison ===== -->
+  <g transform="translate(30, 300)">
+    <rect width="840" height="300" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1.5" filter="url(#softShadow)"/>
+
+    <!-- Left side: Hessian-based approach -->
+    <text x="210" y="28" font-size="15" fill="#f0883e" text-anchor="middle" font-weight="bold">Hessian 加權量化（離線）</text>
+
+    <!-- Step boxes -->
+    <rect x="20" y="45" width="130" height="40" rx="6" fill="#1c1c2e" stroke="#f0883e" stroke-width="1"/>
+    <text x="85" y="62" font-size="10" fill="#f0883e" text-anchor="middle">收集校準資料</text>
+    <text x="85" y="76" font-size="9" fill="#8b949e" text-anchor="middle">需要代表性資料集</text>
+
+    <rect x="170" y="45" width="130" height="40" rx="6" fill="#1c1c2e" stroke="#f0883e" stroke-width="1"/>
+    <text x="235" y="62" font-size="10" fill="#f0883e" text-anchor="middle">計算 Hessian</text>
+    <text x="235" y="76" font-size="9" fill="#8b949e" text-anchor="middle">O(n²) 儲存 + O(n³) 計算</text>
+
+    <rect x="320" y="45" width="130" height="40" rx="6" fill="#1c1c2e" stroke="#f0883e" stroke-width="1"/>
+    <text x="385" y="62" font-size="10" fill="#f0883e" text-anchor="middle">調整量化映射</text>
+    <text x="385" y="76" font-size="9" fill="#8b949e" text-anchor="middle">依 Hessian 譜分配精度</text>
+
+    <!-- Arrows -->
+    <line x1="150" y1="65" x2="168" y2="65" stroke="#f0883e" stroke-width="1.5" marker-end="url(#arrowheadOrange)"/>
+    <line x1="300" y1="65" x2="318" y2="65" stroke="#f0883e" stroke-width="1.5" marker-end="url(#arrowheadOrange)"/>
+
+    <!-- Limitations -->
+    <rect x="20" y="100" width="430" height="55" rx="6" fill="#1c1c2e" stroke="#da3633" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="235" y="118" font-size="11" fill="#f85149" text-anchor="middle" font-weight="bold">❌ 限制</text>
+    <text x="235" y="135" font-size="10" fill="#8b949e" text-anchor="middle">需要大量預處理 · 不適合線上場景 · 缺乏理論保證</text>
+    <text x="235" y="148" font-size="10" fill="#8b949e" text-anchor="middle">KV 快取無法即時量化 · 索引建立耗時</text>
+
+    <!-- Right side: TurboQuant approach -->
+    <text x="640" y="28" font-size="15" fill="#4fc3f7" text-anchor="middle" font-weight="bold">TurboQuant（線上）</text>
+
+    <!-- Step boxes -->
+    <rect x="470" y="45" width="130" height="40" rx="6" fill="#0d1f2d" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="535" y="62" font-size="10" fill="#4fc3f7" text-anchor="middle">隨機旋轉 Π·x</text>
+    <text x="535" y="76" font-size="9" fill="#8b949e" text-anchor="middle">O(d²) 一次性成本</text>
+
+    <rect x="620" y="45" width="130" height="40" rx="6" fill="#0d1f2d" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="685" y="62" font-size="10" fill="#4fc3f7" text-anchor="middle">Beta 分佈量化</text>
+    <text x="685" y="76" font-size="9" fill="#8b949e" text-anchor="middle">Lloyd-Max 純量量化</text>
+
+    <rect x="770" y="45" width="80" height="40" rx="6" fill="#0d1f2d" stroke="#3fb950" stroke-width="1"/>
+    <text x="810" y="62" font-size="10" fill="#3fb950" text-anchor="middle">完成 ✓</text>
+    <text x="810" y="76" font-size="9" fill="#8b949e" text-anchor="middle">無需後處理</text>
+
+    <!-- Arrows -->
+    <line x1="600" y1="65" x2="618" y2="65" stroke="#4fc3f7" stroke-width="1.5" marker-end="url(#arrowheadBlue)"/>
+    <line x1="750" y1="65" x2="768" y2="65" stroke="#3fb950" stroke-width="1.5"/>
+
+    <!-- Advantages -->
+    <rect x="470" y="100" width="380" height="55" rx="6" fill="#0d1f2d" stroke="#238636" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="660" y="118" font-size="11" fill="#3fb950" text-anchor="middle" font-weight="bold">✅ 優勢</text>
+    <text x="660" y="135" font-size="10" fill="#8b949e" text-anchor="middle">數據無知 · 線上即時量化 · 接近最佳失真率保證</text>
+    <text x="660" y="148" font-size="10" fill="#8b949e" text-anchor="middle">KV 快取即時壓縮 · 索引時間 ≈ 0</text>
+
+    <!-- Key insight box -->
+    <rect x="20" y="170" width="830" height="115" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+    <text x="450" y="195" font-size="14" fill="#58a6ff" text-anchor="middle" font-weight="bold">🔑 核心洞見：隨機旋轉取代 Hessian</text>
+
+    <text x="40" y="218" font-size="11" fill="#e6edf3">Hessian 方法的邏輯：</text>
+    <text x="40" y="236" font-size="11" fill="#8b949e">找出重要方向（Hessian 特徵向量）→ 在重要方向分配更多位元</text>
+
+    <text x="460" y="218" font-size="11" fill="#e6edf3">TurboQuant 的邏輯：</text>
+    <text x="460" y="236" font-size="11" fill="#8b949e">隨機旋轉使所有方向同等重要 → 對每個座標用相同最佳量化器</text>
+
+    <text x="40" y="262" font-size="11" fill="#3fb950" font-weight="bold">結果：</text>
+    <text x="80" y="262" font-size="11" fill="#8b949e">TurboQuant 的 MSE 失真與資訊理論下界僅相差</text>
+    <text x="460" y="262" font-size="12" fill="#ffa657" font-weight="bold">3π/2 ≈ 2.7</text>
+    <text x="540" y="262" font-size="11" fill="#8b949e">的常數因子，且在低位元寬度時差距更小（b=1 時僅 ≈ 1.45 倍）</text>
+  </g>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4fc3f7"/>
+    </marker>
+    <marker id="arrowheadOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f0883e"/>
+    </marker>
+    <marker id="arrowheadBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4fc3f7"/>
+    </marker>
+  </defs>
 </svg>
