@@ -1,0 +1,197 @@
+<svg width="900" height="520" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="tq-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#78909c" />
+    </marker>
+    <marker id="tq-arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#42a5f5" />
+    </marker>
+    <marker id="tq-arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#66bb6a" />
+    </marker>
+    <marker id="tq-arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ef5350" />
+    </marker>
+    <filter id="tq-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="tq-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tq-red-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c62828;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef5350;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tq-blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1565c0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#42a5f5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tq-green-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2e7d32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#66bb6a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="520" fill="url(#tq-bg)" rx="8"/>
+
+  <!-- 標題 -->
+  <text x="450" y="38" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="bold" fill="#e0e0e0">從暴力法到 TurboQuant：向量量化編碼的演進</text>
+
+  <!-- ===== 方法 1: 傳統 VQ (暴力法) ===== -->
+  <rect x="30" y="65" width="250" height="200" rx="8" fill="#1a1a2e" stroke="#ef5350" stroke-width="1.5" opacity="0.9"/>
+  <rect x="30" y="65" width="250" height="32" rx="8" fill="url(#tq-red-grad)" opacity="0.9"/>
+  <text x="155" y="87" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">傳統 VQ（暴力法）</text>
+
+  <!-- 輸入向量 -->
+  <rect x="50" y="110" width="80" height="30" rx="4" fill="#263238" stroke="#546e7a" stroke-width="1"/>
+  <text x="90" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#90a4ae">x ∈ ℝᵈ</text>
+
+  <!-- 箭頭 -->
+  <line x1="130" y1="125" x2="160" y2="125" stroke="#ef5350" stroke-width="1.5" marker-end="url(#tq-arrow-red)"/>
+
+  <!-- 碼本搜尋 -->
+  <rect x="160" y="105" width="100" height="40" rx="4" fill="#263238" stroke="#ef5350" stroke-width="1.5"/>
+  <text x="210" y="122" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#ef5350">暴力搜尋</text>
+  <text x="210" y="137" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#90a4ae">argmin ‖x - cₖ‖</text>
+
+  <!-- 碼本示意 -->
+  <rect x="50" y="160" width="210" height="40" rx="4" fill="#1a237e" fill-opacity="0.3" stroke="#5c6bc0" stroke-width="0.8"/>
+  <text x="155" y="177" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#7986cb">碼本 C = {c₁, c₂, ..., cₖ}</text>
+  <text x="155" y="193" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#546e7a">K = 2ᵇ 個高維碼字</text>
+
+  <!-- 複雜度 -->
+  <rect x="50" y="215" width="210" height="35" rx="4" fill="#b71c1c" fill-opacity="0.2" stroke="#ef5350" stroke-width="0.8"/>
+  <text x="155" y="232" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#ef5350">複雜度：O(K · d)</text>
+  <text x="155" y="245" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#ef9a9a">K 隨位元寬度指數增長！</text>
+
+  <!-- ===== 方法 2: PQ (乘積量化) ===== -->
+  <rect x="325" y="65" width="250" height="200" rx="8" fill="#1a1a2e" stroke="#42a5f5" stroke-width="1.5" opacity="0.9"/>
+  <rect x="325" y="65" width="250" height="32" rx="8" fill="url(#tq-blue-grad)" opacity="0.9"/>
+  <text x="450" y="87" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">乘積量化 (PQ)</text>
+
+  <!-- 輸入向量 -->
+  <rect x="345" y="110" width="80" height="30" rx="4" fill="#263238" stroke="#546e7a" stroke-width="1"/>
+  <text x="385" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#90a4ae">x ∈ ℝᵈ</text>
+
+  <!-- 切分 -->
+  <rect x="345" y="150" width="30" height="25" rx="3" fill="#1565c0" fill-opacity="0.4" stroke="#42a5f5" stroke-width="0.8"/>
+  <text x="360" y="167" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#90caf9">x₁</text>
+  <rect x="380" y="150" width="30" height="25" rx="3" fill="#1565c0" fill-opacity="0.4" stroke="#42a5f5" stroke-width="0.8"/>
+  <text x="395" y="167" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#90caf9">x₂</text>
+  <text x="420" y="167" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#546e7a">...</text>
+  <rect x="440" y="150" width="30" height="25" rx="3" fill="#1565c0" fill-opacity="0.4" stroke="#42a5f5" stroke-width="0.8"/>
+  <text x="455" y="167" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#90caf9">xₘ</text>
+
+  <!-- k-means -->
+  <rect x="480" y="148" width="80" height="30" rx="4" fill="#263238" stroke="#42a5f5" stroke-width="1.2"/>
+  <text x="520" y="163" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="bold" fill="#42a5f5">k-means</text>
+  <text x="520" y="174" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#546e7a">每子空間</text>
+
+  <!-- 複雜度 -->
+  <rect x="345" y="215" width="210" height="35" rx="4" fill="#0d47a1" fill-opacity="0.2" stroke="#42a5f5" stroke-width="0.8"/>
+  <text x="450" y="232" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#42a5f5">複雜度：O(m · 2ᵇ · d/m)</text>
+  <text x="450" y="245" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#90caf9">需要 k-means 訓練，索引時間長</text>
+
+  <!-- ===== 方法 3: TurboQuant ===== -->
+  <rect x="620" y="65" width="250" height="200" rx="8" fill="#1a1a2e" stroke="#66bb6a" stroke-width="1.5" opacity="0.9"/>
+  <rect x="620" y="65" width="250" height="32" rx="8" fill="url(#tq-green-grad)" opacity="0.9"/>
+  <text x="745" y="87" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">TurboQuant</text>
+
+  <!-- 輸入向量 -->
+  <rect x="640" y="110" width="60" height="30" rx="4" fill="#263238" stroke="#546e7a" stroke-width="1"/>
+  <text x="670" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#90a4ae">x</text>
+
+  <!-- 隨機旋轉 -->
+  <line x1="700" y1="125" x2="730" y2="125" stroke="#66bb6a" stroke-width="1.5" marker-end="url(#tq-arrow-green)"/>
+  <rect x="730" y="108" width="60" height="34" rx="4" fill="#263238" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="760" y="123" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="bold" fill="#66bb6a">Π · x</text>
+  <text x="760" y="137" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#546e7a">隨機旋轉</text>
+
+  <!-- 純量量化 -->
+  <rect x="640" y="155" width="210" height="45" rx="4" fill="#1b5e20" fill-opacity="0.2" stroke="#66bb6a" stroke-width="0.8"/>
+  <text x="745" y="172" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#66bb6a">每座標獨立純量量化</text>
+  <text x="745" y="190" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a5d6a7">idxⱼ = argminₖ |yⱼ - cₖ|, j=1..d</text>
+
+  <!-- 複雜度 -->
+  <rect x="640" y="215" width="210" height="35" rx="4" fill="#1b5e20" fill-opacity="0.3" stroke="#66bb6a" stroke-width="0.8"/>
+  <text x="745" y="232" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#66bb6a">複雜度：O(d · 2ᵇ)</text>
+  <text x="745" y="245" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a5d6a7">2ᵇ 很小，可向量化！索引時間 ≈ 0</text>
+
+  <!-- ===== 演進箭頭 ===== -->
+  <line x1="280" y1="165" x2="320" y2="165" stroke="#78909c" stroke-width="2" marker-end="url(#tq-arrow)" stroke-dasharray="6,3"/>
+  <line x1="575" y1="165" x2="615" y2="165" stroke="#78909c" stroke-width="2" marker-end="url(#tq-arrow)" stroke-dasharray="6,3"/>
+
+  <!-- ===== 對比表格 ===== -->
+  <rect x="30" y="290" width="840" height="210" rx="8" fill="#1a1a2e" stroke="#546e7a" stroke-width="1" opacity="0.9"/>
+  <text x="450" y="315" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="bold" fill="#e0e0e0">三種方法對比</text>
+
+  <!-- 表頭 -->
+  <rect x="50" y="325" width="140" height="28" rx="4" fill="#263238" stroke="#546e7a" stroke-width="0.8"/>
+  <text x="120" y="344" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#e0e0e0">特性</text>
+
+  <rect x="200" y="325" width="200" height="28" rx="4" fill="#b71c1c" fill-opacity="0.2" stroke="#ef5350" stroke-width="0.8"/>
+  <text x="300" y="344" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#ef5350">傳統 VQ（暴力法）</text>
+
+  <rect x="410" y="325" width="200" height="28" rx="4" fill="#0d47a1" fill-opacity="0.2" stroke="#42a5f5" stroke-width="0.8"/>
+  <text x="510" y="344" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#42a5f5">乘積量化 (PQ)</text>
+
+  <rect x="620" y="325" width="240" height="28" rx="4" fill="#1b5e20" fill-opacity="0.2" stroke="#66bb6a" stroke-width="0.8"/>
+  <text x="740" y="344" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#66bb6a">TurboQuant</text>
+
+  <!-- 表格行 -->
+  <!-- 搜尋空間 -->
+  <rect x="50" y="358" width="140" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="120" y="376" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#b0bec5">搜尋空間</text>
+  <rect x="200" y="358" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="300" y="376" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ef9a9a">ℝᵈ 中的 K 個碼字</text>
+  <rect x="410" y="358" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="510" y="376" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#90caf9">m 個子空間各 K 個碼字</text>
+  <rect x="620" y="358" width="240" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="740" y="376" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a5d6a7">d 個純量各 2ᵇ 個質心</text>
+
+  <!-- 編碼複雜度 -->
+  <rect x="50" y="387" width="140" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="120" y="405" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#b0bec5">編碼複雜度</text>
+  <rect x="200" y="387" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="300" y="405" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ef9a9a">O(K · d)</text>
+  <rect x="410" y="387" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="510" y="405" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#90caf9">O(m · 2ᵇ · d/m)</text>
+  <rect x="620" y="387" width="240" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="740" y="405" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a5d6a7">O(d · 2ᵇ) — 極低！</text>
+
+  <!-- 碼本建立 -->
+  <rect x="50" y="416" width="140" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="120" y="434" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#b0bec5">碼本建立</text>
+  <rect x="200" y="416" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="300" y="434" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ef9a9a">需要 k-means 訓練</text>
+  <rect x="410" y="416" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="510" y="434" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#90caf9">需要 k-means 訓練</text>
+  <rect x="620" y="416" width="240" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="740" y="434" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a5d6a7">預計算（Lloyd-Max）</text>
+
+  <!-- GPU 加速 -->
+  <rect x="50" y="445" width="140" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="120" y="463" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#b0bec5">GPU 加速</text>
+  <rect x="200" y="445" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="300" y="463" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ef9a9a">困難</text>
+  <rect x="410" y="445" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="510" y="463" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#90caf9">部分支援（LUT）</text>
+  <rect x="620" y="445" width="240" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="740" y="463" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a5d6a7">完全向量化</text>
+
+  <!-- 索引時間 -->
+  <rect x="50" y="474" width="140" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="120" y="492" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#b0bec5">索引時間 (d=1536)</text>
+  <rect x="200" y="474" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="300" y="492" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ef9a9a">數百秒</text>
+  <rect x="410" y="474" width="200" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="510" y="492" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#90caf9">239.75 秒</text>
+  <rect x="620" y="474" width="240" height="26" rx="2" fill="#1e1e1e" stroke="#37474f" stroke-width="0.5"/>
+  <text x="740" y="492" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#66bb6a">0.0013 秒</text>
+</svg>
