@@ -1,5 +1,7 @@
 # 🚀 TurboQuant 簡介
 
+[🏠 返回目錄](../index.md)
+
 本文旨在深入淺出地解析 Google 最新提出的 **TurboQuant** 技術。這項技術透過極致的量化演算法，重新定義了大型語言模型（LLM）在處理長上下文（Long Context）時的記憶體效率與運算速度。
 
 ---

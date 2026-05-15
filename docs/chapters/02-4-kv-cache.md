@@ -1,5 +1,7 @@
 # 📐 2.4 KV Cache 解析 (KV Cache Analysis)
 
+[🏠 返回目錄](../index.md)
+
 ## 核心概念：避免重複計算
 在 Transformer 的自回算（Autoregressive）生成過程中，每生成一個新的 Token，模型都需要根據之前的 Token 序列來計算注意力權重。如果每次都重新計算所有先前 Token 的 Key ($\mathbf{K}$) 與 Value ($\mathbf{V}$) 向量，計算量將會隨著序列長度 $L$ 的增加而呈平方級別（$O(L^2)$）增長。
 

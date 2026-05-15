@@ -1,6 +1,6 @@
 # Gersho's Influential Paper: Vector Quantization
 
-[返回 TurboQuant 翻譯主頁](03-turboquant-translation.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 翻譯主頁](03-turboquant-translation.md)
 
 ## 概述
 Allen Gersho 在向量量化（Vector Quantization, VQ）領域具有奠基性的貢獻。他與 Robert M. Gray 合著的經典著作 *Vector Quantization and Signal Compression*（1992）是該領域的聖經。這篇論文及相關研究確立了利用向量而非純量進行信號壓縮的理論基礎。

@@ -1,5 +1,7 @@
 # 均方誤差 (Mean-Squared Error, MSE) 深度解析
 
+[🏠 返回目錄](../index.md)
+
 ## 1. 什麼是 MSE？
 
 **均方誤差 (Mean-Squared Error, MSE)** 是衡量預測值與真實值之間差異的一種常見統計指標。在機器學習、訊號處理以及量化演算法（如 TurboQuant）中，MSE 被廣泛用作「失真」（Distortion）或「誤差」（Error）的度量標準。

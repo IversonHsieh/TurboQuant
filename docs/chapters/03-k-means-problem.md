@@ -1,5 +1,7 @@
 # K-Means Problem 詳細解說
 
+[🏠 返回目錄](../index.md)
+
 > **相關連結：** [返回 TurboQuant 論文翻譯](03-turboquant-translation.md) | [Lloyd-Max 量化器](03-lloyd-max-quantizer.md) | [Beta 分佈](03-beta-distribution.md)
 
 ---

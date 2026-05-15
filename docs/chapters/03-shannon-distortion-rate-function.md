@@ -1,5 +1,7 @@
 # 香農失真 - 率函數（Shannon Distortion-Rate Function）詳細解說
 
+[🏠 返回目錄](../index.md)
+
 > 本文是對 [TurboQuant 論文完整翻譯](03-turboquant-translation.md) 中提到的「香農失真 - 率函數」概念的詳細補充說明。
 
 ---

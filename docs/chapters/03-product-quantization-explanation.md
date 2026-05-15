@@ -1,6 +1,6 @@
 # 乘積量化 (Product Quantization, PQ) 詳細解說
 
-[返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 ---
 

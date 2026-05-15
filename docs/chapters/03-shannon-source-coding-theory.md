@@ -1,5 +1,7 @@
 # Shannon's Source Coding Theory (香農信源編碼理論)
 
+[🏠 返回目錄](../index.md)
+
 香農信源編碼理論 (Shannon's source coding theory) 是資訊理論的核心組成部分，由克勞德·香農 (Claude Shannon) 於 1948 年提出。該理論定義了數據壓縮的基礎極限。
 
 ## 核心概念

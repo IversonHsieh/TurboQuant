@@ -1,5 +1,7 @@
 # 📐 2.5 PolarQuant 解析 (PolarQuant Analysis)
 
+[🏠 返回目錄](../index.md)
+
 ## 核心思想：幅度與相位的解耦 (Decoupling Magnitude and Phase)
 **PolarQuant** 是 TurboQuant 的核心技術，其基本思想是利用**極座標系**來重新定義向量的表示方式。傳統的量化方法（如 INT8/FP8）通常直接對笛卡兒座標下的數值進行截斷與捨入，這在處理具有旋轉特性的向量時，容易造成嚴重的精度損失。
 

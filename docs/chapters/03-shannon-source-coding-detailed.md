@@ -1,5 +1,7 @@
 # Shannon's Source Coding Theory - 詳細解說
 
+[🏠 返回目錄](../index.md)
+
 > **相關文件：** 本頁是對 [`03-shannon-source-coding-theory.md`](03-shannon-source-coding-theory.md) 的詳細補充說明
 > 
 > **原始出處：** 此詳細解說源自 [`03-turboquant-translation.md`](03-turboquant-translation.md:39) 第 39 行提到的 "Shannon's seminal work on Source Coding theory"

@@ -1,5 +1,7 @@
 # 📐 章節 2：數學基礎 (Mathematical Foundations)
 
+[🏠 返回目錄](../index.md)
+
 本章節將深入探討理解 TurboQuant 演算法所需的關鍵數學背景，從基礎的座標系轉換到複雜的維度縮減理論。
 
 ## 📖 章節目錄

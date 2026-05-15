@@ -1,5 +1,7 @@
 # 最近鄰搜尋 (Nearest Neighbor Search) 詳細解說
 
+[🏠 返回目錄](../index.md)
+
 **相關連結：**
 - [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 - [向量量化解釋](03-vector-quantization-explanation.md)

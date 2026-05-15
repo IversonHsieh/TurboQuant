@@ -1,5 +1,7 @@
 # 🚀 章節 3：TurboQuant 深度解析 (TurboQuant Deep Dive)
 
+[🏠 返回目錄](../index.md)
+
 本章節將深入探討 TurboQuant 演算法的具體實作流程，從輸入的原始 Embedding 到最終壓縮後的 KV Cache 儲存，詳細解析其核心技術步驟。
 
 ## 3.1 TurboQuant 演算法全景 (Algorithm Overview)

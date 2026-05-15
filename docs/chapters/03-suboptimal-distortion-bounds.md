@@ -1,5 +1,7 @@
 # 次佳失真界限（Suboptimal Distortion Bounds）詳細解析
 
+[🏠 返回目錄](../index.md)
+
 ## 目錄
 
 - [什麼是 Suboptimal Distortion Bounds](#什麼是-suboptimal-distortion-bounds)

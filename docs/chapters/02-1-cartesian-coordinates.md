@@ -1,5 +1,7 @@
 # 📐 2.1 笛卡兒座標系 (Cartesian Coordinate System)
 
+[🏠 返回目錄](../index.md)
+
 ## 核心概念
 笛卡兒座標系是我們在處理高維向量空間（如 LLM 的 Embedding Space）時最常用的基準。在二維平面上，任何一點都可以透過其與 $x$ 軸與 $y$ 軸的垂直距離來定義，表示為 $(x, y)$。
 

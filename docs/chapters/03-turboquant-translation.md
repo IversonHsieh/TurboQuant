@@ -1,5 +1,7 @@
 # TurboQuant 論文完整翻譯
 
+[🏠 返回目錄](../index.md)
+
 **論文標題：** TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate
 
 **作者：** Amir Zandieh (Google Research), Majid Daliri (New York University), Majid Hadian (Google DeepMind), Vahab Mirrokni (Google Research)

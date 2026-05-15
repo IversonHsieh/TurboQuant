@@ -1,5 +1,7 @@
 # 什麼是 Inner Product Distortion（內積失真）？
 
+[🏠 返回目錄](../index.md)
+
 ## 定義與背景
 
 在高維向量量化（Vector Quantization, VQ）中，除了常見的均方誤差（MSE, Mean Squared Error）外，「內積失真（Inner Product Distortion）」也是一個極為重要的衡量指標。它描述的是：

@@ -1,6 +1,6 @@
 # Quantized Johnson-Lindenstrauss (QJL) 詳解
 
-[返回 TurboQuant 論文翻譯 (原文/中譯)](03-turboquant-translation.md#L89)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯 (原文/中譯)](03-turboquant-translation.md#L89)
 
 ---
 

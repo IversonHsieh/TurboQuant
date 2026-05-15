@@ -1,6 +1,6 @@
 # Brute-Force Nearest Neighbor Search (暴力法最近鄰搜尋)
 
-[返回主翻譯頁面](03-turboquant-translation.md)
+[🏠 返回目錄](../index.md) | [返回主翻譯頁面](03-turboquant-translation.md)
 
 ## 定義
 

@@ -1,5 +1,7 @@
 # 📐 2.6 QJL (Quantized Johnson-Lindenstrauss) 解析
 
+[🏠 返回目錄](../index.md)
+
 ## 核心理論：Johnson-Lindenstrauss Lemma
 **Johnson-Lindenstrauss (JL) Lemma** 是高維幾何中的一個強大理論。它指出：給定一組 $N$ 個點，我們可以將它們投影到一個維度僅為 $O(\log N / \epsilon^2)$ 的低維空間中，同時保證點與點之間的歐幾里得距離誤差不超過 $\epsilon$。
 
