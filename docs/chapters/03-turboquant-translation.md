@@ -17,25 +17,27 @@
 ## 📑 目錄
 
 - [Abstract（摘要）](#abstract)
-- [1 Introduction（引言）](#1-introduction)
-  - [1.1 Problem Definition（問題定義）](#1-1-problem-definition)
-  - [1.2 Related Work（相關工作）](#1-2-related-work)
-  - [1.3 Overview of Techniques and Contributions（技術與貢獻概述）](#1-3-overview-of-techniques-and-contributions)
-- [2 Preliminaries（預備知識）](#2-preliminaries)
-  - [2.1 Shannon Lower Bound on Distortion（失真的香農下界）](#2-1-shannon-lower-bound-on-distortion)
-  - [2.2 QJL: 1-bit inner product quantization（QJL：1 位元內積量化）](#2-2-qjl-1-bit-inner-product-quantization)
-- [3 TurboQuant: High Performance Quantization（TurboQuant：高性能量化）](#3-turboquant-high-performance-quantization)
-  - [3.1 MSE Optimal TurboQuant（MSE 最佳 TurboQuant）](#3-1-mse-optimal-turboquant)
-  - [3.2 Inner-product Optimal TurboQuant（內積最佳 TurboQuant）](#3-2-inner-product-optimal-turboquant)
-  - [3.3 Lower Bounds（下界）](#3-3-lower-bounds)
-- [4 Experiments（實驗）](#4-experiments)
-  - [4.1 Empirical Validation（經驗驗證）](#4-1-empirical-validation)
-  - [4.2 Needle-In-A-Haystack（大海撈針）](#4-2-needle-in-a-haystack)
-  - [4.3 End-to-end Generation on LongBench（LongBench 上的端到端生成）](#4-3-end-to-end-generation-on-longbench)
-  - [4.4 Near Neighbour Search Experiments（最近鄰搜尋實驗）](#4-4-near-neighbour-search-experiments)
+- [1 Introduction（引言）](#introduction)
+  - [1.1 Problem Definition（問題定義）](#problem-definition)
+  - [1.2 Related Work（相關工作）](#related-work)
+  - [1.3 Overview of Techniques and Contributions（技術與貢獻概述）](#overview)
+- [2 Preliminaries（預備知識）](#preliminaries)
+  - [2.1 Shannon Lower Bound on Distortion（失真的香農下界）](#shannon-lower-bound)
+  - [2.2 QJL: 1-bit inner product quantization（QJL：1 位元內積量化）](#qjl)
+- [3 TurboQuant: High Performance Quantization（TurboQuant：高性能量化）](#turboquant)
+  - [3.1 MSE Optimal TurboQuant（MSE 最佳 TurboQuant）](#mse-optimal)
+  - [3.2 Inner-product Optimal TurboQuant（內積最佳 TurboQuant）](#inner-product-optimal)
+  - [3.3 Lower Bounds（下界）](#lower-bounds)
+- [4 Experiments（實驗）](#experiments)
+  - [4.1 Empirical Validation（經驗驗證）](#empirical-validation)
+  - [4.2 Needle-In-A-Haystack（大海撈針）](#needle-in-a-haystack)
+  - [4.3 End-to-end Generation on LongBench（LongBench 上的端到端生成）](#longbench)
+  - [4.4 Near Neighbour Search Experiments（最近鄰搜尋實驗）](#near-neighbour)
 - [References（參考文獻）](#references)
 
 ---
+
+<a id="abstract"></a>
 
 ## Abstract（摘要）
 
@@ -48,6 +50,8 @@
 [向量量化（Vector Quantization）](03-vector-quantization-explanation.md) 是一個源於 [香農（Shannon）信源編碼理論](03-shannon-source-coding-theory.md) 的問題，其目標是對高維歐幾里得向量進行量化，同時最小化其幾何結構中的失真。我們提出了 TurboQuant 來同時解決 [均方誤差（MSE）](03-mse-explanation.md) 和 [內積失真](03-inner-product-distortion.md) 問題，克服了現有方法無法達到最佳失真率的限制。我們的數據無知（data-oblivious）演算法適合線上應用，在所有位元寬度和維度上都能達到接近最佳的失真率（在一個小常數因子內）。TurboQuant 透過隨機旋轉輸入向量來實現這一目標，誘導座標上產生集中的 [Beta 分佈](03-beta-distribution.md)，並利用高維度中不同座標的近似獨立性，對每個座標簡單地應用最佳純量量化器。認識到 MSE 最佳量化器會在內積估計中引入偏差，我們提出了一個兩階段方法：首先應用 MSE 量化器，然後對殘差應用 1 位元量化 JL（QJL）變換，從而產生一個無偏的內積量化器。我們還提供了任何向量量化器可達到的最佳失真率的資訊理論下界的正式證明，表明 TurboQuant 與這些下界非常接近，僅相差一個小常數（$\approx 2.7$）因子。實驗結果驗證了我們的理論發現，表明對於 KV 快取量化，我們在每通道 3.5 位元時達到絕對的品質中性，在每通道 2.5 位元時僅有邊際的品質下降。此外，在最近鄰搜尋任務中，我們的方法在召回率方面優於現有的乘積量化技術，同時將索引時間減少到幾乎為零。
 
 ---
+
+<a id="introduction"></a>
 
 ## 1 Introduction（引言）
 
@@ -125,6 +129,8 @@ TurboQuant 的核心是一個兩階段過程。首先，我們開發了一個在
 
 ---
 
+<a id="problem-definition"></a>
+
 ### 1.1 Problem Definition（問題定義）
 
 **原文：**
@@ -199,6 +205,8 @@ We aim to design computationally efficient quantizers $Q_{\text{mse}}$ and $Q_{\
 
 ---
 
+<a id="related-work"></a>
+
 ### 1.2 Related Work（相關工作）
 
 **原文：**
@@ -248,6 +256,8 @@ Recently, a grid-based PQ method was introduced in [22], eliminating the need fo
 最近，[22] 中引入了一種基於網格的 PQ 方法，消除了對預處理的需求。這種方法透過將均勻網格投影到單位球面上並進行搜尋以識別最接近數據點的投影來運作。雖然該論文的理論保證是次佳的（可能是由於分析鬆散——因為實際性能超過理論界限），但網格投影和二元搜尋演算法在計算上也很慢，並且在像 GPU 這樣的加速器上特別低效，因為其演算法本質上缺乏向量化，這阻止了並行處理。
 
 ---
+
+<a id="overview"></a>
 
 ### 1.3 Overview of Techniques and Contributions（技術與貢獻概述）
 
@@ -353,6 +363,8 @@ Finally in ?? we apply TurboQuant to various high-dimensional near neighbor sear
 
 ---
 
+<a id="preliminaries"></a>
+
 ## 2 Preliminaries（預備知識）
 
 **原文：**
@@ -417,6 +429,8 @@ $$
 
 ---
 
+<a id="shannon-lower-bound"></a>
+
 ### 2.1 Shannon Lower Bound on Distortion（失真的香農下界）
 
 **原文：**
@@ -478,6 +492,8 @@ $$
 **證明。** 如果我們讓 $A_d$ 表示超球面 $\mathbb{S}^{d-1}$ 的面積，則超球面上均勻分佈的熵為 $h(\mathbf{x})=\log_2 A_d$。將其代入 ?? 中的 SLB，我們得到 $D(B) \geq \frac{d}{2\pi e}\cdot A_d^{2/d}\cdot 2^{-2B/d}$。使用 Gamma 函數的 Stirling 近似公式，我們有 $A_d = \frac{2\pi^{d/2}}{\Gamma(d/2)} \geq (\frac{2\pi e}{d})^{d/2}\cdot\sqrt{\frac{d}{\pi}}\cdot(1-O(1/d))$。透過將此代入從 ?? 獲得的不等式，我們得到所需的下界。∎
 
 ---
+
+<a id="qjl"></a>
 
 ### 2.2 QJL: 1-bit inner product quantization（QJL：1 位元內積量化）
 
@@ -589,6 +605,8 @@ $$
 
 ---
 
+<a id="turboquant"></a>
+
 ## 3 TurboQuant: High Performance Quantization（TurboQuant：高性能量化）
 
 **原文：**
@@ -604,6 +622,8 @@ Furthermore, in ??, we establish information-theoretic lower bounds on the best 
 此外，在 ?? 中，我們建立了任何向量量化器可達到的最佳失真率的資訊理論下界。該分析表明，TurboQuant 實現了接近最佳性，在所有位元寬度上與下界僅相差一個小常數因子。
 
 ---
+
+<a id="mse-optimal"></a>
 
 ### 3.1 MSE Optimal TurboQuant（MSE 最佳 TurboQuant）
 
@@ -800,6 +820,8 @@ $$
 **熵編碼碼本指針。** TurboQuant 的效率可以透過對指向最近碼本元素的索引應用熵編碼來進一步提高。具體來說，每個碼字索引在量化向量中出現的機率可以計算為 $p_\ell := \int_{\frac{c_{\ell-1}+c_\ell}{2}}^{\frac{c_\ell+c_{\ell+1}}{2}} f_X(x)dx$。最佳地編碼索引，將平均位元寬度減少到接近分佈 $\{p_i\}_{i\in[2^b]}$ 的熵。這種無損壓縮不影響失真，並提供無成本的位元寬度減少。最顯著的減少發生在 $b=4$ 時，其中 $\{p_i\}_{i\in[2^b]}$ 的熵約為 $3.8$。最佳前綴碼的詳細計算表明，平均位元寬度可以減少 $5\%$。然而，鑑於增益有限，我們選擇不將此技術納入 TurboQuant，以保持簡單性和速度。
 
 ---
+
+<a id="inner-product-optimal"></a>
 
 ### 3.2 Inner-product Optimal TurboQuant（內積最佳 TurboQuant）
 
@@ -1031,6 +1053,8 @@ $$
 
 ---
 
+<a id="lower-bounds"></a>
+
 ### 3.3 Lower Bounds（下界）
 
 **原文：**
@@ -1127,6 +1151,8 @@ We note that a comparable lower bound for the worst-case distortion in vector qu
 
 ---
 
+<a id="experiments"></a>
+
 ## 4 Experiments（實驗）
 
 **原文：**
@@ -1138,6 +1164,8 @@ All experiments are performed using a single NVIDIA A100 GPU. The experimental s
 所有實驗均使用單個 NVIDIA A100 GPU 執行。實驗部分分為兩部分：一部分是經驗性地驗證理論結果，另一部分是評估我們的方法在下游任務上的性能，特別是 KV 快取量化和最近鄰向量搜尋。
 
 ---
+
+<a id="empirical-validation"></a>
 
 ### 4.1 Empirical Validation（經驗驗證）
 
@@ -1207,6 +1235,8 @@ Along with the histograms, we also plot ?? the average inner product error and M
 
 ---
 
+<a id="needle-in-a-haystack"></a>
+
 ### 4.2 Needle-In-A-Haystack（大海撈針）
 
 **原文：**
@@ -1245,6 +1275,8 @@ The results, illustrated in ??, reveal that quantization methods with theoretica
 
 ---
 
+<a id="longbench"></a>
+
 ### 4.3 End-to-end Generation on LongBench（LongBench 上的端到端生成）
 
 **原文：**
@@ -1270,6 +1302,8 @@ As shown in ??, our approach outperforms other methods for both $\text{Llama-3.1
 如 ?? 所示，我們的方法在 $\text{Llama-3.1-8B-Instruct}$ 和 $\text{Ministral-7B-Instruct}$ 上都優於其他方法，實現了顯著更高的平均分數。我們使用 2.5 位元和 3.5 位元量化在文本生成過程中評估我們的方法。這些非整數位精度源於我們將通道分為異常值和非異常值集合的策略，並對每個集合應用兩個獨立的 TurboQuant 實例，為異常值分配更高的位精度。這種異常值處理策略與先前的工作 [63, 51] 一致。例如，在我們的 2.5 位元設置中，32 個異常通道以 3 位元量化，而剩餘的 96 個通道使用 2 位元，導致有效位精度為 $(32\times 3+96\times 2)/128 = 2.5$。對於 3.5 位元量化，異常值和常規通道的不同比率導致更高的有效位精度。儘管使用的位元少於競爭技術，TurboQuant 仍保持與未量化模型相當的性能。值得注意的是，我們在將量化向量壓縮至少 $4.5\times$ 倍的情況下實現了這一點。
 
 ---
+
+<a id="near-neighbour"></a>
 
 ### 4.4 Near Neighbour Search Experiments（最近鄰搜尋實驗）
 
@@ -1318,6 +1352,8 @@ Despite the advantages granted to the baseline methods, TurboQuant consistently 
 ![Figure 5(c): OpenAI3 - d=3072 上的召回率比較](../svg/paper-figures/x15.png)
 
 ---
+
+<a id="references"></a>
 
 ## References（參考文獻）
 
