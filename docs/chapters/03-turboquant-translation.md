@@ -10,6 +10,8 @@
 
 **許可證：** CC BY 4.0
 
+**論文原文連結：** [arXiv:2504.19874v1](https://arxiv.org/html/2504.19874v1)
+
 ---
 
 ## Abstract（摘要）
