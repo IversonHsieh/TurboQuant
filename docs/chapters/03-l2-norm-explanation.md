@@ -1,6 +1,6 @@
 # L2 Norm (歐幾里得範數) 詳細解說
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 L2 Norm，又稱為歐幾里得範數 (Euclidean norm) 或歐幾里得距離，是向量空間中衡量向量長度的一種方式。它在機器學習、深度學習、信號處理和許多工程領域中都有廣泛應用。
 

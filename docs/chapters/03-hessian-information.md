@@ -1,6 +1,6 @@
 # Hessian 矩陣與二階資訊詳解
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 > **相關文件：** 本文是針對 [TurboQuant 論文翻譯](03-turboquant-translation.md) 第 1.2 節中提到的「二階（Hessian）資訊」概念的詳細補充說明。
 >

@@ -1,6 +1,6 @@
 # 向量量化 (Vector Quantization, VQ) 深度解析
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 向量量化 (Vector Quantization, VQ) 是一種將高維向量壓縮為低維度表示的技術。與傳統的純量量化 (Scalar Quantization, SQ) 不同，VQ 同時考慮了向量中各個維度之間的相關性，透過將一組維度視為一個單元（向量）來進行量化，從而能更有效地捕捉數據的幾何結構並降低失真。
 

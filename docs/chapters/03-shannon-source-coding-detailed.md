@@ -1,6 +1,6 @@
 # Shannon's Source Coding Theory - 詳細解說
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 > **相關文件：** 本頁是對 [`03-shannon-source-coding-theory.md`](03-shannon-source-coding-theory.md) 的詳細補充說明
 > 

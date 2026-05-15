@@ -1,6 +1,6 @@
 # 內積失真（Inner Product Distortion）深度解析
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 ## 目錄
 

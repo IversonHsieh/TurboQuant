@@ -1,6 +1,6 @@
 # Beta Distribution (Beta 分佈) 詳細解析
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 > **相關文件：** 本文是針對 [`03-turboquant-translation.md`](03-turboquant-translation.md) 中提到的 Beta distribution 概念的補充說明。
 >

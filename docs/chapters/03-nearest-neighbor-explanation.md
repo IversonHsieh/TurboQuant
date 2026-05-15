@@ -1,6 +1,6 @@
 # 最近鄰搜尋 (Nearest Neighbor Search) 詳細解說
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 **相關連結：**
 - [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)

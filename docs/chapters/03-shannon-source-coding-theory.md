@@ -1,6 +1,6 @@
 # Shannon's Source Coding Theory（香農信源編碼理論）
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 > **相關文件：**
 > - [香農信源編碼理論 — 詳細解說](03-shannon-source-coding-detailed.md)（本文的延伸補充）

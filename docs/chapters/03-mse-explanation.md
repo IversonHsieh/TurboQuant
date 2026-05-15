@@ -1,6 +1,6 @@
 # 均方誤差 (Mean-Squared Error, MSE) 深度解析
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 ## 1. 什麼是 MSE？
 

@@ -1,6 +1,6 @@
 # Lloyd-Max 量化器詳細解說
 
-[🏠 返回目錄](../index.md)
+[🏠 返回目錄](../index.md) | [返回 TurboQuant 論文翻譯](03-turboquant-translation.md)
 
 > **相關連結：** 本文是針對 [TurboQuant 論文翻譯](03-turboquant-translation.md) 中提到的 [Lloyd-Max quantizer](#) 的詳細補充說明。
 
