@@ -8,6 +8,7 @@ export default defineConfig({
   markdown: {
     math: true
   },
+  appearance: 'dark', // 強制深色模式，不顯示切換按鈕
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
