@@ -70,6 +70,9 @@
   /* Font */
   --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  /* Layout: PC 端移除最大寬度限制，讓內容填滿螢幕 */
+  --vp-layout-max-width: 100% !important;
 }
 
 /* ----- Dark Mode Overrides (force dark even if system prefers light) ----- */
@@ -135,7 +138,7 @@ body {
     padding-right: 0 !important;
   }
 
-  /* 關鍵：覆寫 VPDoc 的固定寬度，讓它填滿 sidebar 以外的空間 */
+  /* 覆寫 VPDoc 的固定寬度，讓它填滿 sidebar 以外的空間 */
   .VPDoc {
     width: auto !important;
     flex-grow: 1 !important;
