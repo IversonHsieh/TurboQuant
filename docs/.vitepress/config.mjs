@@ -32,7 +32,6 @@ export default defineConfig({
           { text: 'Transformer 結構解析', link: '/chapters/02-4-transformer-analysis' },
           { text: 'KV Cache 解析', link: '/chapters/02-4-kv-cache' },
           { text: 'PolarQuant 解析', link: '/chapters/02-5-polarquant-analysis' },
-          { text: 'QJL 解析', link: '/chapters/02-6-qjl-analysis' },
         ]
       },
       {
