@@ -1,4 +1,4 @@
-<svg width="780" height="520" viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg">
+<svg width="780" height="545" viewBox="0 0 780 545" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="ax-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#555"/>
@@ -39,7 +39,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="780" height="520" fill="url(#bg-g)" rx="12"/>
+  <rect width="780" height="545" fill="url(#bg-g)" rx="12"/>
 
   <!-- Title -->
   <text x="390" y="30" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="18" font-weight="bold" fill="#e0e0e0">MSE 失真 vs 內積失真 — 幾何意義比較</text>
@@ -47,7 +47,7 @@
   <!-- ==================== LEFT PANEL: MSE ==================== -->
   <g transform="translate(30, 50)">
     <!-- Panel background -->
-    <rect width="340" height="280" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
+    <rect width="340" height="295" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
 
     <!-- Panel title -->
     <text x="170" y="25" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="bold" fill="#4fc3f7">(a) MSE 失真</text>
@@ -82,13 +82,16 @@
     <circle cx="210" cy="120" r="3" fill="#ffb74d"/>
     <circle cx="240" cy="90" r="3" fill="#4fc3f7"/>
 
-    <!-- MSE label on the error vector -->
-    <rect x="195" y="88" width="70" height="22" rx="4" fill="#2a1015" stroke="#ef5350" stroke-width="0.8" opacity="0.9"/>
-    <text x="230" y="103" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#ef5350">‖x − x̂‖₂²</text>
+    <!-- MSE label — positioned in clear upper-left area -->
+    <rect x="128" y="64" width="98" height="26" rx="5" fill="#2a1015" stroke="#ef5350" stroke-width="0.8" opacity="0.95"/>
+    <text x="177" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#ef5350">‖x − x̂‖₂²</text>
+
+    <!-- Leader line from label to error vector midpoint -->
+    <line x1="215" y1="90" x2="228" y2="103" stroke="#ef5350" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
 
     <!-- MSE formula box -->
-    <rect x="55" y="255" width="230" height="22" rx="4" fill="#141620" stroke="#4fc3f7" stroke-width="0.8" opacity="0.8"/>
-    <text x="170" y="270" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#4fc3f7">
+    <rect x="55" y="262" width="230" height="24" rx="4" fill="#141620" stroke="#4fc3f7" stroke-width="0.8" opacity="0.8"/>
+    <text x="170" y="279" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#4fc3f7">
       MSE = Σᵢ(xᵢ − x̂ᵢ)² = ‖x − x̂‖₂²
     </text>
   </g>
@@ -96,7 +99,7 @@
   <!-- ==================== RIGHT PANEL: Inner Product Distortion ==================== -->
   <g transform="translate(410, 50)">
     <!-- Panel background -->
-    <rect width="340" height="280" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
+    <rect width="340" height="295" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
 
     <!-- Panel title -->
     <text x="170" y="25" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="bold" fill="#81c784">(b) 內積失真</text>
@@ -148,47 +151,44 @@
     <text x="180" y="210" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#e879f9">|⟨q, x⟩ − ⟨q, x̂⟩|</text>
 
     <!-- Formula box -->
-    <rect x="55" y="255" width="230" height="22" rx="4" fill="#141620" stroke="#81c784" stroke-width="0.8" opacity="0.8"/>
-    <text x="170" y="270" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#81c784">
+    <rect x="55" y="262" width="230" height="24" rx="4" fill="#141620" stroke="#81c784" stroke-width="0.8" opacity="0.8"/>
+    <text x="170" y="279" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#81c784">
       D_prod = E[|⟨y, x⟩ − ⟨y, x̂⟩|²]
     </text>
   </g>
 
   <!-- ==================== COMPARISON TABLE ==================== -->
-  <rect x="30" y="345" width="720" height="155" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
+  <rect x="30" y="360" width="720" height="160" rx="10" fill="#141620" stroke="#2a2d3a" stroke-width="1"/>
 
   <!-- Table title -->
-  <text x="390" y="370" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="bold" fill="#e0e0e0">MSE 失真 vs 內積失真 — 特性比較</text>
+  <text x="390" y="385" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="bold" fill="#e0e0e0">MSE 失真 vs 內積失真 — 特性比較</text>
 
   <!-- Header row -->
-  <rect x="40" y="380" width="700" height="24" rx="3" fill="#1e2235"/>
-  <text x="130" y="396" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#aaa">特性</text>
-  <text x="330" y="396" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#4fc3f7">MSE 失真</text>
-  <text x="570" y="396" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#81c784">內積失真</text>
+  <rect x="40" y="395" width="700" height="24" rx="3" fill="#1e2235"/>
+  <text x="130" y="411" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#aaa">特性</text>
+  <text x="330" y="411" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#4fc3f7">MSE 失真</text>
+  <text x="570" y="411" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#81c784">內積失真</text>
 
   <!-- Separator -->
-  <line x1="40" y1="406" x2="740" y2="406" stroke="#2a2d3a" stroke-width="0.5"/>
+  <line x1="40" y1="421" x2="740" y2="421" stroke="#2a2d3a" stroke-width="0.5"/>
 
   <!-- Row 1: Definition -->
-  <text x="130" y="424" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">定義</text>
-  <text x="330" y="424" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">‖x − x̂‖₂²</text>
-  <text x="570" y="424" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">|⟨y, x⟩ − ⟨y, x̂⟩|²</text>
+  <text x="130" y="439" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">定義</text>
+  <text x="330" y="439" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">‖x − x̂‖₂²</text>
+  <text x="570" y="439" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">|⟨y, x⟩ − ⟨y, x̂⟩|²</text>
 
   <!-- Row 2: Query dependence -->
-  <text x="130" y="446" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">依賴查詢向量</text>
-  <text x="330" y="446" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#ef5350" font-weight="bold">✗ 否</text>
-  <text x="570" y="446" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#81c784" font-weight="bold">✓ 是</text>
+  <text x="130" y="461" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">依賴查詢向量</text>
+  <text x="330" y="461" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#ef5350" font-weight="bold">✗ 否</text>
+  <text x="570" y="461" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#81c784" font-weight="bold">✓ 是</text>
 
   <!-- Row 3: Geometric meaning -->
-  <text x="130" y="468" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">幾何意義</text>
-  <text x="330" y="468" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">端點歐氏距離平方</text>
-  <text x="570" y="468" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">查詢方向投影差異</text>
+  <text x="130" y="483" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">幾何意義</text>
+  <text x="330" y="483" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">端點歐氏距離平方</text>
+  <text x="570" y="483" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">查詢方向投影差異</text>
 
   <!-- Row 4: TurboQuant variant -->
-  <text x="130" y="490" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">TurboQuant 變體</text>
-  <text x="330" y="490" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#4fc3f7" font-weight="bold">Q_mse</text>
-  <text x="570" y="490" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#81c784" font-weight="bold">Q_prod（無偏）</text>
-
-  <!-- Key insight box -->
-  <rect x="50" y="345" width="0" height="0" rx="0" fill="none"/>
+  <text x="130" y="505" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#ccc">TurboQuant 變體</text>
+  <text x="330" y="505" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#4fc3f7" font-weight="bold">Q_mse</text>
+  <text x="570" y="505" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#81c784" font-weight="bold">Q_prod（無偏）</text>
 </svg>
