@@ -1,16 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#aaa"/>
     </marker>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:0.8" />
-      <stop offset="100%" style="stop-color:#2E5C8A;stop-opacity:0.8" />
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2E5C8A;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="region1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="region2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="region3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#FFD93D;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="region4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:0.1" />
     </linearGradient>
   </defs>
   
   <!-- Background -->
-  <rect width="800" height="500" fill="#1a1a2e"/>
+  <rect width="800" height="520" fill="#1a1a2e"/>
   
   <!-- Title -->
   <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#fff" font-weight="bold">
@@ -23,7 +39,31 @@
   <text x="730" y="405" font-family="Arial" font-size="14" fill="#aaa">x</text>
   <text x="135" y="340" font-family="Arial" font-size="14" fill="#aaa">f(x)</text>
   
-  <!-- Gaussian/Beta distribution curve -->
+  <!-- Filled regions under curve (colored by quantization region) -->
+  <!-- Region R1: x from 150 to 290 -->
+  <path d="M 150 395 
+           C 180 390, 220 350, 260 280
+           C 275 255, 285 240, 290 230
+           L 290 395 Z" 
+        fill="url(#region1)"/>
+  <!-- Region R2: x from 290 to 400 -->
+  <path d="M 290 230
+           C 310 190, 340 150, 400 130
+           L 400 395 L 290 395 Z" 
+        fill="url(#region2)"/>
+  <!-- Region R3: x from 400 to 510 -->
+  <path d="M 400 130
+           C 460 150, 490 190, 510 230
+           L 510 395 L 400 395 Z" 
+        fill="url(#region3)"/>
+  <!-- Region R4: x from 510 to 650 -->
+  <path d="M 510 230
+           C 515 240, 525 255, 540 280
+           C 580 350, 620 390, 650 395
+           L 650 395 L 510 395 Z" 
+        fill="url(#region4)"/>
+  
+  <!-- Gaussian distribution curve -->
   <path d="M 150 395 
            C 180 390, 220 350, 260 280
            C 300 210, 340 150, 400 130
@@ -31,59 +71,73 @@
            C 580 350, 620 390, 650 395" 
         fill="none" stroke="#4A90D9" stroke-width="3"/>
   
-  <!-- Fill area under curve -->
-  <path d="M 150 395 
-           C 180 390, 220 350, 260 280
-           C 300 210, 340 150, 400 130
-           C 460 150, 500 210, 540 280
-           C 580 350, 620 390, 650 395
-           L 650 395 L 150 395 Z" 
-        fill="url(#grad1)" opacity="0.5"/>
-  
-  <!-- Quantization levels (centroids) -->
-  <circle cx="240" cy="320" r="6" fill="#FF6B6B"/>
-  <circle cx="340" cy="220" r="6" fill="#FF6B6B"/>
-  <circle cx="460" cy="220" r="6" fill="#FF6B6B"/>
-  <circle cx="560" cy="320" r="6" fill="#FF6B6B"/>
-  
-  <!-- Decision boundaries -->
+  <!-- Decision boundaries (vertical dashed lines) -->
   <line x1="290" y1="120" x2="290" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
   <line x1="400" y1="120" x2="400" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
   <line x1="510" y1="120" x2="510" y2="395" stroke="#FFD93D" stroke-width="2" stroke-dasharray="5,5"/>
   
-  <!-- Labels for centroids -->
-  <text x="240" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₁</text>
-  <text x="340" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₂</text>
-  <text x="460" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₃</text>
-  <text x="560" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#FF6B6B">c₄</text>
+  <!-- Centroid vertical lines (from x-axis up to curve, showing projection) -->
+  <line x1="240" y1="395" x2="240" y2="268" stroke="#FF6B6B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  <line x1="340" y1="395" x2="340" y2="178" stroke="#4ECDC4" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  <line x1="460" y1="395" x2="460" y2="178" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  <line x1="560" y1="395" x2="560" y2="268" stroke="#A78BFA" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  
+  <!-- Centroid dots on x-axis (quantization levels) -->
+  <circle cx="240" cy="395" r="6" fill="#FF6B6B"/>
+  <circle cx="340" cy="395" r="6" fill="#4ECDC4"/>
+  <circle cx="460" cy="395" r="6" fill="#FFD93D"/>
+  <circle cx="560" cy="395" r="6" fill="#A78BFA"/>
+  
+  <!-- Centroid dots on curve (projection points) -->
+  <circle cx="240" cy="268" r="4" fill="#FF6B6B" opacity="0.5"/>
+  <circle cx="340" cy="178" r="4" fill="#4ECDC4" opacity="0.5"/>
+  <circle cx="460" cy="178" r="4" fill="#FFD93D" opacity="0.5"/>
+  <circle cx="560" cy="268" r="4" fill="#A78BFA" opacity="0.5"/>
+  
+  <!-- Labels for centroids on x-axis -->
+  <text x="240" y="420" text-anchor="middle" font-family="Arial" font-size="15" fill="#FF6B6B" font-weight="bold">c₁</text>
+  <text x="340" y="420" text-anchor="middle" font-family="Arial" font-size="15" fill="#4ECDC4" font-weight="bold">c₂</text>
+  <text x="460" y="420" text-anchor="middle" font-family="Arial" font-size="15" fill="#FFD93D" font-weight="bold">c₃</text>
+  <text x="560" y="420" text-anchor="middle" font-family="Arial" font-size="15" fill="#A78BFA" font-weight="bold">c₄</text>
   
   <!-- Labels for boundaries -->
-  <text x="290" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₁</text>
-  <text x="400" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₂</text>
-  <text x="510" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFD93D">b₃</text>
+  <text x="290" y="110" text-anchor="middle" font-family="Arial" font-size="13" fill="#FFD93D" font-weight="bold">b₁</text>
+  <text x="400" y="110" text-anchor="middle" font-family="Arial" font-size="13" fill="#FFD93D" font-weight="bold">b₂</text>
+  <text x="510" y="110" text-anchor="middle" font-family="Arial" font-size="13" fill="#FFD93D" font-weight="bold">b₃</text>
   
-  <!-- Quantization regions -->
-  <rect x="150" y="420" width="140" height="30" fill="#4A90D9" opacity="0.3"/>
-  <rect x="290" y="420" width="110" height="30" fill="#4A90D9" opacity="0.3"/>
-  <rect x="400" y="420" width="110" height="30" fill="#4A90D9" opacity="0.3"/>
-  <rect x="510" y="420" width="140" height="30" fill="#4A90D9" opacity="0.3"/>
+  <!-- Region labels (inside the colored areas) -->
+  <text x="220" y="370" text-anchor="middle" font-family="Arial" font-size="13" fill="#FF6B6B" opacity="0.9" font-weight="bold">R₁</text>
+  <text x="345" y="310" text-anchor="middle" font-family="Arial" font-size="13" fill="#4ECDC4" opacity="0.9" font-weight="bold">R₂</text>
+  <text x="455" y="310" text-anchor="middle" font-family="Arial" font-size="13" fill="#FFD93D" opacity="0.9" font-weight="bold">R₃</text>
+  <text x="580" y="370" text-anchor="middle" font-family="Arial" font-size="13" fill="#A78BFA" opacity="0.9" font-weight="bold">R₄</text>
   
-  <text x="220" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₁</text>
-  <text x="345" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₂</text>
-  <text x="455" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₃</text>
-  <text x="580" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">R₄</text>
+  <!-- Quantization region bars at bottom -->
+  <rect x="150" y="440" width="140" height="25" fill="#FF6B6B" opacity="0.3" rx="3"/>
+  <rect x="290" y="440" width="110" height="25" fill="#4ECDC4" opacity="0.3" rx="3"/>
+  <rect x="400" y="440" width="110" height="25" fill="#FFD93D" opacity="0.3" rx="3"/>
+  <rect x="510" y="440" width="140" height="25" fill="#A78BFA" opacity="0.3" rx="3"/>
+  
+  <text x="220" y="457" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF6B6B">x ∈ R₁ → c₁</text>
+  <text x="345" y="457" text-anchor="middle" font-family="Arial" font-size="11" fill="#4ECDC4">x ∈ R₂ → c₂</text>
+  <text x="455" y="457" text-anchor="middle" font-family="Arial" font-size="11" fill="#FFD93D">x ∈ R₃ → c₃</text>
+  <text x="580" y="457" text-anchor="middle" font-family="Arial" font-size="11" fill="#A78BFA">x ∈ R₄ → c₄</text>
   
   <!-- Legend -->
-  <rect x="580" y="50" width="180" height="80" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+  <rect x="580" y="50" width="190" height="100" fill="#2a2a3e" stroke="#444" stroke-width="1" rx="5"/>
   <circle cx="600" cy="70" r="5" fill="#FF6B6B"/>
-  <text x="615" y="75" font-family="Arial" font-size="12" fill="#aaa">量化層級 (質心)</text>
+  <text x="615" y="75" font-family="Arial" font-size="12" fill="#ccc">量化層級 cᵢ（質心）</text>
   <line x1="595" y1="90" x2="605" y2="90" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <text x="615" y="95" font-family="Arial" font-size="12" fill="#aaa">決策邊界</text>
-  <rect x="595" y="105" width="20" height="15" fill="#4A90D9" opacity="0.5"/>
-  <text x="615" y="117" font-family="Arial" font-size="12" fill="#aaa">量化區域</text>
+  <text x="615" y="95" font-family="Arial" font-size="12" fill="#ccc">決策邊界 bᵢ</text>
+  <rect x="595" y="105" width="20" height="15" fill="#4A90D9" opacity="0.5" rx="2"/>
+  <text x="615" y="117" font-family="Arial" font-size="12" fill="#ccc">量化區域 Rᵢ</text>
+  <line x1="595" y1="135" x2="605" y2="135" stroke="#FF6B6B" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="615" y="140" font-family="Arial" font-size="12" fill="#ccc">質心投影線</text>
   
   <!-- Formula -->
-  <text x="400" y="480" text-anchor="middle" font-family="Arial" font-size="13" fill="#888">
-    決策邊界：bᵢ = (cᵢ + cᵢ₊₁) / 2
+  <text x="400" y="495" text-anchor="middle" font-family="Arial" font-size="13" fill="#888">
+    決策邊界：bᵢ = (cᵢ + cᵢ₊₁) / 2　｜　質心：cᵢ = E[X | X ∈ Rᵢ]
+  </text>
+  <text x="400" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">
+    （cᵢ 是每個區域 Rᵢ 的條件期望值，即該區域的「最佳代表值」，而非面積）
   </text>
 </svg>
