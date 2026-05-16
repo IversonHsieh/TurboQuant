@@ -1,38 +1,165 @@
-<svg width="600" height="260" viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="260" fill="#181C20"/>
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#fff">
-    <!-- Step 1: 原始向量 -->
-    <rect x="30" y="90" width="110" height="40" rx="10" fill="#2D3748"/>
-    <text x="85" y="115" text-anchor="middle" alignment-baseline="middle">原始向量</text>
-    <!-- Arrow 1 -->
-    <line x1="140" y1="110" x2="180" y2="110" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Step 2: 隨機旋轉 -->
-    <rect x="180" y="90" width="110" height="40" rx="10" fill="#2B6CB0"/>
-    <text x="235" y="115" text-anchor="middle" alignment-baseline="middle">隨機旋轉</text>
-    <!-- Arrow 2 -->
-    <line x1="290" y1="110" x2="330" y2="110" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Step 3: Lloyd-Max 量化 -->
-    <rect x="330" y="90" width="120" height="40" rx="10" fill="#38A169"/>
-    <text x="390" y="115" text-anchor="middle" alignment-baseline="middle">Lloyd-Max 量化</text>
-    <!-- Arrow 3 -->
-    <line x1="450" y1="110" x2="490" y2="110" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Step 4: 殘差計算 -->
-    <rect x="490" y="90" width="80" height="40" rx="10" fill="#D69E2E"/>
-    <text x="530" y="115" text-anchor="middle" alignment-baseline="middle">殘差</text>
-    <!-- Arrow 4 (down) -->
-    <line x1="530" y1="130" x2="530" y2="170" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Step 5: QJL 1-bit 量化 -->
-    <rect x="440" y="170" width="180" height="40" rx="10" fill="#DD6B20"/>
-    <text x="530" y="195" text-anchor="middle" alignment-baseline="middle">QJL 1-bit 量化</text>
-    <!-- Arrow 5 (left) -->
-    <line x1="440" y1="190" x2="120" y2="190" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Step 6: 壓縮結果 -->
-    <rect x="30" y="170" width="110" height="40" rx="10" fill="#805AD5"/>
-    <text x="85" y="195" text-anchor="middle" alignment-baseline="middle">壓縮結果</text>
-  </g>
+<svg width="900" height="520" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#fff" />
+    <marker id="arrowW" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#CBD5E0"/>
     </marker>
+    <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#63B3ED"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#ED8936"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#68D391"/>
+    </marker>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A202C"/>
+      <stop offset="100%" stop-color="#171923"/>
+    </linearGradient>
+    <linearGradient id="stage1Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="stage2Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DD6B20" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#DD6B20" stop-opacity="0.05"/>
+    </linearGradient>
   </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#E2E8F0">TurboQuant_prod: Two-Stage Quantization Pipeline</text>
+
+  <!-- Stage 1 Background -->
+  <rect x="20" y="50" width="860" height="200" rx="10" fill="url(#stage1Grad)" stroke="#2B6CB0" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="40" y="74" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#63B3ED">STAGE 1: MSE Optimal Quantization (b-1 bits/coord)</text>
+
+  <!-- Stage 2 Background -->
+  <rect x="20" y="270" width="860" height="200" rx="10" fill="url(#stage2Grad)" stroke="#DD6B20" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="40" y="294" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#ED8936">STAGE 2: QJL Residual Quantization (1 bit/coord)</text>
+
+  <!-- ===== STAGE 1 NODES ===== -->
+
+  <!-- Input vector x -->
+  <rect x="40" y="100" width="120" height="50" rx="8" fill="#2D3748" stroke="#4A5568" stroke-width="1.5"/>
+  <text x="100" y="120" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">Input Vector</text>
+  <text x="100" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#A0AEC0">x &#x2208; S^(d-1)</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="125" x2="200" y2="125" stroke="#CBD5E0" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+  <!-- Random Rotation -->
+  <rect x="205" y="100" width="130" height="50" rx="8" fill="#2B6CB0" stroke="#3182CE" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="270" y="120" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFF">Random Rotation</text>
+  <text x="270" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#BEE3F8">&#x03A0; &#xB7; x</text>
+
+  <!-- Arrow 2 -->
+  <line x1="335" y1="125" x2="375" y2="125" stroke="#CBD5E0" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+  <!-- Lloyd-Max Quantization -->
+  <rect x="380" y="100" width="150" height="50" rx="8" fill="#2F855A" stroke="#38A169" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="455" y="120" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFF">Lloyd-Max Quant</text>
+  <text x="455" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#C6F6D5">b-1 bits/coord</text>
+
+  <!-- Arrow 3 -->
+  <line x1="530" y1="125" x2="570" y2="125" stroke="#CBD5E0" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+  <!-- MSE Reconstructed -->
+  <rect x="575" y="100" width="140" height="50" rx="8" fill="#2D3748" stroke="#4A5568" stroke-width="1.5"/>
+  <text x="645" y="120" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">MSE Reconstructed</text>
+  <text x="645" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#A0AEC0">x&#x0303;_mse</text>
+
+  <!-- Arrow 4: idx output going down -->
+  <line x1="645" y1="150" x2="645" y2="175" stroke="#63B3ED" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+  <text x="660" y="168" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#63B3ED">idx</text>
+
+  <!-- Store idx -->
+  <rect x="590" y="180" width="110" height="36" rx="6" fill="#1A365D" stroke="#2B6CB0" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="645" y="202" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#63B3ED">Store: idx</text>
+
+  <!-- ===== RESIDUAL COMPUTATION ===== -->
+
+  <!-- Arrow from x down to residual -->
+  <path d="M100,150 L100,320" stroke="#CBD5E0" stroke-width="1.5" fill="none" marker-end="url(#arrowW)"/>
+
+  <!-- Arrow from x_mse down to residual (subtraction) -->
+  <path d="M645,216 L645,240 L280,240 L280,320" stroke="#CBD5E0" stroke-width="1.5" fill="none" marker-end="url(#arrowW)"/>
+
+  <!-- Residual computation node -->
+  <rect x="140" y="320" width="160" height="50" rx="8" fill="#9C4221" stroke="#DD6B20" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="220" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFF">Compute Residual</text>
+  <text x="220" y="358" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#FEEBC8">r = x - x&#x0303;_mse</text>
+
+  <!-- Arrow 5 -->
+  <line x1="300" y1="345" x2="340" y2="345" stroke="#CBD5E0" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+  <!-- QJL: Random Projection S&#xB7;r -->
+  <rect x="345" y="320" width="150" height="50" rx="8" fill="#C05621" stroke="#ED8936" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="420" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFF">Random Project</text>
+  <text x="420" y="358" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#FEEBC8">S &#xB7; r</text>
+
+  <!-- Arrow 6 -->
+  <line x1="495" y1="345" x2="535" y2="345" stroke="#CBD5E0" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+  <!-- QJL: sign quantization -->
+  <rect x="540" y="320" width="140" height="50" rx="8" fill="#DD6B20" stroke="#F6AD55" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="610" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFF">1-bit Sign Quant</text>
+  <text x="610" y="358" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#FEEBC8">sign(S &#xB7; r)</text>
+
+  <!-- Arrow 7: qjl output going down -->
+  <line x1="610" y1="370" x2="610" y2="395" stroke="#ED8936" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowOrange)"/>
+  <text x="625" y="388" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#ED8936">qjl</text>
+
+  <!-- Store qjl + gamma -->
+  <rect x="530" y="400" width="160" height="36" rx="6" fill="#3D1F00" stroke="#DD6B20" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="610" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#ED8936">Store: qjl, &#x03B3;=&#x2016;r&#x2016;&#x2082;</text>
+
+  <!-- ===== COMBINATION / OUTPUT ===== -->
+
+  <!-- Arrow from idx store to output -->
+  <path d="M645,216 L645,240 L820,240 L820,460" stroke="#63B3ED" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+  <line x1="820" y1="460" x2="780" y2="475" stroke="#63B3ED" stroke-width="1.5" marker-end="url(#arrowCyan)"/>
+
+  <!-- Arrow from qjl store to output -->
+  <path d="M610,436 L610,460 L660,460 L660,475" stroke="#ED8936" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+  <line x1="660" y1="475" x2="700" y2="475" stroke="#ED8936" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- Final output: Combined -->
+  <rect x="700" y="460" width="170" height="50" rx="10" fill="#553C9A" stroke="#805AD5" stroke-width="2" filter="url(#glow)"/>
+  <text x="785" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFF">Compressed Output</text>
+  <text x="785" y="498" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#E9D8FD">(idx, qjl, &#x03B3;)</text>
+
+  <!-- ===== ANNOTATIONS ===== -->
+
+  <!-- Unbiased guarantee badge -->
+  <rect x="40" y="460" width="220" height="44" rx="8" fill="#1C4532" stroke="#38A169" stroke-width="1.5"/>
+  <text x="150" y="478" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#68D391">&#x2713; Unbiased Inner Product</text>
+  <text x="150" y="496" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#9AE6B4">E[&#x27E8;y, x&#x0303;&#x27E9;] = &#x27E8;y, x&#x27E9;</text>
+
+  <!-- Variance bound badge -->
+  <rect x="280" y="460" width="260" height="44" rx="8" fill="#322A0E" stroke="#D69E2E" stroke-width="1.5"/>
+  <text x="410" y="478" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ECC94B">Low Distortion Guarantee</text>
+  <text x="410" y="496" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FAF089">D_prod &#x2264; (3&#x03C0;/2) &#xB7; &#x2016;y&#x2016;&#x00B2;/d &#xB7; 4^(-b)</text>
+
+  <!-- Bit budget annotation -->
+  <rect x="730" y="55" width="140" height="30" rx="6" fill="#1A365D" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="800" y="74" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#63B3ED">Total: b bits/coord</text>
+
+  <!-- Subtraction symbol at residual -->
+  <circle cx="280" cy="240" r="12" fill="#2D3748" stroke="#CBD5E0" stroke-width="1.5"/>
+  <text x="280" y="244" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FC8181">&#x2212;</text>
+
+  <!-- Plus symbol at combination -->
+  <circle cx="730" cy="475" r="12" fill="#2D3748" stroke="#CBD5E0" stroke-width="1.5"/>
+  <text x="730" y="479" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#68D391">+</text>
+
 </svg>
