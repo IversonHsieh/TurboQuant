@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "TurboQuant Deep Dive",
   description: "Exploring the frontiers of efficient LLM quantization",
+  base: '/TurboQuant/',
   ignoreDeadLinks: true,
   markdown: {
     math: true

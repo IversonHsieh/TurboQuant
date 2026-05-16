@@ -18,7 +18,7 @@ $$y = r \sin(\theta)$$
 
 在處理量化（Quantization）過程中的旋轉與縮放變換時，極座標系具有顯著的優勢。下圖展示了笛卡兒座標與極座標在處理旋轉變換時的本質差異：
 
-![Rotation Comparison](./../svg/polar_rotation_comparison.svg)
+![Rotation Comparison](../svg/polar_rotation_comparison.svg)
 
 ### 1. **直觀性 (Intuitiveness)**
 * **笛卡兒座標 (Cartesian)**：旋轉變換涉及矩陣乘法，需要計算 $\sin$ 與 $\cos$ 並與原座標進行線性組合：
