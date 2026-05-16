@@ -6,8 +6,7 @@
 
 ## 📖 章節目錄
 
-- [2.1 笛卡兒座標系 (Cartesian Coordinate System)](./02-1-cartesian-coordinates.md)
-- [2.2 極座標系 (Polar Coordinate System)](./02-2-polar-coordinates.md)
+- [2.1 座標系統：笛卡兒與極座標 (Cartesian & Polar)](./02-1-coordinate-systems.md)
 - [2.3 Transformer 結構解析 (Transformer Architecture Analysis)](./02-3-transformer-architecture.md)
 - [2.4 KV Cache 解析 (KV Cache Analysis)](./02-4-kv-cache.md)
 - [2.5 PolarQuant 解析 (PolarQuant Analysis)](./02-5-polarquant-analysis.md)

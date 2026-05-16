@@ -10,8 +10,7 @@
 ### 📖 章節 2：專有名詞拆解
 - [專有名詞總覽](./chapters/02-glossary)
 - [數學基礎](./chapters/02-mathematical-foundations)
-  - [2.1 笛卡兒座標系 (Cartesian Coordinate System)](./chapters/02-1-cartesian-coordinates)
-  - [2.2 極座標系 (Polar Coordinate System)](./chapters/02-2-polar-coordinates)
+  - [2.1 座標系統：笛卡兒與極座標 (Cartesian & Polar)](./chapters/02-1-coordinate-systems)
   - [2.3 前饋神經網路 (FFN)](./chapters/02-3-ffn)
   - [2.4 Transformer 結構解析](./chapters/02-4-transformer-analysis)
   - [2.4 KV Cache 解析](./chapters/02-4-kv-cache)

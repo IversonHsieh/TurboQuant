@@ -27,8 +27,7 @@ export default defineConfig({
         items: [
           { text: '專有名詞總覽', link: '/chapters/02-glossary' },
           { text: '數學基礎', link: '/chapters/02-mathematical-foundations' },
-          { text: '笛卡兒座標系', link: '/chapters/02-1-cartesian-coordinates' },
-          { text: '極座標系', link: '/chapters/02-2-polar-coordinates' },
+          { text: '座標系統：笛卡兒與極座標', link: '/chapters/02-1-coordinate-systems' },
           { text: '前饋神經網路 (FFN)', link: '/chapters/02-3-ffn' },
           { text: 'Transformer 結構解析', link: '/chapters/02-4-transformer-analysis' },
           { text: 'KV Cache 解析', link: '/chapters/02-4-kv-cache' },
