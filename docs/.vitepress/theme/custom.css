@@ -135,8 +135,10 @@ body {
     padding-right: 0 !important;
   }
 
-  /* 大幅減少 VPDoc 左右 padding */
+  /* 關鍵：覆寫 VPDoc 的固定寬度，讓它填滿 sidebar 以外的空間 */
   .VPDoc {
+    width: auto !important;
+    flex-grow: 1 !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
