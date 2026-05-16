@@ -115,12 +115,13 @@ body {
 }
 
 /* ----- Wider Content on PC (reduce side margins) ----- */
-/* VitePress 預設內容區 max-width 約 960px，PC 上兩側空白過多 */
+/* VitePress 預設內容區 max-width 約 688px，PC 上兩側空白過多 */
+
+/* 移除 content-container 的最大寬度限制 */
 .VPDoc .content-container {
   max-width: 100% !important;
 }
 
-/* 有側邊欄時，內容區域盡量填滿剩餘空間 */
 .VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }
@@ -132,13 +133,35 @@ body {
   padding-right: 0 !important;
 }
 
-/* 保留適當的左右 padding 避免貼邊太緊，但大幅縮小 */
+/* 減少 VPDoc 的左右 padding，讓內容更貼邊 */
+@media (min-width: 960px) {
+  .VPDoc {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPDoc {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* 縮小 aside (右側大綱) 寬度，讓內容區更寬 */
+@media (min-width: 1280px) {
+  .VPDoc .aside {
+    width: 200px !important;
+    min-width: 200px !important;
+  }
+}
+
+/* 保留適當的左右 padding 避免貼邊太緊 */
 .vp-doc {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
 
-/* 超大螢幕時稍微增加 padding 即可 */
 @media (min-width: 1440px) {
   .vp-doc {
     padding-left: 2rem !important;
