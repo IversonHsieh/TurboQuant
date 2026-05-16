@@ -16,7 +16,6 @@
   - [2.4 Transformer 結構解析](./chapters/02-4-transformer-analysis)
   - [2.4 KV Cache 解析](./chapters/02-4-kv-cache)
   - [2.5 PolarQuant 解析](./chapters/02-5-polarquant-analysis)
-  - [2.6 QJL (Quantized Johnson-Lindenstrauss) 解析](./chapters/02-6-qjl-analysis)
 
 ### 🔬 章節 3：技術深度解析
 - [TurboQuant 深度解析](./chapters/03-deep-dive)

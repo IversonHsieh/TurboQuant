@@ -11,4 +11,4 @@
 - [2.3 Transformer 結構解析 (Transformer Architecture Analysis)](./02-3-transformer-architecture.md)
 - [2.4 KV Cache 解析 (KV Cache Analysis)](./02-4-kv-cache.md)
 - [2.5 PolarQuant 解析 (PolarQuant Analysis)](./02-5-polarquant-analysis.md)
-- [2.6 QJL (Quantized Johnson-Lindenstrauss) 解析](./02-6-qjl-analysis.md)
+- [2.6 QJL (Quantized Johnson-Lindenstrauss) 詳解](./03-qjl-explanation.md)
