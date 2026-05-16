@@ -1,135 +1,215 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620">
   <defs>
     <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
     </marker>
+    <linearGradient id="mseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FF88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FF88;stop-opacity:0.4" />
+    </linearGradient>
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FF88;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#00FF88;stop-opacity:0.02" />
+    </linearGradient>
   </defs>
   
   <!-- Background -->
-  <rect width="900" height="550" fill="#1a1a2e"/>
+  <rect width="920" height="620" fill="#1a1a2e" rx="8"/>
   
   <!-- Title -->
-  <text x="450" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#fff" font-weight="bold">
+  <text x="460" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#fff" font-weight="bold">
     Lloyd-Max 演算法迭代收斂過程
   </text>
   
-  <!-- Iteration 0 -->
-  <text x="150" y="65" text-anchor="middle" font-family="Arial" font-size="14" fill="#888" font-weight="bold">初始 (Iteration 0)</text>
+  <!-- ===== TOP SECTION: Three Iteration Stages ===== -->
   
-  <!-- Iteration 0 - Uniform centroids -->
-  <line x1="50" y1="100" x2="250" y2="100" stroke="#666" stroke-width="2"/>
-  <circle cx="100" cy="100" r="8" fill="#FF6B6B" opacity="0.5"/>
-  <circle cx="140" cy="100" r="8" fill="#FF6B6B" opacity="0.5"/>
-  <circle cx="180" cy="100" r="8" fill="#FF6B6B" opacity="0.5"/>
-  <circle cx="220" cy="100" r="8" fill="#FF6B6B" opacity="0.5"/>
-  <text x="100" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.75</text>
-  <text x="140" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.25</text>
-  <text x="180" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.25</text>
-  <text x="220" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.75</text>
+  <!-- Stage 1: Initial -->
+  <rect x="30" y="50" width="250" height="110" fill="#22223a" stroke="#444" stroke-width="1" rx="6"/>
+  <text x="155" y="72" text-anchor="middle" font-family="Arial" font-size="13" fill="#888" font-weight="bold">初始 (Iteration 0)</text>
   
-  <!-- Arrow to Iteration 1 -->
-  <line x1="250" y1="100" x2="320" y2="100" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowhead2)"/>
-  <text x="285" y="90" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A90D9">更新</text>
+  <line x1="50" y1="105" x2="260" y2="105" stroke="#555" stroke-width="1.5"/>
+  <circle cx="90" cy="105" r="7" fill="#FF6B6B" opacity="0.5"/>
+  <circle cx="140" cy="105" r="7" fill="#FF6B6B" opacity="0.5"/>
+  <circle cx="190" cy="105" r="7" fill="#FF6B6B" opacity="0.5"/>
+  <circle cx="240" cy="105" r="7" fill="#FF6B6B" opacity="0.5"/>
+  <text x="90" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.75</text>
+  <text x="140" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.25</text>
+  <text x="190" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.25</text>
+  <text x="240" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.75</text>
+  <text x="155" y="152" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">均勻間距初始值</text>
   
-  <!-- Iteration 1 -->
-  <text x="450" y="65" text-anchor="middle" font-family="Arial" font-size="14" fill="#888" font-weight="bold">Iteration 1</text>
+  <!-- Arrow 1 -->
+  <line x1="285" y1="105" x2="325" y2="105" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowhead2)"/>
+  <text x="305" y="97" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A90D9">更新</text>
   
-  <!-- Iteration 1 - Adjusted centroids -->
-  <line x1="350" y1="100" x2="550" y2="100" stroke="#666" stroke-width="2"/>
-  <circle cx="390" cy="100" r="8" fill="#FF6B6B" opacity="0.7"/>
-  <circle cx="440" cy="100" r="8" fill="#FF6B6B" opacity="0.7"/>
-  <circle cx="490" cy="100" r="8" fill="#FF6B6B" opacity="0.7"/>
-  <circle cx="540" cy="100" r="8" fill="#FF6B6B" opacity="0.7"/>
-  <line x1="415" y1="85" x2="415" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <line x1="465" y1="85" x2="465" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <line x1="515" y1="85" x2="515" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <text x="390" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.80</text>
-  <text x="440" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.30</text>
-  <text x="490" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.30</text>
-  <text x="540" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.80</text>
+  <!-- Stage 2: Iteration 1 -->
+  <rect x="335" y="50" width="250" height="110" fill="#22223a" stroke="#444" stroke-width="1" rx="6"/>
+  <text x="460" y="72" text-anchor="middle" font-family="Arial" font-size="13" fill="#888" font-weight="bold">Iteration 1</text>
   
-  <!-- Arrow to Iteration 2 -->
-  <line x1="550" y1="100" x2="620" y2="100" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowhead2)"/>
-  <text x="585" y="90" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A90D9">更新</text>
+  <line x1="355" y1="105" x2="565" y2="105" stroke="#555" stroke-width="1.5"/>
+  <circle cx="395" cy="105" r="7" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="445" cy="105" r="7" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="495" cy="105" r="7" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="545" cy="105" r="7" fill="#FF6B6B" opacity="0.7"/>
+  <!-- Decision boundaries -->
+  <line x1="420" y1="88" x2="420" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="470" y1="88" x2="470" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="520" y1="88" x2="520" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="395" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.80</text>
+  <text x="445" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">-0.30</text>
+  <text x="495" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.30</text>
+  <text x="545" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0.80</text>
+  <text x="460" y="152" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">邊界與質心已調整</text>
   
-  <!-- Iteration 2 -->
-  <text x="750" y="65" text-anchor="middle" font-family="Arial" font-size="14" fill="#888" font-weight="bold">收斂 (Iteration N)</text>
+  <!-- Arrow 2 -->
+  <line x1="590" y1="105" x2="630" y2="105" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowhead2)"/>
+  <text x="610" y="97" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A90D9">更新</text>
   
-  <!-- Iteration 2 - Final centroids -->
-  <line x1="650" y1="100" x2="850" y2="100" stroke="#666" stroke-width="2"/>
-  <circle cx="700" cy="100" r="8" fill="#FF6B6B"/>
-  <circle cx="755" cy="100" r="8" fill="#FF6B6B"/>
-  <circle cx="805" cy="100" r="8" fill="#FF6B6B"/>
-  <circle cx="850" cy="100" r="8" fill="#FF6B6B"/>
-  <line x1="727" y1="85" x2="727" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <line x1="780" y1="85" x2="780" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <line x1="827" y1="85" x2="827" y2="115" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
-  <text x="700" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">-0.82</text>
-  <text x="755" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">-0.29</text>
-  <text x="805" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">0.29</text>
-  <text x="850" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">0.82</text>
+  <!-- Stage 3: Converged -->
+  <rect x="640" y="50" width="250" height="110" fill="#22223a" stroke="#00FF88" stroke-width="1.5" rx="6"/>
+  <text x="765" y="72" text-anchor="middle" font-family="Arial" font-size="13" fill="#00FF88" font-weight="bold">收斂 (Iteration N)</text>
   
-  <!-- Distribution curve background -->
-  <path d="M 50 180 
-           C 100 175, 130 150, 150 120
-           C 170 150, 200 175, 250 180" 
-        fill="none" stroke="#4A90D9" stroke-width="2" opacity="0.3"/>
-  <path d="M 350 180 
-           C 400 175, 430 150, 450 120
-           C 470 150, 500 175, 550 180" 
-        fill="none" stroke="#4A90D9" stroke-width="2" opacity="0.5"/>
-  <path d="M 650 180 
-           C 700 175, 730 150, 750 120
-           C 770 150, 800 175, 850 180" 
-        fill="none" stroke="#4A90D9" stroke-width="2" opacity="0.7"/>
+  <line x1="660" y1="105" x2="870" y2="105" stroke="#555" stroke-width="1.5"/>
+  <circle cx="705" cy="105" r="7" fill="#FF6B6B"/>
+  <circle cx="760" cy="105" r="7" fill="#FF6B6B"/>
+  <circle cx="810" cy="105" r="7" fill="#FF6B6B"/>
+  <circle cx="860" cy="105" r="7" fill="#FF6B6B"/>
+  <!-- Decision boundaries -->
+  <line x1="732" y1="88" x2="732" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="785" y1="88" x2="785" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="835" y1="88" x2="835" y2="122" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="705" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">-0.82</text>
+  <text x="760" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">-0.29</text>
+  <text x="810" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">0.29</text>
+  <text x="860" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B" font-weight="bold">0.82</text>
+  <text x="765" y="152" text-anchor="middle" font-family="Arial" font-size="10" fill="#00FF88">MSE 已最小化</text>
   
-  <!-- MSE convergence plot -->
-  <text x="450" y="220" text-anchor="middle" font-family="Arial" font-size="16" fill="#fff" font-weight="bold">MSE 收斂曲線</text>
+  <!-- ===== MIDDLE SECTION: MSE Convergence Plot ===== -->
   
-  <!-- Axes for MSE plot -->
-  <line x1="100" y1="250" x2="800" y2="250" stroke="#666" stroke-width="2" marker-end="url(#arrowhead2)"/>
-  <line x1="100" y1="250" x2="100" y2="300" stroke="#666" stroke-width="2"/>
-  <text x="810" y="255" font-family="Arial" font-size="12" fill="#aaa">迭代次數</text>
-  <text x="85" y="240" font-family="Arial" font-size="12" fill="#aaa">MSE</text>
+  <text x="460" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#fff" font-weight="bold">MSE 收斂曲線</text>
+  
+  <!-- Plot area background -->
+  <rect x="100" y="210" width="720" height="180" fill="#1e1e30" stroke="#333" stroke-width="1" rx="4"/>
+  
+  <!-- Grid lines (horizontal) -->
+  <line x1="100" y1="246" x2="820" y2="246" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="100" y1="282" x2="820" y2="282" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="100" y1="318" x2="820" y2="318" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="100" y1="354" x2="820" y2="354" stroke="#2a2a3e" stroke-width="1"/>
+  
+  <!-- Grid lines (vertical) -->
+  <line x1="220" y1="210" x2="220" y2="390" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="340" y1="210" x2="340" y2="390" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="460" y1="210" x2="460" y2="390" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="580" y1="210" x2="580" y2="390" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="700" y1="210" x2="700" y2="390" stroke="#2a2a3e" stroke-width="1"/>
+  
+  <!-- Axes -->
+  <line x1="100" y1="390" x2="820" y2="390" stroke="#888" stroke-width="1.5" marker-end="url(#arrowhead2)"/>
+  <line x1="100" y1="210" x2="100" y2="390" stroke="#888" stroke-width="1.5"/>
+  
+  <!-- X-axis labels -->
+  <text x="100" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0</text>
+  <text x="220" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">2</text>
+  <text x="340" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">4</text>
+  <text x="460" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">6</text>
+  <text x="580" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">8</text>
+  <text x="700" y="408" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">10</text>
+  <text x="830" y="408" font-family="Arial" font-size="11" fill="#aaa">迭代次數</text>
+  
+  <!-- Y-axis labels -->
+  <text x="90" y="394" text-anchor="end" font-family="Arial" font-size="10" fill="#888">0</text>
+  <text x="90" y="322" text-anchor="end" font-family="Arial" font-size="10" fill="#888">低</text>
+  <text x="90" y="250" text-anchor="end" font-family="Arial" font-size="10" fill="#888">中</text>
+  <text x="90" y="218" text-anchor="end" font-family="Arial" font-size="10" fill="#888">高</text>
+  <text x="75" y="300" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa" transform="rotate(-90, 75, 300)">MSE</text>
+  
+  <!-- MSE area fill -->
+  <path d="M 100 225 
+           C 150 260, 200 300, 260 330
+           C 320 350, 380 362, 460 372
+           C 540 378, 620 382, 700 384
+           C 760 385, 800 386, 820 386
+           L 820 390 L 100 390 Z" 
+        fill="url(#areaGrad)"/>
   
   <!-- MSE curve -->
-  <path d="M 100 260 
-           C 150 280, 200 310, 250 330
-           C 300 345, 350 355, 400 360
-           C 450 363, 500 365, 550 366
-           C 600 367, 650 367.5, 700 368
-           C 750 368.2, 780 368.3, 800 368.5" 
-        fill="none" stroke="#00FF88" stroke-width="3"/>
+  <path d="M 100 225 
+           C 150 260, 200 300, 260 330
+           C 320 350, 380 362, 460 372
+           C 540 378, 620 382, 700 384
+           C 760 385, 800 386, 820 386" 
+        fill="none" stroke="url(#mseGrad)" stroke-width="3" stroke-linecap="round"/>
   
-  <!-- MSE points -->
-  <circle cx="100" cy="260" r="5" fill="#00FF88"/>
-  <circle cx="200" cy="310" r="5" fill="#00FF88"/>
-  <circle cx="300" cy="345" r="5" fill="#00FF88"/>
-  <circle cx="400" cy="360" r="5" fill="#00FF88"/>
-  <circle cx="500" cy="365" r="5" fill="#00FF88"/>
-  <circle cx="600" cy="367" r="5" fill="#00FF88"/>
-  <circle cx="700" cy="368" r="5" fill="#00FF88"/>
-  <circle cx="800" cy="368.5" r="5" fill="#00FF88"/>
+  <!-- MSE data points -->
+  <circle cx="100" cy="225" r="5" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="160" cy="275" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="220" cy="310" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="280" cy="338" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="340" cy="355" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="400" cy="365" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="460" cy="372" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="580" cy="380" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="700" cy="384" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
+  <circle cx="820" cy="386" r="4" fill="#00FF88" stroke="#1a1a2e" stroke-width="2"/>
   
-  <!-- MSE labels -->
-  <text x="100" y="250" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">0</text>
-  <text x="800" y="250" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">10</text>
-  <text x="90" y="265" text-anchor="end" font-family="Arial" font-size="10" fill="#888">高</text>
-  <text x="90" y="370" text-anchor="end" font-family="Arial" font-size="10" fill="#888">低</text>
+  <!-- Convergence threshold line -->
+  <line x1="100" y1="384" x2="820" y2="384" stroke="#FF6B6B" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+  <text x="825" y="382" font-family="Arial" font-size="9" fill="#FF6B6B" opacity="0.7">收斂閾值 ε</text>
   
-  <!-- Algorithm steps -->
-  <rect x="100" y="400" width="700" height="130" fill="#2a2a3e" stroke="#444" stroke-width="1" rx="5"/>
-  <text x="450" y="425" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" font-weight="bold">Lloyd-Max 演算法步驟</text>
+  <!-- Annotation: rapid decrease -->
+  <text x="180" y="260" font-family="Arial" font-size="10" fill="#4A90D9">快速下降</text>
+  <line x1="175" y1="263" x2="155" y2="272" stroke="#4A90D9" stroke-width="1" opacity="0.6"/>
   
-  <text x="130" y="450" font-family="Arial" font-size="12" fill="#FFD93D" font-weight="bold">步驟 1:</text>
-  <text x="190" y="450" font-family="Arial" font-size="12" fill="#aaa">初始化量化層級（例如：均勻分佈）</text>
+  <!-- Annotation: convergence -->
+  <text x="620" y="370" font-family="Arial" font-size="10" fill="#00FF88">趨近收斂</text>
   
-  <text x="130" y="475" font-family="Arial" font-size="12" fill="#FFD93D" font-weight="bold">步驟 2:</text>
-  <text x="190" y="475" font-family="Arial" font-size="12" fill="#aaa">計算決策邊界：bᵢ = (cᵢ + cᵢ₊₁) / 2</text>
+  <!-- ===== BOTTOM SECTION: Algorithm Steps ===== -->
   
-  <text x="130" y="500" font-family="Arial" font-size="12" fill="#FFD93D" font-weight="bold">步驟 3:</text>
-  <text x="190" y="500" font-family="Arial" font-size="12" fill="#aaa">計算新質心：cᵢ = E[X | bᵢ₋₁ ≤ X < bᵢ]</text>
+  <rect x="60" y="430" width="800" height="170" fill="#22223a" stroke="#444" stroke-width="1" rx="6"/>
+  <text x="460" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#fff" font-weight="bold">Lloyd-Max 演算法步驟</text>
   
-  <text x="130" y="525" font-family="Arial" font-size="12" fill="#00FF88" font-weight="bold">步驟 4:</text>
-  <text x="190" y="525" font-family="Arial" font-size="12" fill="#aaa">重複步驟 2-3 直到收斂（MSE 變化小於閾值）</text>
+  <!-- Step 1 -->
+  <rect x="90" y="475" width="160" height="55" fill="#2a2a4e" stroke="#4A90D9" stroke-width="1" rx="4"/>
+  <text x="170" y="495" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A90D9" font-weight="bold">步驟 1</text>
+  <text x="170" y="515" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">初始化量化層級</text>
+  
+  <!-- Arrow -->
+  <line x1="255" y1="502" x2="275" y2="502" stroke="#4A90D9" stroke-width="1.5" marker-end="url(#arrowhead2)"/>
+  
+  <!-- Step 2 -->
+  <rect x="280" y="475" width="160" height="55" fill="#2a2a4e" stroke="#FFD93D" stroke-width="1" rx="4"/>
+  <text x="360" y="495" text-anchor="middle" font-family="Arial" font-size="11" fill="#FFD93D" font-weight="bold">步驟 2</text>
+  <text x="360" y="515" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">計算決策邊界</text>
+  <text x="360" y="527" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">bᵢ = (cᵢ + cᵢ₊₁) / 2</text>
+  
+  <!-- Arrow -->
+  <line x1="445" y1="502" x2="465" y2="502" stroke="#FFD93D" stroke-width="1.5" marker-end="url(#arrowhead2)"/>
+  
+  <!-- Step 3 -->
+  <rect x="470" y="475" width="160" height="55" fill="#2a2a4e" stroke="#FF6B6B" stroke-width="1" rx="4"/>
+  <text x="550" y="495" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF6B6B" font-weight="bold">步驟 3</text>
+  <text x="550" y="515" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">計算新質心</text>
+  <text x="550" y="527" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">cᵢ = E[X | X ∈ [bᵢ₋₁, bᵢ)]</text>
+  
+  <!-- Loop arrow back from Step 3 to Step 2 -->
+  <path d="M 550 475 C 550 460, 360 460, 360 475" fill="none" stroke="#00FF88" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowhead2)"/>
+  <text x="455" y="458" text-anchor="middle" font-family="Arial" font-size="9" fill="#00FF88">重複直到收斂</text>
+  
+  <!-- Step 4 (converged) -->
+  <rect x="660" y="475" width="180" height="55" fill="#1e3a2e" stroke="#00FF88" stroke-width="1.5" rx="4"/>
+  <text x="750" y="495" text-anchor="middle" font-family="Arial" font-size="11" fill="#00FF88" font-weight="bold">收斂 ✓</text>
+  <text x="750" y="515" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">ΔMSE → 0</text>
+  <text x="750" y="527" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">輸出最佳解</text>
+  
+  <!-- Arrow to convergence -->
+  <line x1="635" y1="502" x2="655" y2="502" stroke="#00FF88" stroke-width="1.5" marker-end="url(#arrowhead2)"/>
+  
+  <!-- Bottom note -->
+  <text x="460" y="560" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">
+    每次迭代保證 MSE 單調遞減，最終收斂至局部最佳解
+  </text>
+  <text x="460" y="580" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">
+    （對於單峰分佈，局部最佳解即為全域最佳解）
+  </text>
 </svg>

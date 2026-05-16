@@ -9,13 +9,13 @@
 ## 目錄
 
 1. [什麼是 Lloyd-Max 量化器？](#什麼是-lloyd-max-量化器)
-2. [歷史背景](#歷史背景)
-3. [核心原理](#核心原理)
-4. [Lloyd-Max 演算法](#lloyd-max-演算法)
-5. [數學推導](#數學推導)
-6. [實際範例](#實際範例)
-7. [視覺化圖解](#視覺化圖解)
-8. [在 TurboQuant 中的應用](#在 turboquant 中的應用)
+2. [視覺化圖解](#視覺化圖解)
+3. [歷史背景](#歷史背景)
+4. [核心原理](#核心原理)
+5. [Lloyd-Max 演算法](#lloyd-max-演算法)
+6. [數學推導](#數學推導)
+7. [實際範例](#實際範例)
+8. [在 TurboQuant 中的應用](#在-turboquant-中的應用)
 
 ---
 
@@ -24,6 +24,30 @@
 **Lloyd-Max 量化器**（又稱為 **Max-Lloyd 量化器** 或 **Lloyd 演算法**）是一種迭代演算法，用於設計**最佳純量量化器**（optimal scalar quantizer）。它的目標是找到一組最佳的**量化層級**（quantization levels）和**決策邊界**（decision boundaries），使得量化過程產生的**均方誤差（MSE）最小化**。
 
 簡單來說，給定一個具有已知機率分佈的隨機變量，Lloyd-Max 演算法能夠找到最佳的「分桶」方式，讓每個桶的代表值（質心）和邊界都能最小化整體的量化誤差。
+
+---
+
+## 視覺化圖解
+
+> 💡 **先看圖，再懂原理**：以下三張圖分別展示了 Lloyd-Max 量化器的核心概念、迭代收斂過程，以及不同分佈下的量化結果。建議先透過圖形建立直覺，再閱讀後續的數學推導。
+
+### 圖 1：Lloyd-Max 量化器示意圖
+
+下圖展示了 Lloyd-Max 量化器的基本概念——如何將連續值域劃分為多個區間，並為每個區間指定最佳的量化層級（質心）：
+
+![Lloyd-Max 量化器示意圖](../svg/lloyd_max_quantizer.svg)
+
+### 圖 2：迭代收斂過程
+
+Lloyd-Max 演算法透過反覆交替更新「決策邊界」與「量化層級」逐步收斂至最佳解。下圖展示了從初始猜測到收斂的迭代過程：
+
+![Lloyd-Max 迭代收斂過程](../svg/lloyd_max_iterations.svg)
+
+### 圖 3：不同分佈的量化比較
+
+Lloyd-Max 量化器的最佳解取決於輸入的機率分佈。下圖比較了均勻分佈、高斯分佈與 Beta 分佈下的量化結果差異：
+
+![不同分佈的量化比較](../svg/lloyd_max_distributions.svg)
 
 ---
 
@@ -288,26 +312,6 @@ $$
 $$
 c_1^* \approx -\frac{1.51}{\sqrt{d}}, \quad c_2^* \approx -\frac{0.453}{\sqrt{d}}, \quad c_3^* \approx \frac{0.453}{\sqrt{d}}, \quad c_4^* \approx \frac{1.51}{\sqrt{d}}
 $$
-
----
-
-## 視覺化圖解
-
-### 圖 1：Lloyd-Max 量化器示意圖
-
-下圖展示了 Lloyd-Max 量化器的基本概念：
-
-![Lloyd-Max 量化器示意圖](../svg/lloyd_max_quantizer.svg)
-
-### 圖 2：迭代收斂過程
-
-Lloyd-Max 演算法的迭代過程如下圖所示：
-
-![Lloyd-Max 迭代收斂過程](../svg/lloyd_max_iterations.svg)
-
-### 圖 3：不同分佈的量化比較
-
-![不同分佈的量化比較](../svg/lloyd_max_distributions.svg)
 
 ---
 
