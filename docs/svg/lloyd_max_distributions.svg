@@ -22,9 +22,9 @@
   
   <!-- Uniform quantization levels -->
   <circle cx="87.5" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="137.5" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="187.5" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="237.5" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="137.5" cy="170" r="6" fill="#4ECDC4"/>
+  <circle cx="187.5" cy="170" r="6" fill="#FFD93D"/>
+  <circle cx="237.5" cy="170" r="6" fill="#A78BFA"/>
   
   <!-- Uniform boundaries -->
   <line x1="112.5" y1="80" x2="112.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
@@ -49,9 +49,9 @@
   
   <!-- Gaussian quantization levels (non-uniform) -->
   <circle cx="385" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="425" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="475" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="515" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="425" cy="170" r="6" fill="#4ECDC4"/>
+  <circle cx="475" cy="170" r="6" fill="#FFD93D"/>
+  <circle cx="515" cy="170" r="6" fill="#A78BFA"/>
   
   <!-- Gaussian boundaries -->
   <line x1="405" y1="80" x2="405" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
@@ -76,9 +76,9 @@
   
   <!-- Beta quantization levels -->
   <circle cx="695" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="730" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="770" cy="170" r="6" fill="#FF6B6B"/>
-  <circle cx="805" cy="170" r="6" fill="#FF6B6B"/>
+  <circle cx="730" cy="170" r="6" fill="#4ECDC4"/>
+  <circle cx="770" cy="170" r="6" fill="#FFD93D"/>
+  <circle cx="805" cy="170" r="6" fill="#A78BFA"/>
   
   <!-- Beta boundaries -->
   <line x1="712.5" y1="80" x2="712.5" y2="170" stroke="#FFD93D" stroke-width="2" stroke-dasharray="3,3"/>
@@ -91,7 +91,7 @@
   <text x="805" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">c₄</text>
   
   <!-- Comparison table -->
-  <rect x="100" y="230" width="700" height="180" fill="#2a2a3e" stroke="#444" stroke-width="1" rx="5"/>
+  <rect x="100" y="230" width="700" height="200" fill="#2a2a3e" stroke="#444" stroke-width="1" rx="5"/>
   <text x="450" y="255" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" font-weight="bold">量化特性比較表（4 層級量化）</text>
   
   <!-- Table headers -->
@@ -121,11 +121,11 @@
   <text x="650" y="415" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">TurboQuant</text>
   
   <!-- Key insight box -->
-  <rect x="100" y="440" width="700" height="140" fill="#1e1e2e" stroke="#4A90D9" stroke-width="1" rx="5"/>
-  <text x="450" y="465" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A90D9" font-weight="bold">關鍵洞察</text>
+  <rect x="100" y="450" width="700" height="140" fill="#1e1e2e" stroke="#4A90D9" stroke-width="1" rx="5"/>
+  <text x="450" y="475" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A90D9" font-weight="bold">關鍵洞察</text>
   
-  <text x="130" y="490" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越高的區域，量化層級越密集</text>
-  <text x="130" y="515" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越低的區域，量化層級越稀疏</text>
-  <text x="130" y="540" font-family="Arial" font-size="12" fill="#aaa">• 這種自適應特性使 Lloyd-Max 能夠最小化整體 MSE</text>
-  <text x="130" y="565" font-family="Arial" font-size="12" fill="#aaa">• TurboQuant 利用 Beta 分佈特性，實現接近最佳的失真率</text>
+  <text x="130" y="500" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越高的區域，量化層級越密集</text>
+  <text x="130" y="525" font-family="Arial" font-size="12" fill="#aaa">• 機率密度越低的區域，量化層級越稀疏</text>
+  <text x="130" y="550" font-family="Arial" font-size="12" fill="#aaa">• 這種自適應特性使 Lloyd-Max 能夠最小化整體 MSE</text>
+  <text x="130" y="575" font-family="Arial" font-size="12" fill="#aaa">• TurboQuant 利用 Beta 分佈特性，實現接近最佳的失真率</text>
 </svg>
