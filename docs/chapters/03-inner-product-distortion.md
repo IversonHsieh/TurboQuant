@@ -40,7 +40,13 @@
 
 ![inner_product_vs_mse](../svg/inner_product_vs_mse.svg)
 
-*圖示說明：(a) MSE 衡量的是向量端點之間的歐氏距離 $\|\mathbf{x} - \hat{\mathbf{x}}\|_2^2$；(b) 內積失真衡量的是在查詢向量 $\mathbf{y}$ 方向上的投影差異 $|\langle\mathbf{y}, \mathbf{x}\rangle - \langle\mathbf{y}, \hat{\mathbf{x}}\rangle|^2$。*
+*圖示說明：這張比較圖的核心訊息是 **MSE 失真與內積失真有本質不同的幾何意義**。*
+
+*(a) MSE 失真面板：紅色虛線直接連接 $\mathbf{x}$ 和 $\hat{\mathbf{x}}$ 的端點，MSE = $\|\mathbf{x} - \hat{\mathbf{x}}\|_2^2$ 就是這條線段長度的平方。面板中**刻意沒有查詢向量 $\mathbf{q}$**，因為 MSE 是各向同性的——它對所有方向的誤差一視同仁，不依賴任何查詢方向。MSE 是「全域性」重建品質指標，把所有維度的誤差平方加總。*
+
+*(b) 內積失真面板作為對照：加入查詢向量 $\mathbf{q}$，畫出 $\mathbf{x}$ 和 $\hat{\mathbf{x}}$ 在 $\mathbf{q}$ 上的投影點；紫色粗線段 = 兩個投影點的距離 = $|\langle\mathbf{q}, \mathbf{x}\rangle - \langle\mathbf{q}, \hat{\mathbf{x}}\rangle|$。內積失真只關心**特定查詢方向**上的投影差異。*
+
+*根本差異：MSE 量化器最小化的是紅色虛線（端點距離），但無法保證在任意查詢方向 $\mathbf{q}$ 上的紫色線段（投影差異）也很小，更無法保證內積估計的無偏性。這就是 TurboQuant 需要設計 $Q_{\text{prod}}$ 變體的原因——**MSE 最佳 ≠ 內積最佳**。*
 
 ### TurboQuant 兩階段方法流程
 
