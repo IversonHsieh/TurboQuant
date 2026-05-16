@@ -4,19 +4,49 @@
 
 ## 目錄
 
-1. [定義與背景](#定義與背景)
-2. [形式化定義](#形式化定義)
-3. [幾何意義](#幾何意義)
-4. [為什麼 MSE 最佳量化器會引入內積偏差](#為什麼-mse-最佳量化器會引入內積偏差)
-5. [TurboQuant 的兩階段解決方案](#turboquant-的兩階段解決方案)
-6. [理論保證：定理 2 詳解](#理論保證定理-2-詳解)
-7. [內積失真下界](#內積失真下界)
-8. [與 MSE 失真的比較](#與-mse-失真的比較)
-9. [實際計算範例](#實際計算範例)
-10. [實驗驗證](#實驗驗證)
-11. [在 KV Cache 量化中的應用](#在-kv-cache-量化中的應用)
-12. [視覺化圖示](#視覺化圖示)
+1. [視覺化總覽](#視覺化總覽)
+2. [定義與背景](#定義與背景)
+3. [形式化定義](#形式化定義)
+4. [幾何意義](#幾何意義)
+5. [為什麼 MSE 最佳量化器會引入內積偏差](#為什麼-mse-最佳量化器會引入內積偏差)
+6. [TurboQuant 的兩階段解決方案](#turboquant-的兩階段解決方案)
+7. [理論保證：定理 2 詳解](#理論保證定理-2-詳解)
+8. [內積失真下界](#內積失真下界)
+9. [與 MSE 失真的比較](#與-mse-失真的比較)
+10. [實際計算範例](#實際計算範例)
+11. [實驗驗證](#實驗驗證)
+12. [在 KV Cache 量化中的應用](#在-kv-cache-量化中的應用)
 13. [參考文獻與延伸閱讀](#參考文獻與延伸閱讀)
+
+---
+
+## 視覺化總覽
+
+> 以下圖示提供了內積與內積失真的直覺理解，建議先看圖建立整體概念，再往下閱讀詳細的數學推導。
+
+### 內積是什麼？
+
+![inner_product_definition](../svg/inner_product_definition.svg)
+
+*圖示說明：兩個向量 **a** 和 **b** 的內積 ⟨a, b⟩ = ‖a‖·‖b‖·cos θ，幾何意義是向量 a 在向量 b 方向上的投影長度乘以向量 b 的長度。內積衡量兩個向量的「方向一致性」：正值 = 同方向，零 = 垂直，負值 = 反方向。*
+
+### 內積失真的幾何表示
+
+![inner_product_distortion](../svg/inner_product_distortion.svg)
+
+*圖示說明：原始向量 $\mathbf{x}$ 和查詢向量 $\mathbf{y}$ 的內積由投影長度決定；量化後向量 $\hat{\mathbf{x}}$ 的投影長度發生變化；內積失真 = 原始投影與量化後投影的差異。*
+
+### 內積失真 vs. MSE 失真
+
+![inner_product_vs_mse](../svg/inner_product_vs_mse.svg)
+
+*圖示說明：(a) MSE 衡量的是向量端點之間的歐氏距離 $\|\mathbf{x} - \hat{\mathbf{x}}\|_2^2$；(b) 內積失真衡量的是在查詢向量 $\mathbf{y}$ 方向上的投影差異 $|\langle\mathbf{y}, \mathbf{x}\rangle - \langle\mathbf{y}, \hat{\mathbf{x}}\rangle|^2$。*
+
+### TurboQuant 兩階段方法流程
+
+![TurboQuant_prod 流程](../svg/qjl_flowchart.svg)
+
+*圖示說明：TurboQuant_prod 的兩階段流程——先進行 MSE 最佳量化，再對殘差進行 QJL 變換，最終得到無偏的內積估計。*
 
 ---
 
@@ -472,28 +502,6 @@ $$
 - **3.5 bits/channel**：絕對品質中性（與全精度模型完全相同的性能）
 - **2.5 bits/channel**：邊際品質下降
 - **壓縮比**：超過 $5\times$ 的 KV Cache 壓縮
-
----
-
-## 視覺化圖示
-
-### 內積失真的幾何表示
-
-![inner_product_distortion](../svg/inner_product_distortion.svg)
-
-*圖示說明：原始向量 $\mathbf{x}$ 和查詢向量 $\mathbf{y}$ 的內積由投影長度決定；量化後向量 $\hat{\mathbf{x}}$ 的投影長度發生變化；內積失真 = 原始投影與量化後投影的差異。*
-
-### 與 MSE 的比較
-
-![inner_product_vs_mse](../svg/inner_product_vs_mse.svg)
-
-*圖示說明：(a) MSE 衡量的是向量端點之間的歐氏距離 $\|\mathbf{x} - \hat{\mathbf{x}}\|_2^2$；(b) 內積失真衡量的是在查詢向量 $\mathbf{y}$ 方向上的投影差異 $|\langle\mathbf{y}, \mathbf{x}\rangle - \langle\mathbf{y}, \hat{\mathbf{x}}\rangle|^2$。*
-
-### TurboQuant 兩階段方法流程
-
-![TurboQuant_prod 流程](../svg/qjl_flowchart.svg)
-
-*圖示說明：TurboQuant_prod 的兩階段流程——先進行 MSE 最佳量化，再對殘差進行 QJL 變換，最終得到無偏的內積估計。*
 
 ---
 
