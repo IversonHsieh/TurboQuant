@@ -36,6 +36,17 @@
 1. **簡介 TurboQuant**：技術背景、解決的痛點（KV Cache 壓力）。
 2. **相關專有名詞的細節拆解**：例如 PolarQuant, QJL, KV Cache, Johnson-Lindenstrauss Lemma 等。
 3. **TurboQuant 細節一步一步拆解**：從數學原理到演算法流程的深度解析。
+### 6. 網頁部署與同步 (Web Deployment & Sync)
+- **部署架構**：使用 VitePress + GitHub Pages，網址為 `https://iversonhsieh.github.io/TurboQuant/`
+- **自動部署**：推送至 `main` 分支時，GitHub Actions 會自動 build 並部署（`.github/workflows/deploy.yml`）
+- **同步指令**：當你修改或新增 `.md` 檔案後，告訴我「**deploy**」或「**推送網頁**」，我就會執行以下流程：
+  1. `npm run build` — 確認 build 成功
+  2. `git add -A && git commit -m "描述變更" && git push` — 提交並推送
+  3. 等待 GitHub Actions 部署完成後，用瀏覽器確認網站正常
+- **新增章節注意事項**：如果新增了 `.md` 檔案，需要同時在 `docs/.vitepress/config.mjs` 的 `sidebar` 中加入對應連結，否則新頁面不會出現在側邊欄導航中
+- **SVG 圖片路徑**：在 `docs/chapters/` 下的 `.md` 中引用 `docs/svg/` 的圖片時，使用相對路徑 `../svg/xxx.svg`（不要用絕對路徑 `/svg/xxx.svg`）
+- **LaTeX 公式**：已啟用 `markdown-it-mathjax3`，直接使用 `$...$`（行內）和 `$$...$$`（區塊）即可
 
 ---
-*Last Updated: 2026-04-14*
+
+*Last Updated: 2026-05-16*
