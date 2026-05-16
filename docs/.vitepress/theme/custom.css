@@ -114,58 +114,55 @@ body {
   background-color: var(--vp-c-bg) !important;
 }
 
-/* ----- Wider Content on PC (reduce side margins) ----- */
-/* VitePress 預設內容區 max-width 約 688px，PC 上兩側空白過多 */
+/* ----- Wider Content on PC only (≥1280px) ----- */
+/* iPhone / iPad 維持 VitePress 預設排版，不做任何覆寫 */
+/* 只在 PC 大螢幕時移除寬度限制，讓兩側貼邊 */
 
-/* 移除 content-container 的最大寬度限制 */
-.VPDoc .content-container {
-  max-width: 100% !important;
+@media (min-width: 1280px) {
+  /* 移除 content-container 的最大寬度限制 */
+  .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+
+  .VPDoc.has-aside .content-container {
+    max-width: 100% !important;
+  }
+
+  /* 讓 content 區域撐滿 */
+  .VPDoc .content {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* 大幅減少 VPDoc 左右 padding */
+  .VPDoc {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* 縮小 aside (右側大綱) 寬度 */
+  .VPDoc .aside {
+    width: 180px !important;
+    min-width: 180px !important;
+  }
+
+  /* vp-doc 內容區 padding 也縮小 */
+  .vp-doc {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 }
 
-.VPDoc.has-aside .content-container {
-  max-width: 100% !important;
-}
-
-/* 讓整個 content 區域撐滿可用寬度 */
-.VPDoc .content {
-  max-width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* 減少 VPDoc 的左右 padding，讓內容更貼邊 */
-@media (min-width: 960px) {
+@media (min-width: 1536px) {
   .VPDoc {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
-}
 
-@media (min-width: 1440px) {
-  .VPDoc {
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-}
-
-/* 縮小 aside (右側大綱) 寬度，讓內容區更寬 */
-@media (min-width: 1280px) {
-  .VPDoc .aside {
-    width: 200px !important;
-    min-width: 200px !important;
-  }
-}
-
-/* 保留適當的左右 padding 避免貼邊太緊 */
-.vp-doc {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-}
-
-@media (min-width: 1440px) {
   .vp-doc {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
 }
 
