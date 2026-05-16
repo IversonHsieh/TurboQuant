@@ -47,6 +47,30 @@
 - **SVG 圖片路徑**：在 `docs/chapters/` 下的 `.md` 中引用 `docs/svg/` 的圖片時，使用相對路徑 `../svg/xxx.svg`（不要用絕對路徑 `/svg/xxx.svg`）
 - **LaTeX 公式**：已啟用 `markdown-it-mathjax3`，直接使用 `$...$`（行內）和 `$$...$$`（區塊）即可
 
+### 7. VitePress 排版調整經驗 (Layout Tuning)
+- **問題**：VitePress 預設在 PC 大螢幕上內容區域偏窄（約 688px），兩側空白過多
+- **根本原因**：VitePress 使用多層 CSS 限制寬度：
+  - `--vp-layout-max-width` CSS 變數（預設 `1440px`）控制整體佈局最大寬度
+  - `.VPDoc` 有固定 `width` 值（如 `1160px`）
+  - `.content-container` 有 `max-width: 688px`
+  - `.aside`（右側大綱）佔 256px
+- **解決方案**（在 `docs/.vitepress/theme/custom.css` 中）：
+  1. 在 `:root` 中覆寫 `--vp-layout-max-width: 1700px !important;`（比預設 1440px 寬，但不會像 100% 太寬）
+  2. 在 `@media (min-width: 1280px)` 中覆寫：
+     - `.VPDoc .content-container { max-width: 100% !important; }`
+     - `.VPDoc .content { max-width: 100%; padding: 0; }`
+     - `.VPDoc { width: auto !important; flex-grow: 1 !important; }`
+     - `.VPDoc .aside { width: 180px; min-width: 180px; }`
+  3. 所有寬度覆寫都放在 `@media (min-width: 1280px)` 內，確保 iPhone/iPad 不受影響
+- **驗證方式**：使用 Puppeteer MCP 設定不同 viewport 尺寸（375x812 iPhone、768x1024 iPad、1920x1080 PC）截圖確認
+- **瀏覽器快取問題**：部署後若 PC Chrome 顯示異常（白底、排版亂），按 **Ctrl+Shift+R** 強制重新整理即可
+- **效果**（1920px PC 螢幕）：
+  | 項目 | 原始值 | 調整後 |
+  |------|--------|--------|
+  | 佈局最大寬度 | 1440px | 1700px |
+  | 內容區寬度 | 688px | ~1208px |
+  | 右側大綱寬度 | 256px | 180px |
+
 ---
 
 *Last Updated: 2026-05-16*
