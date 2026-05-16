@@ -584,7 +584,7 @@ TurboQuant 編碼（隨機旋轉 + 純量量化）：
 
 ## 圖解說明
 
-![](/docs/svg/nearest_neighbor_search.svg)
+![](../svg/nearest_neighbor_search.svg)
 
 *(註：上圖展示了目標點 $q$ 與資料點之間的距離計算，以及如何比較得出最近的鄰居。)*
 

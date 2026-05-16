@@ -10,9 +10,7 @@
 
 TurboQuant 的核心流程可以概括為一個從高維、高精度向量到低維、低位元壓縮向量的轉換過程。
 
-![TurboQuant Algorithm Flow](./../svg/turboquant_pipeline.svg)
-
-*(註：此處將於後續步驟中實作 SVG 流程圖)*
+*(註：TurboQuant Algorithm Flow 流程圖待實作)*
 
 ### 🛠️ 核心處理步驟說明
 
