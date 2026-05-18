@@ -193,10 +193,6 @@ fig.text(0.5, 0.01,
 # 保存為 SVG（fonttype='none' 確保文字為 <text> 元素）
 plt.savefig('docs/svg/beta_distribution.svg', format='svg', bbox_inches='tight',
             facecolor=fig.get_facecolor(), edgecolor='none')
-# 同時保存 PNG 預覽
-plt.savefig('docs/svg/beta_distribution.png', format='png', dpi=150,
-            bbox_inches='tight', facecolor=fig.get_facecolor(), edgecolor='none')
 
-print("SVG and PNG charts generated successfully!")
+print("SVG chart generated successfully!")
 print("- docs/svg/beta_distribution.svg")
-print("- docs/svg/beta_distribution.png")
